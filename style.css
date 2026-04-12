@@ -271,3 +271,23 @@ footer {
     filter: none !important;
   }
 }
+/* ===== SKILLS (PILL STYLE) ===== */
+.skills {
+  list-style: none;          /* removes bullets */
+  padding: 0;
+  margin-top: 20px;
+}
+
+.skills li {
+  display: inline-block;
+  margin: 8px;
+  padding: 10px 18px;
+  background: #eef6fb;
+  border-radius: 999px;
+  font-size: 14px;
+  transition: transform 180ms ease;
+}
+
+.skills li:hover {
+  transform: translateY(-3px);
+}
