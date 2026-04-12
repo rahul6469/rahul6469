@@ -1,141 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rahul Kumar | System Engineer</title>
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="index.css" />
 </head>
 
 <body>
-  <main>
+  <!-- Top bar (mobile + theme toggle) -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span class="brand-text">Rahul Kumar</span>
+    </div>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <div class="avatar-box">
-        <img src="image/avatar.png" alt="Rahul Kumar">
+    <div class="topbar-actions">
+      <button id="themeToggle" class="icon-btn" aria-label="Toggle dark/light theme" title="Toggle theme">
+        <span id="themeIcon" aria-hidden="true">🌙</span>
+      </button>
+
+      <button id="menuBtn" class="icon-btn menu-btn" aria-label="Open menu" title="Menu">
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Overlay for mobile drawer -->
+  <div id="overlay" class="overlay" aria-hidden="true"></div>
+
+  <main class="layout">
+    <!-- SIDEBAR (drawer on mobile) -->
+    <aside id="sidebar" class="sidebar" aria-label="Sidebar">
+      <div class="profile">
+        <img class="avatar" src="image/avatar.png" alt="Rahul Kumar" />
+        <h1 class="name">Rahul Kumar</h1>
+        <p class="role">System Engineer • Publicis Sapient</p>
       </div>
 
-      <h1>Rahul Kumar</h1>
-      <p class="title">System Engineer</p>
-
-      <div class="contact">
-        <p>📍 Bengaluru, India</p>
-        <p>📧 manishrahul3333@gmail.com</p>
-        <p>📞 +91 7645959259</p>
+      <div class="sidebar-block">
+        <p class="meta">📍 Bengaluru, Karnataka</p>
+        <p class="meta">📧 <a href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a></p>
+        <p class="meta">📞 <a href="tel:+917645959259">+91 7645959259</a></p>
       </div>
 
-      <div class="social">
-        <a href="https://www.linkedin.com/in/rahul3333" target="_blank">LinkedIn</a>
-        <a href="https://github.com/rahul6469" target="_blank">GitHub</a>
-        <a href="image/resume.pdf" target="_blank">Resume</a>
+      <div class="sidebar-block links">
+        <a class="btn" href="image/resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+        <a class="link" href="https://www.linkedin.com/in/rahul3333" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="link" href="https://github.com/rahul6469" target="_blank" rel="noopener">GitHub</a>
       </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="navlink" href="#about">About</a>
+        <a class="navlink" href="#what">What I Do</a>
+        <a class="navlink" href="#experience">Experience</a>
+        <a class="navlink" href="#skills">Skills</a>
+        <a class="navlink" href="#education">Education</a>
+        <a class="navlink" href="#contact">Contact</a>
+      </nav>
     </aside>
 
-    <!-- MAIN CONTENT -->
+    <!-- CONTENT -->
     <section class="content">
-
-      <!-- ABOUT -->
-      <section class="section">
+      <section id="about" class="card reveal">
         <h2>About Me</h2>
         <p>
-          Results‑driven System Engineer with hands‑on experience in Managed Services
-          Operations (MSO–NOC) and DTCC regulatory reporting workflows. Strong expertise
-          in incident and problem management (P1–P3), trade lifecycle analysis,
-          data reconciliation, and SLA‑driven operations across multi‑cloud
-          environments (Azure, AWS, GCP).
+          Results‑driven System Engineer with hands‑on experience in Managed Services Operations (MSO–NOC)
+          and DTCC workflows, specializing in trade workflow management, reconciliation, and operational analytics.
+          Strong in incident/problem management, multi‑cloud operations (Azure, AWS, GCP), monitoring (Grafana/Zoho),
+          and data troubleshooting using SQL, Azure Data Explorer (ADX) and Cosmos DB. [1](https://github.com/tanvi3298/tanvi3298)
         </p>
+        <div class="chips">
+          <span class="chip">DTCC / ReportHub</span>
+          <span class="chip">P1–P3 Incident Management</span>
+          <span class="chip">Azure • AWS • GCP</span>
+          <span class="chip">SQL • ADX • Cosmos DB</span>
+          <span class="chip">Grafana • ServiceNow • Jira</span>
+        </div>
       </section>
 
-      <!-- WHAT I DO -->
-      <section class="section">
+      <section id="what" class="card reveal">
         <h2>What I Do</h2>
-
-        <div class="cards">
-          <div class="card">
+        <div class="grid">
+          <div class="mini">
             <h3>Production Support</h3>
-            <p>
-              24×7 application & infrastructure monitoring, incident triaging,
-              root cause analysis, and service restoration using ServiceNow,
-              Jira, and ITIL best practices.
-            </p>
+            <p>24×7 monitoring, triage, escalation, and RCA aligned to SLA/SLO and ITIL practices. [1](https://github.com/tanvi3298/tanvi3298)</p>
           </div>
-
-          <div class="card">
-            <h3>DTCC Regulatory Reporting</h3>
-            <p>
-              Trade validation, reconciliation, and reporting using ReportHub,
-              CMRS workflows, ensuring data quality, compliance, and audit readiness.
-            </p>
+          <div class="mini">
+            <h3>Regulatory Reporting (DTCC)</h3>
+            <p>Trade workflow support, reconciliation and reporting for DTCC ReportHub/CMRS ensuring data accuracy and compliance. [1](https://github.com/tanvi3298/tanvi3298)</p>
           </div>
-
-          <div class="card">
-            <h3>Data & Automation</h3>
-            <p>
-              SQL, Azure Data Explorer, Cosmos DB analysis and Python automation
-              to reduce manual effort and improve operational efficiency.
-            </p>
+          <div class="mini">
+            <h3>Data + Automation</h3>
+            <p>SQL/ADX/Cosmos investigations and Python/SQL automation to reduce manual operational tasks. [1](https://github.com/tanvi3298/tanvi3298)</p>
+          </div>
+          <div class="mini">
+            <h3>Observability</h3>
+            <p>Alert tuning and performance monitoring using Grafana and Application Insights to improve response time. [1](https://github.com/tanvi3298/tanvi3298)</p>
           </div>
         </div>
       </section>
 
-      <!-- EXPERIENCE -->
-      <section class="section">
+      <section id="experience" class="card reveal">
         <h2>Experience</h2>
 
-        <h3>System Engineer — Publicis Sapient</h3>
-        <span>Jan 2025 – Present</span>
-        <ul>
-          <li>Handled P1–P3 incidents ensuring 99.9%+ system availability</li>
-          <li>DTCC trade reconciliation and regulatory reporting support</li>
-          <li>Monitoring via Grafana, Zoho, Application Insights</li>
-          <li>SQL, ADX, Cosmos DB analysis for issue root cause</li>
-          <li>Python automation to streamline operational tasks</li>
-        </ul>
+        <div class="timeline">
+          <div class="job">
+            <div class="job-head">
+              <h3>System Engineer — Publicis Sapient</h3>
+              <span class="period">Jan 2025 – Present</span> [1](https://github.com/tanvi3298/tanvi3298)
+            </div>
+            <ul>
+              <li>Managed 24×7 production support across Azure, AWS, and GCP ensuring high availability. [1](https://github.com/tanvi3298/tanvi3298)</li>
+              <li>Led P1–P3 incident management in ServiceNow/Jira with triage, escalation, and RCA. [1](https://github.com/tanvi3298/tanvi3298)</li>
+              <li>Supported DTCC regulatory reporting workflows (ReportHub/CMRS) with reconciliation and audit readiness. [1](https://github.com/tanvi3298/tanvi3298)</li>
+              <li>Performed large-scale analysis with SQL, ADX and Cosmos DB to resolve data discrepancies. [1](https://github.com/tanvi3298/tanvi3298)</li>
+              <li>Built automation scripts using Python/SQL to reduce repetitive operational work. [1](https://github.com/tanvi3298/tanvi3298)</li>
+            </ul>
+          </div>
 
-        <h3>Trainee System Engineer — Publicis Sapient</h3>
-        <span>Jul 2024 – Dec 2024</span>
-        <ul>
-          <li>Supported DTCC transaction reporting workflows</li>
-          <li>Trade monitoring and data validation</li>
-        </ul>
+          <div class="job">
+            <div class="job-head">
+              <h3>Trainee System Engineer — Publicis Sapient</h3>
+              <span class="period">Jul 2024 – Dec 2024</span> [1](https://github.com/tanvi3298/tanvi3298)
+            </div>
+            <ul>
+              <li>Supported DTCC transaction reporting and trade monitoring workflows. [1](https://github.com/tanvi3298/tanvi3298)</li>
+              <li>Assisted in monitoring and optimization of workflows and production stability. [1](https://github.com/tanvi3298/tanvi3298)</li>
+            </ul>
+          </div>
 
-        <h3>Intern Engineer — Publicis Sapient</h3>
-        <span>Jan 2024 – Jul 2024</span>
-        <ul>
-          <li>Infrastructure reliability monitoring</li>
-          <li>Exposure to enterprise incident workflows</li>
-        </ul>
-      </section>
-
-      <!-- SKILLS -->
-      <section class="section">
-        <h2>Skills</h2>
-        <div class="skills">
-          <span>Python</span>
-          <span>SQL</span>
-          <span>Linux</span>
-          <span>Azure</span>
-          <span>AWS</span>
-          <span>GCP</span>
-          <span>Grafana</span>
-          <span>ServiceNow</span>
-          <span>Jira</span>
-          <span>DTCC ReportHub</span>
-          <span>Cosmos DB</span>
-          <span>ADX</span>
+          <div class="job">
+            <div class="job-head">
+              <h3>Intern Engineer — Publicis Sapient</h3>
+              <span class="period">Jan 2024 – Jul 2024</span> [1](https://github.com/tanvi3298/tanvi3298)
+            </div>
+            <ul>
+              <li>Proactively monitored services using ServiceNow/Jira/Zoho/Grafana; adapted quickly to enterprise processes. [1](https://github.com/tanvi3298/tanvi3298)</li>
+            </ul>
+          </div>
         </div>
       </section>
 
-      <!-- EDUCATION -->
-      <section class="section">
+      <section id="skills" class="card reveal">
+        <h2>Skills</h2>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">Java</span>
+          <span class="chip">SQL / MySQL</span>
+          <span class="chip">Linux</span>
+          <span class="chip">Azure ADX</span>
+          <span class="chip">Azure Cosmos DB</span>
+          <span class="chip">Grafana</span>
+          <span class="chip">Zoho</span>
+          <span class="chip">ServiceNow</span>
+          <span class="chip">Jira</span>
+          <span class="chip">Bitbucket</span>
+          <span class="chip">DTCC ReportHub</span> [1](https://github.com/tanvi3298/tanvi3298)
+        </div>
+      </section>
+
+      <section id="education" class="card reveal">
         <h2>Education</h2>
-        <p>
-          <strong>B.Tech – Computer Science (AI & ML)</strong><br>
-          M.S. Ramaiah University of Applied Sciences, Bengaluru<br>
-          CGPA: 7.37
+        <p class="edu">
+          <strong>M.S. Ramaiah University of Applied Sciences</strong> — Bengaluru, Karnataka<br/>
+          B.Tech in Computer Science Engineering (AI & ML) • CGPA: 7.37 [1](https://github.com/tanvi3298/tanvi3298)
         </p>
       </section>
 
+      <section id="contact" class="card reveal">
+        <h2>Contact</h2>
+        <p>If you’d like to connect, feel free to reach out:</p>
+        <div class="contact-grid">
+          <a class="contact-item" href="mailto:manishrahul3333@gmail.com">📧 manishrahul3333@gmail.com</a> [1](https://github.com/tanvi3298/tanvi3298)
+          <a class="contact-item" href="tel:+917645959259">📞 +91 7645959259</a> [1](https://github.com/tanvi3298/tanvi3298)
+          <a class="contact-item" href="https://www.linkedin.com/in/rahul3333" target="_blank" rel="noopener">🔗 LinkedIn</a> [1](https://github.com/tanvi3298/tanvi3298)
+          <a class="contact-item" href="https://github.com/rahul6469" target="_blank" rel="noopener">💻 GitHub</a> [1](https://github.com/tanvi3298/tanvi3298)
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>© <span id="year"></span> Rahul Kumar</p>
+      </footer>
     </section>
   </main>
 
