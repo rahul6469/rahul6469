@@ -1,18 +1,335 @@
-/* Project title – clean, clamped (previous look restored) */
-.p-title{
-  font-weight:800;
-  margin:0 0 6px;
-  font-size:16px;
-  line-height:1.35;
+:root{
+  --bg:#0b1220;
+  --panel:rgba(255,255,255,.05);
+  --panel2:rgba(255,255,255,.04);
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --accent:#38bdf8;
+  --border:rgba(255,255,255,.14);
 
-  /* ✅ prevent ugly multi-line wrapping */
+  --ease:cubic-bezier(.22,1,.36,1);
+  --dur:420ms;
+  --durFast:200ms;
+}
+
+[data-theme="light"]{
+  --bg:#f8fafc;
+  --panel:#ffffff;
+  --panel2:#ffffff;
+  --text:#0f172a;
+  --muted:#475569;
+  --border:#e2e8f0;
+  --accent:#2563eb;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+a{ color:var(--accent); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+
+ion-icon{ font-size:18px; }
+
+/* ================= Layout ================= */
+.app{
+  display:flex;
+  gap:18px;
+  max-width:1200px;
+  margin:0 auto;
+  padding:18px;
+}
+
+/* ================= Sidebar ================= */
+.sidebar{
+  width:320px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
+  position:sticky;
+  top:18px;
+  height:fit-content;
+}
+
+/* Clean vertical hierarchy (Rahul-style) */
+.sidebar-info{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  text-align:center;
+}
+
+/* Avatar – previous better version (NO glow, NO pill) */
+.avatar-box{
+  width:78px;
+  height:78px;
+  border-radius:18px;
+  background:rgba(56,189,248,.10);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(56,189,248,.22);
+  overflow:hidden;
+  flex-shrink:0;
+}
+
+.avatar-box img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.name{
+  margin-top:4px;
+  font-size:18px;
+  font-weight:800;
+}
+
+.title{
+  margin-top:2px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* Show contacts button – centered & clean */
+.info_more-btn{
+  margin-top:8px;
+  border:1px solid var(--border);
+  background:var(--panel2);
+  color:var(--text);
+  padding:8px 14px;
+  border-radius:999px;
+  cursor:pointer;
+  display:flex;
+  gap:6px;
+  align-items:center;
+  justify-content:center;
+  transition:transform var(--durFast) var(--ease),
+             background var(--durFast) var(--ease);
+}
+.info_more-btn:hover{
+  transform:translateY(-1px);
+  background:rgba(255,255,255,.08);
+}
+.info_more-btn .chev{
+  transition:transform 260ms var(--ease);
+}
+.sidebar.open .info_more-btn .chev{
+  transform:rotate(180deg);
+}
+
+/* Sidebar dropdown */
+.sidebar-info_more{
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transition:max-height var(--dur) var(--ease), opacity 240ms var(--ease);
+  margin-top:14px;
+}
+.sidebar-info_more.active{
+  max-height:700px;
+  opacity:1;
+}
+
+.separator{
+  height:1px;
+  background:var(--border);
+  margin:10px 0 14px;
+}
+
+/* Contacts */
+.contacts-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap:12px;
+}
+
+.contact-item{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+
+.icon-box{
+  width:36px;
+  height:36px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(56,189,248,.18);
+  background:rgba(56,189,248,.10);
+}
+
+.contact-title{
+  margin:0;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.contact-link,address{
+  font-style:normal;
+  font-size:13.5px;
+  color:var(--text);
+}
+
+/* Resume button */
+.resume-btn{
+  margin-top:12px;
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid rgba(56,189,248,.22);
+  background:rgba(56,189,248,.10);
+  color:var(--text);
+}
+.resume-btn:hover{
+  transform:translateY(-2px);
+  background:rgba(56,189,248,.15);
+}
+
+/* Social icons centered */
+.social-list{
+  list-style:none;
+  padding:0;
+  margin:14px 0 0;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+}
+
+/* ================= Main ================= */
+.main-content{
+  flex:1;
+  min-width:0;
+}
+
+/* ================= Navbar ================= */
+.navbar{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:10px;
+  position:sticky;
+  top:18px;
+  z-index:5;
+  margin-bottom:14px;
+}
+
+.navbar-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  position:relative;
+}
+
+.navbar-spacer{ flex:1; }
+
+.navbar-link{
+  padding:10px 14px;
+  border-radius:14px;
+  border:1px solid transparent;
+  background:transparent;
+  color:var(--text);
+  font-weight:700;
+  cursor:pointer;
+  position:relative;
+  z-index:3;
+}
+.navbar-link:hover{
+  background:rgba(255,255,255,.06);
+}
+.navbar-link.active{
+  background:rgba(56,189,248,.14);
+  border-color:rgba(56,189,248,.28);
+}
+
+/* Underline indicator */
+.nav-indicator{
+  position:absolute;
+  left:0;
+  bottom:6px;
+  height:2px;
+  width:40px;
+  background:linear-gradient(90deg,var(--accent),rgba(56,189,248,.4));
+  border-radius:999px;
+  z-index:2;
+}
+
+/* ================= Pages ================= */
+.page-stack{
+  position:relative;
+  margin-top:28px;
+  min-height:420px;
+}
+
+.page{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transform:translateY(10px);
+  pointer-events:none;
+  transition:opacity 260ms var(--ease), transform 360ms var(--ease);
+}
+
+.page.active{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+
+.page.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:18px;
+}
+
+/* ================= Projects ================= */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:16px;
+}
+
+.project-card{
+  padding:16px;
+  border-radius:18px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.04);
+}
+
+/* Clean project title (previous better look) */
+.p-title{
+  font-size:16px;
+  font-weight:800;
+  line-height:1.35;
+  margin:0 0 6px;
   display:-webkit-box;
-  -webkit-line-clamp:2;        /* show max 2 lines */
+  -webkit-line-clamp:2;
   -webkit-box-orient:vertical;
   overflow:hidden;
   text-overflow:ellipsis;
-
-  /* ✅ nicer breaking for long hyphenated names */
   word-break:normal;
   overflow-wrap:anywhere;
+}
+
+/* ================= Responsive ================= */
+@media(max-width:900px){
+  .app{ flex-direction:column; }
+  .sidebar{ width:auto; }
 }
