@@ -291,3 +291,23 @@ footer {
 .skills li:hover {
   transform: translateY(-3px);
 }
+/* ===== Single‑section view (Tanvi‑style) ===== */
+.page-section {
+  display: none;
+}
+
+.page-section.active {
+  display: block;
+  animation: fadeSlide 0.45s ease;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
