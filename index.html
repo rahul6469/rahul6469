@@ -5,48 +5,129 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Rahul Kumar | Systems Engineer</title>
-  index.css
-
   <meta name="description"
-    content="Rahul Kumar – Systems Engineer at Publicis Sapient specializing in DTCC regulatory reporting, L2 production support, incident management, cloud operations, monitoring, and data analytics." />
+    content="Rahul Kumar – Systems Engineer at Publicis Sapient specializing in DTCC regulatory reporting, L2 production support, cloud operations, monitoring, and data analytics." />
 
   <!-- Social Preview -->
-  <meta property="og:title" content="Rahul Kumar | Systems Engineer Portfolio" />
-  <meta property="og:description" content="DTCC • ReportHub • L2 Production Support • Cloud & Data Analytics" />
-  <meta property="og:image" content="https://rahul6469.github.io/rahul6469/assets/avatar.png" />
-
+  <meta property="og:title" content="Rahul Kumar | Portfolio" />
+  <meta property="og:image" content="assets/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Minimal fallback styling -->
   <style>
-    .theme-btn{width:42px;height:42px;border-radius:12px;border:1px solid rgba(56,189,248,.25);
-      background:rgba(255,255,255,.06);cursor:pointer}
-    .theme-btn:hover{background:rgba(255,255,255,.1)}
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-    .project-card{padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,.15);
-      background:rgba(255,255,255,.04);text-decoration:none;color:inherit}
-    .project-card h3{margin:0 0 6px}
-    .project-card p{margin:0;line-height:1.6;opacity:.85}
-    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .skill{padding:6px 10px;border-radius:999px;font-size:12px;
-      background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.2)}
-    .muted{opacity:.85}
+    :root {
+      --bg: #0b1220;
+      --card: rgba(255,255,255,.05);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #38bdf8;
+      --border: rgba(255,255,255,.14);
+    }
+    [data-theme="light"]{
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --border:#e2e8f0;
+    }
+
+    body{
+      margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto;
+      background:var(--bg);color:var(--text);
+    }
+
+    .topbar{
+      position:sticky;top:0;z-index:10;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 18px;border-bottom:1px solid var(--border);
+      background:var(--bg);
+    }
+
+    .brand{display:flex;align-items:center;gap:10px;font-weight:600}
+    .brand-dot{
+      width:10px;height:10px;border-radius:50%;
+      background:var(--accent);box-shadow:0 0 0 6px rgba(56,189,248,.2)
+    }
+
+    .theme-btn{
+      width:42px;height:42px;border-radius:12px;
+      border:1px solid var(--border);
+      background:var(--card);color:inherit;cursor:pointer;
+    }
+
+    .layout{
+      max-width:1150px;margin:0 auto;
+      display:grid;grid-template-columns:320px 1fr;
+      gap:18px;padding:18px;
+    }
+
+    @media(max-width:900px){.layout{grid-template-columns:1fr}}
+
+    .sidebar,.card{
+      background:var(--card);border:1px solid var(--border);
+      border-radius:16px;padding:18px;
+    }
+
+    .profile{text-align:center}
+    .avatar{width:130px;height:130px;border-radius:50%;
+      border:3px solid rgba(56,189,248,.4);object-fit:cover}
+
+    a{color:var(--accent);text-decoration:none}
+
+    .nav{margin-top:16px;display:grid;gap:6px}
+    .nav a{padding:10px;border-radius:12px;color:inherit}
+    .nav a:hover{background:rgba(255,255,255,.06)}
+
+    h2{margin:0 0 10px}
+    .muted{color:var(--muted)}
+
+    /* ===== TANVI-STYLE PROJECTS ===== */
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+      gap:16px;margin-top:14px;
+    }
+
+    .project-card{
+      display:flex;flex-direction:column;justify-content:space-between;
+      padding:16px;border-radius:16px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      transition:.25s;text-decoration:none;color:inherit;
+      min-height:170px;
+    }
+
+    .project-card:hover{
+      transform:translateY(-4px);
+      background:rgba(255,255,255,.08);
+      border-color:rgba(56,189,248,.4);
+    }
+
+    .p-title{font-weight:700;margin:0 0 6px}
+    .p-desc{
+      margin:0;color:var(--muted);line-height:1.5;
+      display:-webkit-box;-webkit-line-clamp:2;
+      -webkit-box-orient:vertical;overflow:hidden;
+      min-height:3em;
+    }
+
+    .p-tech{font-size:12px;color:var(--muted);margin-top:12px}
+    .pill{
+      display:inline-block;padding:4px 10px;
+      border-radius:999px;font-size:11px;
+      border:1px solid rgba(56,189,248,.35);
+      background:rgba(56,189,248,.12);margin-right:6px
+    }
   </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="topbar">
   <div class="brand">
     <span class="brand-dot"></span>
-    <span class="brand-text">Rahul Kumar</span>
+    <span>Rahul Kumar</span>
   </div>
-
-  <!-- THEME TOGGLE -->
-  <button id="themeToggle" class="theme-btn" title="Toggle dark/light mode">
-    <span id="themeIcon">🌙</span>
-  </button>
+  <button id="themeToggle" class="theme-btn"><span id="themeIcon">🌙</span></button>
 </header>
 
 <main class="layout">
@@ -54,160 +135,129 @@
 <!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="profile">
-    assets/avatar.png
-    <h1>Rahul Kumar</h1>
-    <p class="muted">Systems Engineer • Publicis Sapient</p>
+    <img src="assets/avatar.png" class="avatar" alt="Rahul Kumar"/>
+    <h3>Rahul Kumar</h3>
+    <p class="muted">Systems Engineer<br/>Publicis Sapient</p>
   </div>
 
   <p>📍 Bengaluru, Karnataka</p>
   <p>📧 <a href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a></p>
   <p>📞 +91 7645959259</p>
 
-  assets/resume.pdf⬇️ Download Resume (PDF)</a>
+  <p><a href="assets/resume.pdf" download>⬇ Download Resume (PDF)</a></p>
 
   <nav class="nav">
-    #aboutAbout</a>
-    #experienceExperience</a>
-    #projectsProjects</a>
-    #certificationsCertifications</a>
-    #educationEducation</a>
-    #contactContact</a>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
   </nav>
 </aside>
 
 <!-- CONTENT -->
 <section class="content">
 
-<!-- ABOUT -->
 <section id="about" class="card">
-  <h2>About Me</h2>
+  <h2>About</h2>
   <p class="muted">
-    Systems Engineer with hands‑on experience in Managed Services Operations (MSO–NOC) and DTCC
-    regulatory reporting. Strong background in L2 production support, incident management,
-    monitoring, and multi‑cloud operations (Azure, AWS, GCP).
+    Systems Engineer with experience in DTCC regulatory reporting, L2 production support,
+    incident management, monitoring, and multi‑cloud environments (Azure, AWS, GCP).
   </p>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience" class="card">
   <h2>Experience</h2>
 
   <h3>System Engineer — Publicis Sapient</h3>
   <p class="muted">Jan 2025 – Present</p>
   <ul>
-    <li>L2 production support for DTCC ReportHub workflows.</li>
-    <li>P1–P3 incident triage, RCA, and SLA adherence.</li>
-    <li>SQL, ADX, and Cosmos DB investigations.</li>
-    <li>Monitoring and alerting using Grafana.</li>
+    <li>L2 support for DTCC ReportHub workflows</li>
+    <li>P1–P3 incident triage and RCA</li>
+    <li>SQL, ADX & Cosmos DB investigations</li>
+    <li>Monitoring via Grafana</li>
   </ul>
 
-  <h3>Trainee System Engineer — Publicis Sapient</h3>
+  <h3>Trainee System Engineer</h3>
   <p class="muted">Jul 2024 – Dec 2024</p>
-  <ul>
-    <li>Supported DTCC transaction reporting workflows.</li>
-    <li>Assisted with trade monitoring and reconciliation.</li>
-  </ul>
 
-  <h3>Intern Engineer — Publicis Sapient</h3>
+  <h3>Intern Engineer</h3>
   <p class="muted">Jan 2024 – Jul 2024</p>
-  <ul>
-    <li>Service monitoring using ServiceNow, Jira, Zoho, Grafana.</li>
-  </ul>
 </section>
 
-<!-- PROJECTS -->
+<!-- TANVI-STYLE PROJECTS -->
 <section id="projects" class="card">
   <h2>Projects</h2>
+  <p class="muted">A lightweight showcase of selected GitHub projects.</p>
   <div id="projectsGrid" class="projects-grid"></div>
 </section>
 
-<!-- CERTIFICATIONS -->
 <section id="certifications" class="card">
   <h2>Certifications</h2>
-
-  <h3>Cloud & Infrastructure</h3>
-  <ul>
-    <li>AWS SimuLearn: Cloud Practitioner</li>
+  <ul class="muted">
+    <li>AWS Cloud Practitioner (SimuLearn)</li>
+    <li>Azure Cloud Adoption Framework</li>
     <li>GCP Fundamentals</li>
-    <li>Azure Cloud Adoption Framework (CAF)</li>
-    <li>Oracle Cloud Infrastructure 2025 – AI Foundations</li>
-  </ul>
-
-  <h3>DevOps & Service Management</h3>
-  <ul>
-    <li>ITIL 4 Foundation – Service Management</li>
+    <li>ITIL 4 Foundation</li>
     <li>ServiceNow System Administrator</li>
-    <li>Azure DevOps Bootcamp</li>
-  </ul>
-
-  <h3>AI / Data / Security</h3>
-  <ul>
-    <li>Artificial Intelligence Fundamentals – IBM</li>
-    <li>Machine Learning Pipelines with Azure ML</li>
-    <li>Generative AI & Agentic AI (LinkedIn, Microsoft)</li>
-    <li>Cybersecurity Fundamentals</li>
+    <li>AI & Generative AI – IBM, Microsoft, LinkedIn</li>
   </ul>
 </section>
 
-<!-- EDUCATION -->
 <section id="education" class="card">
   <h2>Education</h2>
-  <p><strong>M.S. Ramaiah University of Applied Sciences</strong><br>B.Tech CSE (AI & ML) • CGPA 7.37</p>
-  <p><strong>Guru Gobind Singh Public School</strong><br>Class 12 – 79% | Class 10 – 85%</p>
+  <p><strong>M.S. Ramaiah University of Applied Sciences</strong><br/>B.Tech CSE (AI & ML) — 7.37 CGPA</p>
+  <p><strong>Guru Gobind Singh Public School</strong><br/>Class 12: 79% | Class 10: 85%</p>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="card">
   <h2>Contact</h2>
   <p>Email: <a href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a></p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/rahul3333" target="_blank">rahul3333</a></p>
-  <p>GitHub: <a href="https://github.com/rahul6469" target="_blank">rahul6469</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/rahul3333">rahul3333</a></p>
+  <p>GitHub: <a href="https://github.com/rahul6469">rahul6469</a></p>
 </section>
 
 </section>
 </main>
 
-<!-- JS: THEME TOGGLE + PROJECT LOAD -->
 <script>
-  // THEME TOGGLE
-  const root = document.documentElement;
-  const btn = document.getElementById("themeToggle");
-  const icon = document.getElementById("themeIcon");
+  // Theme toggle
+  const root=document.documentElement,icon=document.getElementById("themeIcon");
+  const saved=localStorage.getItem("theme")||"dark";
+  root.setAttribute("data-theme",saved);icon.textContent=saved==="dark"?"🌙":"☀️";
+  document.getElementById("themeToggle").onclick=()=>{
+    const t=root.getAttribute("data-theme")==="dark"?"light":"dark";
+    root.setAttribute("data-theme",t);localStorage.setItem("theme",t);
+    icon.textContent=t==="dark"?"🌙":"☀️";
+  };
 
-  function setTheme(t){
-    root.setAttribute("data-theme", t);
-    localStorage.setItem("theme", t);
-    icon.textContent = t === "light" ? "☀️" : "🌙";
-  }
-  setTheme(localStorage.getItem("theme") || "dark");
-  btn.onclick = () => setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
-
-  // PROJECT DESCRIPTIONS
-  const projectMap={
-    "Gold-Prediction-Model":{d:"ML regression model for gold price prediction.",s:["Python","ML","Data Analysis"]},
-    "House-Price-Prediction-Model":{d:"Regression ML model for housing price estimation.",s:["Python","Regression"]},
-    "Sales-Prediction":{d:"Sales forecasting using supervised ML techniques.",s:["Python","ML"]},
-    "IRIS-Flower-Classification":{d:"ML classification using Iris dataset.",s:["Python","Classification"]},
-    "Virtual-assistance-healthcare-chatbot":{d:"Healthcare chatbot built in Python.",s:["Python","Automation"]},
-    "Personality-Prediction-Using-opencv-":{d:"OpenCV-based personality analysis.",s:["Python","OpenCV"]},
+  // Tanvi-style projects
+  const projects={
+    "Gold-Prediction-Model":["ML regression for gold price prediction","Python • ML • Jupyter"],
+    "House-Price-Prediction-Model":["House price estimation using regression","Python • Regression"],
+    "Sales-Prediction":["Sales forecasting using supervised ML","Python • Analytics"],
+    "IRIS-Flower-Classification":["Iris dataset ML classification","Python • Classification"],
+    "Personality-Prediction-Using-opencv-":["Computer vision using OpenCV","Python • OpenCV"],
+    "Virtual-assistance-healthcare-chatbot":["Healthcare chatbot automation","Python • Chatbot"],
     "Computer-Aided-Detection-of-Melanoma-skin-cancer-based-on-Lesion-images-using-Machine-Learning":
-      {d:"ML system for melanoma detection.",s:["Python","Medical ML"]},
+      ["Melanoma detection using ML","Python • Medical ML"],
     "Cognitive-Resurgence-Machine-Learning-Approaches-to-Drug-Repurposing-in-Alzheimer-s-":
-      {d:"ML research for Alzheimer’s drug repurposing.",s:["Python","Research"]}
+      ["Drug repurposing ML research","Python • Research"]
   };
 
   fetch("https://api.github.com/users/rahul6469/repos?per_page=100")
-    .then(r=>r.json())
-    .then(repos=>{
+    .then(r=>r.json()).then(repos=>{
       const g=document.getElementById("projectsGrid");
       repos.forEach(r=>{
-        const p=projectMap[r.name];
-        if(!p) return;
+        if(!projects[r.name])return;
         const c=document.createElement("a");
-        c.className="project-card";
-        c.href=r.html_url; c.target="_blank";
-        c.innerHTML=`<h3>${r.name}</h3><p>${p.d}</p>
-          <div class="skills">${p.s.map(x=>`<span class="skill">${x}</span>`).join("")}</div>`;
+        c.className="project-card";c.href=r.html_url;c.target="_blank";
+        c.innerHTML=`<div>
+            <h3 class="p-title">${r.name}</h3>
+            <p class="p-desc">${projects[r.name][0]}</p>
+          </div>
+          <p class="p-tech"><span class="pill">Tech</span>${projects[r.name][1]}</p>`;
         g.appendChild(c);
       });
     });
