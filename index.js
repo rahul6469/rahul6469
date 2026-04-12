@@ -131,3 +131,8 @@ fetch("https://api.github.com/users/rahul6469/repos?per_page=100")
     // Ensure container height is correct after projects load
     syncPageStackHeight();
   });
+// ✅ Ensure underline & height are correct on first load
+window.addEventListener("load", () => {
+  syncPageStackHeight();
+  moveIndicatorToActive();
+});
