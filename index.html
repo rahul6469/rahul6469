@@ -60,6 +60,20 @@
     .pill{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;
       border:1px solid rgba(56,189,248,.35);
       background:rgba(56,189,248,.12);margin-right:6px}
+   
+.page-section {
+  display: none;
+}
+
+.page-section.active {
+  display: block;
+  animation: fadeSlide 0.4s ease;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+
   </style>
 </head>
 
@@ -105,14 +119,15 @@
 
 <!-- ABOUT (EXPANDED FROM RESUME) -->
 <section id="about" class="page-section active">
-<section id="about" class="page-section">
   <h2>About</h2>
+
   <p class="muted">
     Results‑driven <strong>Systems Engineer</strong> with hands‑on experience in
     <strong>Managed Services Operations (MSO–NOC)</strong> and the
     <strong>DTCC regulatory reporting ecosystem</strong>, supporting mission‑critical
     financial systems that demand high accuracy, availability, and compliance.
   </p>
+
   <p class="muted">
     I specialize in <strong>L2 production support</strong>, including incident triage
     (P1–P3), root cause analysis, trade lifecycle issue investigation, and
@@ -120,6 +135,7 @@
     <strong>SQL, Azure Data Explorer (ADX), Cosmos DB</strong>, and application logs
     to identify data discrepancies and operational issues.
   </p>
+
   <p class="muted">
     My role also involves proactive monitoring using <strong>Grafana, ServiceNow,
     Jira, and Zoho</strong>, collaborating closely with L1 teams, clients, and
@@ -127,7 +143,6 @@
     <strong>Azure, AWS, and GCP</strong> environments.
   </p>
 </section>
-</section>  
 
 <!-- EXPERIENCE (EXPANDED FROM RESUME) -->
 <section id="experience" class="page-section">
@@ -276,8 +291,38 @@
       });
     });
 </script>
+  <script>
+
+const sections = document.querySelectorAll('.page-section');
+const navLinks = document.querySelectorAll('.nav a');
+
+function showSection(sectionId) {
+  sections.forEach(section => {
+    section.classList.toggle(
+      'active',
+      section.id === sectionId
+    );
+  });
+}
+
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const id = link.getAttribute('href').substring(1);
+    history.pushState(null, '', `#${id}`);
+    showSection(id);
+  });
+});
+
+/* Load correct section on page load */
+const current = location.hash
+  ? location.hash.substring(1)
+  : 'about';
+
+showSection(current);
+</script>
 <script>
-/* ===== Tanvi‑style section toggle ===== */
+
 const sections = document.querySelectorAll('.page-section');
 const navLinks = document.querySelectorAll('.links a');
 
