@@ -140,47 +140,66 @@
       </article>
 
       <!-- RESUME (Experience + Skills + Education) -->
-      <article class="page card" data-page="resume">
-        <header><h2 class="h2 article-title">Resume</h2></header>
+      <article class="page card active" data-page="resume">
 
-        <h3 class="h3">Experience</h3>
-        <p class="muted"><strong>System Engineer — Publicis Sapient</strong> (Jan 2025 – Present)</p>
-        <ul class="bullets">
-          <li>L2 production support for DTCC ReportHub and regulatory reporting workflows.</li>
-          <li>P1–P3 incident triage, escalation, RCA, and resolution with SLA adherence.</li>
-          <li>Investigate trade rejections, lifecycle mismatches, and validation failures.</li>
-          <li>Deep-dive analysis using SQL, ADX, Cosmos DB; monitoring via Grafana.</li>
-        </ul>
+  <h2 class="article-title">Resume</h2>
 
-        <p class="muted"><strong>Trainee System Engineer — Publicis Sapient</strong> (Jul 2024 – Dec 2024)</p>
-        <ul class="bullets">
-          <li>Supported transaction reporting workflows and operational checks.</li>
-          <li>Assisted in trade monitoring and reconciliation.</li>
-        </ul>
+  <!-- Resume sub-navigation -->
+  <div class="resume-tabs">
+    <button class="resume-tab active" data-resume-tab="experience">Experience</button>
+    <button class="resume-tab" data-resume-tab="skills">Skills</button>
+    <button class="resume-tab" data-resume-tab="education">Education</button>
+  </div>
 
-        <p class="muted"><strong>Intern Engineer — Publicis Sapient</strong> (Jan 2024 – Jul 2024)</p>
-        <ul class="bullets">
-          <li>Monitoring using ServiceNow/Jira/Zoho/Grafana; supported daily operations.</li>
-          <li>Incident tracking and documentation support.</li>
-        </ul>
+  <!-- EXPERIENCE -->
+  <div class="resume-section active" data-resume-section="experience">
 
-        <h3 class="h3">Skills</h3>
-        <ul class="skills-pills">
-          <li>SQL</li><li>Linux</li><li>DTCC Reporting</li><li>L2 Production Support</li>
-          <li>Azure (ADX, Cosmos DB)</li><li>Grafana</li><li>ServiceNow</li><li>Python</li>
-        </ul>
+    <h3>System Engineer — Publicis Sapient <span>(Jan 2025 – Present)</span></h3>
+    <ul>
+      <li>L2 production support for DTCC ReportHub and regulatory reporting workflows.</li>
+      <li>P1–P3 incident triage, escalation, RCA, and resolution with SLA adherence.</li>
+      <li>Investigated trade rejections, lifecycle mismatches, and validation failures.</li>
+      <li>Deep‑dive analysis using SQL, ADX, Cosmos DB; monitoring via Grafana.</li>
+    </ul>
 
-        <h3 class="h3">Education</h3>
-        <p class="muted">
-          <strong>M.S. Ramaiah University of Applied Sciences</strong><br />
-          B.Tech – CSE (AI & ML) • CGPA: 7.37
-        </p>
-        <p class="muted">
-          <strong>Guru Gobind Singh Public School</strong><br />
-          Class 12: 79% • Class 10: 85%
-        </p>
-      </article>
+    <h3>Trainee System Engineer — Publicis Sapient <span>(Jul 2024 – Dec 2024)</span></h3>
+    <ul>
+      <li>Supported transaction reporting workflows and operational checks.</li>
+      <li>Assisted in trade monitoring and reconciliation.</li>
+    </ul>
 
+    <h3>Intern Engineer — Publicis Sapient <span>(Jan 2024 – Jul 2024)</span></h3>
+    <ul>
+      <li>Monitoring using ServiceNow/Jira/Zoho/Grafana; supported daily operations.</li>
+      <li>Incident tracking and documentation support.</li>
+    </ul>
+
+  </div>
+
+  <!-- SKILLS -->
+  <div class="resume-section" data-resume-section="skills">
+    <ul class="skills-pills">
+      <li>SQL</li>
+      <li>Linux</li>
+      <li>DTCC Reporting</li>
+      <li>L2 Production Support</li>
+      <li>Azure (ADX, Cosmos DB)</li>
+      <li>Grafana</li>
+      <li>ServiceNow</li>
+      <li>Python</li>
+    </ul>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="resume-section" data-resume-section="education">
+    <h3>M.S. Ramaiah University of Applied Sciences</h3>
+    <p>B.Tech — CSE (AI & ML) • CGPA: 7.37</p>
+
+    <h3>Guru Gobind Singh Public School</h3>
+    <p>Class 12: 79% • Class 10: 85%</p>
+  </div>
+
+</article>
       <!-- PROJECTS -->
       <article class="page card" data-page="projects">
         <header><h2 class="h2 article-title">Projects</h2></header>
