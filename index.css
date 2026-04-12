@@ -465,3 +465,63 @@ ion-icon{ font-size:18px; }
 [data-theme="light"] .page li {
   color: var(--muted);
 }
+/* ================= FIX: Heading & Tab Readability ================= */
+
+/* Page main headings (About me, Resume, Certifications, Contact) */
+.article-title,
+.page h2 {
+  color: var(--text);
+}
+
+/* Section headings inside pages */
+.page h3 {
+  color: var(--text);
+}
+
+/* Body text */
+.page p,
+.page li {
+  color: var(--muted);
+}
+
+/* ----- Resume tabs (Experience / Skills / Education) ----- */
+
+/* Default tab */
+.resume-tab {
+  color: var(--text);
+  background: var(--panel2);
+  border: 1px solid var(--border);
+}
+
+/* Inactive tab hover */
+.resume-tab:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Active resume tab */
+.resume-tab.active {
+  color: var(--text);
+  background: rgba(56,189,248,0.25);
+  border-color: rgba(56,189,248,0.55);
+}
+
+/* ----- Certifications bullets ----- */
+[data-page="certifications"] li {
+  color: var(--muted);
+}
+
+/* ----- Light theme contrast correction ----- */
+[data-theme="light"] .page h2,
+[data-theme="light"] .page h3 {
+  color: var(--text);
+}
+
+[data-theme="light"] .resume-tab {
+  color: var(--text);
+  background: #eef2f7;
+}
+
+[data-theme="light"] .resume-tab.active {
+  background: rgba(37,99,235,0.18);
+  border-color: rgba(37,99,235,0.35);
+}
