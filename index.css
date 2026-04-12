@@ -271,32 +271,28 @@ ion-icon{ font-size:18px; }
 }
 
 /* ================= Pages ================= */
+/* ================= Pages – FIXED (NO OVERLAP) ================= */
+
 .page-stack{
-  position:relative;
-  margin-top:28px;
-  min-height:420px;
+  margin-top: 28px;   /* clear sticky navbar */
 }
 
+/* Hide inactive pages */
 .page{
-  position:absolute;
-  inset:0;
-  opacity:0;
-  transform:translateY(10px);
-  pointer-events:none;
-  transition:opacity 260ms var(--ease), transform 360ms var(--ease);
+  display: none;
 }
 
+/* Show only active page */
 .page.active{
-  opacity:1;
-  transform:translateY(0);
-  pointer-events:auto;
+  display: block;
 }
 
+/* Card styling stays the same */
 .page.card{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:18px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
 }
 
 /* ================= Projects ================= */
