@@ -1,215 +1,469 @@
-/* ===========================
-   Rahul-aligned interactions
-   (Robust init + underline + transitions + sidebar)
-   =========================== */
+:root{
+  --bg:#0b1220;
+  --panel:rgba(255,255,255,.05);
+  --panel2:rgba(255,255,255,.04);
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --accent:#38bdf8;
+  --border:rgba(255,255,255,.14);
 
-(() => {
-  const $ = (sel, root = document) => root.querySelector(sel);
-  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  --ease:cubic-bezier(.22,1,.36,1);
+  --dur:420ms;
+  --durFast:200ms;
+}
 
-  // Run when DOM is ready (works with/without defer)
-  const onReady = (fn) => {
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", fn, { once: true });
-    } else {
-      fn();
-    }
-  };
+[data-theme="light"]{
+  --bg:#f8fafc;
+  --panel:#ffffff;
+  --panel2:#ffffff;
+  --text:#0f172a;
+  --muted:#475569;
+  --border:#e2e8f0;
+  --accent:#2563eb;
+}
 
-  // ---------- Sidebar: Show Contacts ----------
-  function initSidebar() {
-    const sidebar = $("[data-sidebar]");
-    const btn = $("[data-sidebar-btn]");
-    const more = $("[data-sidebar-more]");
-    if (!sidebar || !btn || !more) return;
+*{ box-sizing:border-box; }
 
-    btn.setAttribute("aria-expanded", "false");
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
 
-    btn.addEventListener("click", () => {
-      const isOpen = more.classList.toggle("active");
-      sidebar.classList.toggle("open", isOpen);
-      btn.setAttribute("aria-expanded", String(isOpen));
-    });
+a{ color:var(--accent); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+
+/* Ionicons consistent size */
+ion-icon{ font-size:18px; }
+
+/* Layout */
+.app{
+  display:flex;
+  gap:18px;
+  max-width:1200px;
+  margin:0 auto;
+  padding:18px;
+}
+
+/* Sidebar */
+.sidebar{
+  width:320px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
+  position:sticky;
+  top:18px;
+  height:fit-content;
+}
+
+.sidebar-info{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.avatar-box{
+  width:78px;
+  height:78px;
+  border-radius:18px;
+  background:rgba(56,189,248,.10);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(56,189,248,.22);
+  overflow:hidden;
+}
+.avatar-box img{
+  width:78px;
+  height:78px;
+  object-fit:cover;
+}
+
+.name{
+  margin:0;
+  font-size:18px;
+  font-weight:800;
+  line-height:1.1;
+}
+.title{
+  margin:6px 0 0;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.info_more-btn{
+  margin-left:auto;
+  border:1px solid var(--border);
+  background:var(--panel2);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:transform var(--durFast) var(--ease), background var(--durFast) var(--ease);
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.info_more-btn:hover{
+  transform:translateY(-1px);
+  background:rgba(255,255,255,.08);
+}
+
+/* Chevron rotation (Tanvi-like) */
+.info_more-btn .chev{ transition:transform 260ms var(--ease); }
+.sidebar.open .info_more-btn .chev{ transform:rotate(180deg); }
+
+/* Sidebar contacts smooth expand */
+.sidebar-info_more{
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transition:max-height var(--dur) var(--ease), opacity 240ms var(--ease);
+  margin-top:14px;
+}
+.sidebar-info_more.active{
+  max-height:700px;
+  opacity:1;
+}
+
+.separator{
+  height:1px;
+  background:var(--border);
+  margin:10px 0 14px;
+}
+
+/* Contacts */
+.contacts-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap:12px;
+}
+
+.contact-item{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+
+.icon-box{
+  width:36px;
+  height:36px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(56,189,248,.18);
+  background:rgba(56,189,248,.10);
+  flex:0 0 auto;
+  transition:transform var(--durFast) var(--ease), filter var(--durFast) var(--ease);
+}
+.contact-item:hover .icon-box{
+  transform:translateY(-2px);
+  filter:drop-shadow(0 6px 10px rgba(56,189,248,.25));
+}
+
+.contact-title{
+  margin:0;
+  font-size:12px;
+  color:var(--muted);
+}
+.contact-link, address{
+  font-style:normal;
+  color:var(--text);
+  font-size:13.5px;
+}
+
+.resume-btn{
+  margin-top:12px;
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid rgba(56,189,248,.22);
+  background:rgba(56,189,248,.10);
+  color:var(--text);
+  transition:transform var(--durFast) var(--ease), background var(--durFast) var(--ease);
+}
+.resume-btn:hover{
+  transform:translateY(-2px);
+  background:rgba(56,189,248,.15);
+  text-decoration:none;
+}
+
+.social-list{
+  list-style:none;
+  padding:0;
+  margin:14px 0 0;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.social-link{
+  width:36px;
+  height:36px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--border);
+  background:var(--panel2);
+  transition:transform var(--durFast) var(--ease), border-color var(--durFast) var(--ease);
+  color:var(--text);
+}
+.social-link:hover{
+  transform:translateY(-2px);
+  border-color:rgba(56,189,248,.35);
+  text-decoration:none;
+}
+
+/* Main content */
+.main-content{
+  flex:1;
+  min-width:0; /* IMPORTANT: prevents flex overflow issues */
+}
+
+/* Navbar */
+.navbar{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:10px;
+  position:sticky;
+  top:18px;
+  z-index:5;
+}
+
+.navbar-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  position:relative; /* anchor for indicator */
+}
+
+.navbar-item{ display:flex; }
+.navbar-spacer{ flex:1; }
+
+.navbar-link{
+  border:1px solid transparent;
+  background:transparent;
+  color:var(--text);
+  padding:10px 14px;
+  border-radius:14px;
+  cursor:pointer;
+  transition:background var(--durFast) var(--ease), border-color var(--durFast) var(--ease), transform var(--durFast) var(--ease);
+  font-weight:700;
+
+  position:relative;
+  z-index:3; /* keep above indicator/glow */
+}
+.navbar-link:hover{
+  background:rgba(255,255,255,.06);
+  transform:translateY(-1px);
+}
+.navbar-link.active{
+  background:rgba(56,189,248,.14);
+  border-color:rgba(56,189,248,.28);
+}
+
+/* Theme toggle button */
+.theme-toggle{
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:var(--panel2);
+  color:var(--text);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform var(--durFast) var(--ease);
+  z-index:3;
+  position:relative;
+}
+.theme-toggle:hover{ transform:translateY(-1px); }
+
+/* Active underline + glow (with proper layering) */
+.nav-indicator{
+  position:absolute;
+  left:0;
+  bottom:6px;
+  height:2px;
+  width:40px;
+  background:linear-gradient(90deg, var(--accent), rgba(56,189,248,.45));
+  border-radius:999px;
+  transform:translateX(0);
+  transition:transform 280ms var(--ease), width 280ms var(--ease), opacity 200ms var(--ease);
+  opacity:1;
+  pointer-events:none;
+  z-index:2; /* behind buttons, above navbar bg */
+}
+.nav-indicator::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:140%;
+  height:10px;
+  background:radial-gradient(circle,
+    rgba(56,189,248,.45) 0%,
+    rgba(56,189,248,.25) 35%,
+    rgba(56,189,248,0) 70%);
+  transform:translate(-50%,-50%);
+  filter:blur(6px);
+  opacity:.9;
+  pointer-events:none;
+}
+
+/* Page stack + transitions */
+.page-stack{
+  position:relative;
+  margin-top:14px;
+  min-height:420px;
+}
+
+.page.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:18px;
+}
+
+.page{
+  position:absolute;
+  inset:0;
+  width:100%;
+  opacity:0;
+  transform:translateY(10px);
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity 260ms var(--ease), transform 360ms var(--ease), visibility 0ms linear 360ms;
+  will-change:opacity, transform;
+}
+
+.page.active{
+  opacity:1;
+  transform:translateY(0);
+  visibility:visible;
+  pointer-events:auto;
+  transition:opacity 260ms var(--ease), transform 360ms var(--ease), visibility 0ms;
+}
+
+.article-title{
+  margin:0 0 10px;
+  font-size:22px;
+}
+.about-text p{
+  color:var(--muted);
+  line-height:1.7;
+  margin:0 0 12px;
+}
+
+.h3{ margin:14px 0 6px; }
+.muted{ color:var(--muted); }
+.bullets{
+  margin:8px 0 14px 18px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* Skills pills */
+.skills-pills{
+  list-style:none;
+  padding:0;
+  margin:10px 0 12px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.skills-pills li{
+  padding:9px 14px;
+  border-radius:999px;
+  border:1px solid rgba(56,189,248,.18);
+  background:rgba(56,189,248,.10);
+  font-size:13px;
+}
+
+/* Projects cards */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:16px;
+  margin-top:14px;
+}
+
+.project-card{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:16px;
+  border-radius:18px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.04);
+  min-height:170px;
+  transition:transform var(--durFast) var(--ease), background var(--durFast) var(--ease), border-color var(--durFast) var(--ease);
+  color:inherit;
+  text-decoration:none;
+}
+.project-card:hover{
+  transform:translateY(-4px);
+  background:rgba(255,255,255,.08);
+  border-color:rgba(56,189,248,.35);
+  text-decoration:none;
+}
+.p-title{
+  font-weight:800;
+  margin:0 0 6px;
+  font-size:16px;
+}
+.p-desc{
+  margin:0;
+  color:var(--muted);
+  line-height:1.55;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  min-height:3.1em;
+}
+.p-tech{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:12px;
+}
+.pill{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:11px;
+  border:1px solid rgba(56,189,248,.28);
+  background:rgba(56,189,248,.12);
+  margin-right:6px;
+}
+
+/* Contact page list spacing */
+.contact-page{ margin-top:10px; }
+
+/* Responsive */
+@media(max-width:900px){
+  .app{ flex-direction:column; }
+  .sidebar{ width:auto; position:relative; top:auto; }
+  .navbar{ top:0; }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce){
+  *{
+    transition:none !important;
+    animation:none !important;
   }
-
-  // ---------- Navbar underline indicator ----------
-  function moveIndicatorToActive() {
-    const activeBtn = $(".navbar-link.active");
-    const indicator = $(".nav-indicator");
-    const list = $("#navbarList") || $(".navbar-list");
-    if (!activeBtn || !indicator || !list) return;
-
-    const listRect = list.getBoundingClientRect();
-    const btnRect = activeBtn.getBoundingClientRect();
-
-    // slide + resize underline
-    indicator.style.transform = `translateX(${btnRect.left - listRect.left}px)`;
-    indicator.style.width = `${btnRect.width}px`;
-    indicator.style.opacity = "1";
-  }
-
-  // ---------- Page stack height ----------
-  function syncPageStackHeight() {
-    const stack = $("#pageStack");
-    if (!stack) return;
-
-    const activePage = $(".page.active") || $("article[data-page].active");
-    if (!activePage) return;
-
-    stack.style.minHeight = `${activePage.offsetHeight}px`;
-  }
-
-  // ---------- Page switching ----------
-  function initPages() {
-    const navButtons = $$("[data-nav-link]");
-    const pages = $$("[data-page]");
-
-    if (!navButtons.length || !pages.length) return;
-
-    const validPages = pages.map(p => p.dataset.page).filter(Boolean);
-
-    function setActivePage(name) {
-      const pageName = validPages.includes(name) ? name : (validPages[0] || "about");
-
-      // toggle pages
-      pages.forEach(p => p.classList.toggle("active", p.dataset.page === pageName));
-
-      // toggle navbar buttons
-      navButtons.forEach(b => b.classList.toggle("active", b.dataset.target === pageName));
-
-      // update hash (deep link)
-      history.replaceState(null, "", `#${pageName}`);
-
-      // after layout update
-      requestAnimationFrame(() => {
-        syncPageStackHeight();
-        moveIndicatorToActive();
-      });
-    }
-
-    // click handlers
-    navButtons.forEach(btn => {
-      btn.addEventListener("click", () => setActivePage(btn.dataset.target));
-    });
-
-    // load initial page from hash
-    const initial = (location.hash || `#${validPages[0] || "about"}`).replace("#", "");
-    setActivePage(initial);
-
-    // adjust on resize
-    window.addEventListener("resize", () => {
-      syncPageStackHeight();
-      moveIndicatorToActive();
-    });
-
-    // adjust after full load (fonts/icons can change widths)
-    window.addEventListener("load", () => {
-      syncPageStackHeight();
-      moveIndicatorToActive();
-    });
-  }
-
-  // ---------- Theme toggle ----------
-  function initTheme() {
-    const root = document.documentElement;
-    const toggle = $("#themeToggle");
-    const icon = $("#themeIcon");
-    if (!toggle) return;
-
-    const applyTheme = (t) => {
-      root.setAttribute("data-theme", t);
-      localStorage.setItem("theme", t);
-      if (icon) icon.textContent = t === "dark" ? "🌙" : "☀️";
-    };
-
-    applyTheme(localStorage.getItem("theme") || "dark");
-
-    toggle.addEventListener("click", () => {
-      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      applyTheme(next);
-
-      // theme change can affect sizes slightly
-      requestAnimationFrame(() => {
-        syncPageStackHeight();
-        moveIndicatorToActive();
-      });
-    });
-  }
-
-  // ---------- Projects (Rahul-style cards) ----------
-  function initProjects() {
-    const grid = $("#projectsGrid");
-    if (!grid) return;
-
-    const projectMeta = {
-      "Gold-Prediction-Model": ["ML regression for gold price prediction", "Python • ML • Jupyter"],
-      "House-Price-Prediction-Model": ["House price estimation using regression", "Python • Regression"],
-      "Sales-Prediction": ["Sales forecasting using supervised ML", "Python • Analytics"],
-      "IRIS-Flower-Classification": ["Iris dataset ML classification", "Python • Classification"],
-      "Personality-Prediction-Using-opencv-": ["Computer vision using OpenCV", "Python • OpenCV"],
-      "Virtual-assistance-healthcare-chatbot": ["Healthcare chatbot automation", "Python • Chatbot"],
-      "Computer-Aided-Detection-of-Melanoma-skin-cancer-based-on-Lesion-images-using-Machine-Learning":
-        ["Melanoma detection using ML", "Python • Medical ML"],
-      "Cognitive-Resurgence-Machine-Learning-Approaches-to-Drug-Repurposing-in-Alzheimer-s-":
-        ["Drug repurposing ML research", "Python • Research"]
-    };
-
-    fetch("https://api.github.com/users/rahul6469/repos?per_page=100")
-      .then(r => r.json())
-      .then(repos => {
-        grid.innerHTML = "";
-
-        repos.forEach(repo => {
-          const meta = projectMeta[repo.name];
-          if (!meta) return;
-
-          const card = document.createElement("a");
-          card.className = "project-card";
-          card.href = repo.html_url;
-          card.target = "_blank";
-          card.rel = "noopener";
-
-          card.innerHTML = `
-            <div>
-              <h3 class="p-title">${repo.name}</h3>
-              <p class="p-desc">${meta[0]}</p>
-            </div>
-            <p class="p-tech"><span class="pill">Tech</span>${meta[1]}</p>
-          `;
-
-          grid.appendChild(card);
-        });
-
-        // projects change height of page
-        requestAnimationFrame(() => {
-          syncPageStackHeight();
-          moveIndicatorToActive();
-        });
-      })
-      .catch(() => {
-        grid.innerHTML = `
-          <a class="project-card" href="https://github.com/rahul6469" target="_blank" rel="noopener">
-            <div>
-              <h3 class="p-title">Projects</h3>
-              <p class="p-desc">Unable to load projects right now. Click to view repositories.</p>
-            </div>
-            <p class="p-tech"><span class="pill">Tech</span>GitHub</p>
-          </a>
-        `;
-      });
-  }
-
-  // ---------- Init all ----------
-  onReady(() => {
-    initSidebar();
-    initTheme();
-    initPages();
-    initProjects();
-
-    // initial underline/height on first paint
-    requestAnimationFrame(() => {
-      syncPageStackHeight();
-      moveIndicatorToActive();
-    });
-  });
-})();
+}
