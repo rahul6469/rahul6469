@@ -72,6 +72,11 @@ ion-icon{ font-size:18px; }
   display:flex;
   align-items:center;
   justify-content:center;
+
+  /* ✅ CRITICAL FIX */
+  flex-shrink: 0;
+
+  /* glow ring */
   box-shadow:
     0 0 0 2px rgba(56,189,248,.35),
     0 0 16px rgba(56,189,248,.25);
@@ -86,7 +91,7 @@ ion-icon{ font-size:18px; }
     circle,
     rgba(56,189,248,.35),
     rgba(56,189,248,.15),
-    rgba(56,189,248,0) 70%
+    transparent 70%
   );
   filter:blur(10px);
   opacity:.75;
