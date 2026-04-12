@@ -1,138 +1,200 @@
 /* ===========================
    Rahul-aligned interactions
+   Fixes JS loading / init timing
    =========================== */
 
-// Sidebar contacts toggle (smooth + chevron rotate)
-const sidebar = document.querySelector("[data-sidebar]");
-const sidebarBtn = document.querySelector("[data-sidebar-btn]");
-const sidebarMore = document.querySelector("[data-sidebar-more]");
+(function () {
+  // ---- helpers ----
+  const $ = (sel) => document.querySelector(sel);
+  const $$ = (sel) => document.querySelectorAll(sel);
 
-if (sidebar && sidebarBtn && sidebarMore) {
-  sidebarBtn.addEventListener("click", () => {
-    const isOpen = sidebarMore.classList.toggle("active");
-    sidebar.classList.toggle("open", isOpen);
-    sidebarBtn.setAttribute("aria-expanded", String(isOpen));
-  });
-}
+  function onReady(fn) {
+    // If DOM already parsed, run now; else wait for DOMContentLoaded
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", fn, { once: true });
+    } else {
+      fn();
+    }
+  }
 
-// Page switching + active-nav highlight
-const navButtons = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
-const stack = document.getElementById("pageStack");
+  // ---- sidebar contacts toggle ----
+  function setupSidebar() {
+    const sidebar = $("[data-sidebar]");
+    const sidebarBtn = $("[data-sidebar-btn]");
+    const sidebarMore = $("[data-sidebar-more]");
 
-function syncPageStackHeight() {
-  const activePage = document.querySelector(".page.active");
-  if (!stack || !activePage) return;
-  stack.style.minHeight = activePage.offsetHeight + "px";
-}
+    if (!sidebar || !sidebarBtn || !sidebarMore) return;
 
-function moveIndicatorToActive() {
-  const activeBtn = document.querySelector(".navbar-link.active");
-  const indicator = document.querySelector(".nav-indicator");
-  const list = document.getElementById("navbarList");
-  if (!activeBtn || !indicator || !list) return;
+    sidebarBtn.setAttribute("aria-expanded", "false");
 
-  const listRect = list.getBoundingClientRect();
-  const btnRect = activeBtn.getBoundingClientRect();
-  indicator.style.transform = `translateX(${btnRect.left - listRect.left}px)`;
-  indicator.style.width = `${btnRect.width}px`;
-  indicator.style.opacity = "1";
-}
+    sidebarBtn.addEventListener("click", () => {
+      const isOpen = sidebarMore.classList.toggle("active");
+      sidebar.classList.toggle("open", isOpen);
+      sidebarBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+  }
 
-function setActivePage(pageName) {
-  pages.forEach(p => p.classList.toggle("active", p.dataset.page === pageName));
-  navButtons.forEach(b => b.classList.toggle("active", b.dataset.target === pageName));
-  history.replaceState(null, "", `#${pageName}`);
+  // ---- page switching + transitions ----
+  function setupPages() {
+    const navButtons = $$("[data-nav-link]");
+    const pages = $$("[data-page]");
+    const stack = $("#pageStack");
 
-  // After DOM updates
-  requestAnimationFrame(() => {
-    syncPageStackHeight();
-    moveIndicatorToActive();
-  });
-}
+    if (!navButtons.length || !pages.length) return;
 
-navButtons.forEach(btn => {
-  btn.addEventListener("click", () => setActivePage(btn.dataset.target));
-});
+    const validPages = Array.from(pages).map((p) => p.dataset.page);
 
-// Initial page from hash
-const initial = (location.hash || "#about").replace("#", "");
-const validPages = ["about", "resume", "projects", "certifications", "contact"];
-setActivePage(validPages.includes(initial) ? initial : "about");
+    function syncPageStackHeight() {
+      if (!stack) return;
+      const activePage = $(".page.active") || $("article[data-page].active");
+      if (!activePage) return;
+      stack.style.minHeight = activePage.offsetHeight + "px";
+    }
 
-// Reposition indicator on resize
-window.addEventListener("resize", () => {
-  syncPageStackHeight();
-  moveIndicatorToActive();
-});
+    function moveIndicatorToActive() {
+      const activeBtn = $(".navbar-link.active");
+      const indicator = $(".nav-indicator");
+      const list = $("#navbarList") || $(".navbar-list");
 
-// Theme toggle
-const root = document.documentElement;
-const themeIcon = document.getElementById("themeIcon");
-const themeToggle = document.getElementById("themeToggle");
+      if (!activeBtn || !indicator || !list) return;
 
-function applyTheme(theme) {
-  root.setAttribute("data-theme", theme);
-  localStorage.setItem("theme", theme);
-  if (themeIcon) themeIcon.textContent = theme === "dark" ? "🌙" : "☀️";
-}
+      const listRect = list.getBoundingClientRect();
+      const btnRect = activeBtn.getBoundingClientRect();
 
-applyTheme(localStorage.getItem("theme") || "dark");
+      // Move & resize underline
+      indicator.style.transform = `translateX(${btnRect.left - listRect.left}px)`;
+      indicator.style.width = `${btnRect.width}px`;
+      indicator.style.opacity = "1";
+    }
 
-if (themeToggle) {
-  themeToggle.addEventListener("click", () => {
-    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    applyTheme(next);
-  });
-}
+    function setActivePage(pageName) {
+      if (!validPages.includes(pageName)) pageName = validPages[0] || "about";
 
-// Projects (Rahul-style cards, concise)
-const projectMeta = {
-  "Gold-Prediction-Model": ["ML regression for gold price prediction", "Python • ML • Jupyter"],
-  "House-Price-Prediction-Model": ["House price estimation using regression", "Python • Regression"],
-  "Sales-Prediction": ["Sales forecasting using supervised ML", "Python • Analytics"],
-  "IRIS-Flower-Classification": ["Iris dataset ML classification", "Python • Classification"],
-  "Personality-Prediction-Using-opencv-": ["Computer vision using OpenCV", "Python • OpenCV"],
-  "Virtual-assistance-healthcare-chatbot": ["Healthcare chatbot automation", "Python • Chatbot"],
-  "Computer-Aided-Detection-of-Melanoma-skin-cancer-based-on-Lesion-images-using-Machine-Learning":
-    ["Melanoma detection using ML", "Python • Medical ML"],
-  "Cognitive-Resurgence-Machine-Learning-Approaches-to-Drug-Repurposing-in-Alzheimer-s-":
-    ["Drug repurposing ML research", "Python • Research"]
-};
+      pages.forEach((p) => p.classList.toggle("active", p.dataset.page === pageName));
+      navButtons.forEach((b) => b.classList.toggle("active", b.dataset.target === pageName));
 
-fetch("https://api.github.com/users/rahul6469/repos?per_page=100")
-  .then(r => r.json())
-  .then(repos => {
-    const grid = document.getElementById("projectsGrid");
-    if (!grid) return;
-    grid.innerHTML = "";
+      // Keep hash for deep-linking
+      history.replaceState(null, "", `#${pageName}`);
 
-    repos.forEach(repo => {
-      const meta = projectMeta[repo.name];
-      if (!meta) return;
+      // Next frame ensures classes applied before measuring/positioning
+      requestAnimationFrame(() => {
+        syncPageStackHeight();
+        moveIndicatorToActive();
+      });
+    }
 
-      const card = document.createElement("a");
-      card.className = "project-card";
-      card.href = repo.html_url;
-      card.target = "_blank";
-      card.rel = "noopener";
-
-      card.innerHTML = `
-        <div>
-          <h3 class="p-title">${repo.name}</h3>
-          <p class="p-desc">${meta[0]}</p>
-        </div>
-        <p class="p-tech"><span class="pill">Tech</span>${meta[1]}</p>
-      `;
-
-      grid.appendChild(card);
+    // Click handlers
+    navButtons.forEach((btn) => {
+      btn.addEventListener("click", () => setActivePage(btn.dataset.target));
     });
 
-    // Ensure container height is correct after projects load
-    syncPageStackHeight();
+    // Initial page from URL hash
+    const initial = (location.hash || `#${validPages[0] || "about"}`).replace("#", "");
+    setActivePage(validPages.includes(initial) ? initial : (validPages[0] || "about"));
+
+    // Recompute on resize
+    window.addEventListener("resize", () => {
+      syncPageStackHeight();
+      moveIndicatorToActive();
+    });
+
+    // Also re-run after full load (fonts/icons can change button widths)
+    window.addEventListener("load", () => {
+      syncPageStackHeight();
+      moveIndicatorToActive();
+    });
+  }
+
+  // ---- theme toggle ----
+  function setupTheme() {
+    const root = document.documentElement;
+    const themeIcon = $("#themeIcon");
+    const themeToggle = $("#themeToggle");
+
+    if (!themeToggle) return;
+
+    function applyTheme(theme) {
+      root.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+      if (themeIcon) themeIcon.textContent = theme === "dark" ? "🌙" : "☀️";
+    }
+
+    applyTheme(localStorage.getItem("theme") || "dark");
+
+    themeToggle.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(next);
+    });
+  }
+
+  // ---- projects rendering (Rahul-style cards) ----
+  function setupProjects() {
+    const grid = $("#projectsGrid");
+    if (!grid) return;
+
+    const projectMeta = {
+      "Gold-Prediction-Model": ["ML regression for gold price prediction", "Python • ML • Jupyter"],
+      "House-Price-Prediction-Model": ["House price estimation using regression", "Python • Regression"],
+      "Sales-Prediction": ["Sales forecasting using supervised ML", "Python • Analytics"],
+      "IRIS-Flower-Classification": ["Iris dataset ML classification", "Python • Classification"],
+      "Personality-Prediction-Using-opencv-": ["Computer vision using OpenCV", "Python • OpenCV"],
+      "Virtual-assistance-healthcare-chatbot": ["Healthcare chatbot automation", "Python • Chatbot"],
+      "Computer-Aided-Detection-of-Melanoma-skin-cancer-based-on-Lesion-images-using-Machine-Learning":
+        ["Melanoma detection using ML", "Python • Medical ML"],
+      "Cognitive-Resurgence-Machine-Learning-Approaches-to-Drug-Repurposing-in-Alzheimer-s-":
+        ["Drug repurposing ML research", "Python • Research"]
+    };
+
+    fetch("https://api.github.com/users/rahul6469/repos?per_page=100")
+      .then((r) => r.json())
+      .then((repos) => {
+        grid.innerHTML = "";
+
+        repos.forEach((repo) => {
+          const meta = projectMeta[repo.name];
+          if (!meta) return;
+
+          const card = document.createElement("a");
+          card.className = "project-card";
+          card.href = repo.html_url;
+          card.target = "_blank";
+          card.rel = "noopener";
+
+          card.innerHTML = `
+            <div>
+              <h3 class="p-title">${repo.name}</h3>
+              <p class="p-desc">${meta[0]}</p>
+            </div>
+            <p class="p-tech"><span class="pill">Tech</span>${meta[1]}</p>
+          `;
+
+          grid.appendChild(card);
+        });
+
+        // Update stack height after projects render (important for smooth transitions)
+        const stack = $("#pageStack");
+        const activePage = $(".page.active") || $("article[data-page].active");
+        if (stack && activePage) stack.style.minHeight = activePage.offsetHeight + "px";
+      })
+      .catch(() => {
+        grid.innerHTML = `
+          <a class="project-card" href="https://github.com/rahul6469" target="_blank" rel="noopener">
+            <div>
+              <h3 class="p-title">Projects</h3>
+              <p class="p-desc">Unable to load projects right now. Click to view repositories.</p>
+            </div>
+            <p class="p-tech"><span class="pill">Tech</span>GitHub</p>
+          </a>
+        `;
+      });
+  }
+
+  // ---- init (safe) ----
+  onReady(() => {
+    setupSidebar();
+    setupTheme();
+    setupPages();
+    setupProjects();
   });
-// ✅ Ensure underline & height are correct on first load
-window.addEventListener("load", () => {
-  syncPageStackHeight();
-  moveIndicatorToActive();
-});
+
+})();
