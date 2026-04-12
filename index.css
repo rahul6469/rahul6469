@@ -333,3 +333,20 @@ html[data-theme="light"] .topbar {
   font-size: 12px;
   color: var(--accent);
 }
+.card {
+  padding: 22px;
+}
+
+.card h2 {
+  margin-bottom: 14px;
+  font-size: 22px;
+}
+
+p, li {
+  line-height: 1.75;
+}
+
+.section + .section,
+.card + .card {
+  margin-top: 20px;
+}
