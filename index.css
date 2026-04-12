@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+main {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 280px;
+  background: #020617;
+  padding: 30px;
+  text-align: center;
+}
+
+.avatar-box img {
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.title {
+  color: #38bdf8;
+}
+
+.contact, .social {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.social a {
+  display: block;
+  color: #38bdf8;
+  text-decoration: none;
+  margin-top: 8px;
+}
+
+/* CONTENT */
+.content {
+  flex: 1;
+  padding: 40px;
+}
+
+.section {
+  margin-bottom: 50px;
+}
+
+.section h2 {
+  color: #38bdf8;
+  margin-bottom: 15px;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  background: #020617;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+}
+
+/* SKILLS */
+.skills span {
+  display: inline-block;
+  background: #020617;
+  padding: 8px 14px;
+  border-radius: 20px;
+  margin: 6px;
+}
+
+/* LISTS */
+ul {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
