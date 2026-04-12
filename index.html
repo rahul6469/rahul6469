@@ -7,13 +7,15 @@
   <meta name="robots" content="index, follow" />
 
   <title>Rahul Kumar | System Engineer</title>
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="index.css" />
 
-  <meta name="description" content="Rahul Kumar – System Engineer at Publicis Sapient specializing in DTCC regulatory reporting, L2 production support, cloud operations, and data analytics." />
+  <meta name="description"
+    content="Rahul Kumar – System Engineer at Publicis Sapient specializing in DTCC regulatory reporting, L2 production support, incident management, cloud operations, and data analytics." />
 
   <!-- OpenGraph -->
   <meta property="og:title" content="Rahul Kumar | System Engineer Portfolio" />
-  <meta property="og:description" content="DTCC • ReportHub • Cloud • L2 Production Support • Data Analytics" />
+  <meta property="og:description"
+    content="System Engineer | DTCC | L2 Production Support | Incident Management | Cloud & Data Analytics" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://rahul6469.github.io/rahul6469/" />
   <meta property="og:image" content="https://rahul6469.github.io/rahul6469/image/avatar.png" />
@@ -21,159 +23,267 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Rahul Kumar | System Engineer" />
-  <meta name="twitter:description" content="System Engineer | DTCC | Cloud | Production Support" />
+  <meta name="twitter:description"
+    content="System Engineer | DTCC | L2 Production Support | Cloud Operations" />
   <meta name="twitter:image" content="https://rahul6469.github.io/rahul6469/image/avatar.png" />
 </head>
 
 <body>
-  <!-- Top Bar -->
-  <header class="topbar">
-    <div class="brand">
-      <span class="brand-dot"></span>
-      <span class="brand-text">Rahul Kumar</span>
+
+<!-- Top Bar -->
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-dot"></span>
+    <span class="brand-text">Rahul Kumar</span>
+  </div>
+
+  <div class="topbar-actions">
+    <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">
+      <span id="themeIcon">🌙</span>
+    </button>
+    <button id="menuBtn" class="icon-btn menu-btn" aria-label="Menu">
+      <span class="hamburger"></span>
+    </button>
+  </div>
+</header>
+
+<div id="overlay" class="overlay"></div>
+
+<main class="layout">
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar">
+    <div class="profile">
+      <img src="image/avatar.png" alt="Rahul Kumar" class="avatar" />
+      <h1 class="name">Rahul Kumar</h1>
+      <p class="role">System Engineer • Publicis Sapient</p>
     </div>
 
-    <div class="topbar-actions">
-      <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">
-        <span id="themeIcon">🌙</span>
-      </button>
-
-      <button id="menuBtn" class="icon-btn menu-btn" aria-label="Open menu">
-        <span class="hamburger"></span>
-      </button>
+    <div class="sidebar-block">
+      <p class="meta">📍 Bengaluru, Karnataka</p>
+      <p class="meta">📧 <a href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a></p>
+      <p class="meta">📞 <a href="tel:+917645959259">+91 7645959259</a></p>
     </div>
-  </header>
 
-  <div id="overlay" class="overlay"></div>
+    <div class="sidebar-block links">
+      <a class="btn"
+         href="image/resume.pdf"
+         download="Rahul_Kumar_Resume.pdf"
+         id="resumeDownload">
+        Download Resume
+      </a>
+      <a class="link" href="https://www.linkedin.com/in/rahul3333" target="_blank">LinkedIn</a>
+      <a class="link" href="https://github.com/rahul6469" target="_blank">GitHub</a>
+    </div>
 
-  <main class="layout">
-    <!-- Sidebar -->
-    <aside id="sidebar" class="sidebar">
-      <div class="profile">
-        <img class="avatar" src="image/avatar.png" alt="Rahul Kumar" />
-        <h1 class="name">Rahul Kumar</h1>
-        <p class="role">System Engineer • Publicis Sapient</p>
+    <nav class="nav">
+      <a class="navlink" href="#about">About</a>
+      <a class="navlink" href="#what">What I Do</a>
+      <a class="navlink" href="#experience">Experience</a>
+      <a class="navlink" href="#projects">Projects</a>
+      <a class="navlink" href="#case-studies">Case Studies</a>
+      <a class="navlink" href="#skills">Skills</a>
+      <a class="navlink" href="#education">Education</a>
+      <a class="navlink" href="#contact">Contact</a>
+    </nav>
+  </aside>
+
+  <!-- Content -->
+  <section class="content">
+
+    <!-- About -->
+    <section id="about" class="card reveal">
+      <h2>About Me</h2>
+      <p>
+        Results‑driven System Engineer with hands‑on experience in Managed Services Operations (MSO–NOC)
+        and DTCC regulatory reporting environments. Specialized in L2 production support, incident
+        analysis, trade workflow validation, and operational stability in high‑availability systems.
+      </p>
+      <p>
+        Strong exposure to multi‑cloud platforms (Azure, AWS, GCP), end‑to‑end incident handling
+        (P1–P3), data troubleshooting using SQL, Azure Data Explorer (ADX), and Cosmos DB.
+        Experienced in monitoring, alerting, RCA documentation, and collaborating with L1 teams
+        and clients to ensure SLA compliance.
+      </p>
+
+      <div class="chips">
+        <span class="chip">DTCC / ReportHub</span>
+        <span class="chip">L2 Production Support</span>
+        <span class="chip">P1–P3 Incident Management</span>
+        <span class="chip">SQL • ADX • Cosmos DB</span>
+        <span class="chip">Azure • AWS • GCP</span>
+        <span class="chip">Grafana • Monitoring</span>
       </div>
-
-      <div class="sidebar-block">
-        <p class="meta">📍 Bengaluru, Karnataka</p>
-        <p class="meta">📧 <a href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a></p>
-        <p class="meta">📞 <a href="tel:+917645959259">+91 7645959259</a></p>
-      </div>
-
-      <div class="sidebar-block links">
-        <a class="btn"
-          href="image/resume.pdf"
-          id="resumeDownload"
-          download="Rahul_Kumar_Resume.pdf">
-          Download Resume
-        </a>
-        <a class="link" href="https://www.linkedin.com/in/rahul3333" target="_blank">LinkedIn</a>
-        <a class="link" href="https://github.com/rahul6469" target="_blank">GitHub</a>
-      </div>
-
-      <nav class="nav">
-        <a class="navlink" href="#about">About</a>
-        <a class="navlink" href="#what">What I Do</a>
-        <a class="navlink" href="#experience">Experience</a>
-        <a class="navlink" href="#projects">Projects</a>
-        <a class="navlink" href="#skills">Skills</a>
-        <a class="navlink" href="#education">Education</a>
-        <a class="navlink" href="#contact">Contact</a>
-      </nav>
-    </aside>
-
-    <!-- Content -->
-    <section class="content">
-
-      <section id="about" class="card reveal">
-        <h2>About Me</h2>
-        <p>
-          Results‑driven System Engineer with hands‑on experience in MSO–NOC and DTCC workflows,
-          specializing in reconciliation, analytics, and multi‑cloud operations (Azure, AWS, GCP).
-        </p>
-        <div class="chips">
-          <span class="chip">DTCC / ReportHub</span>
-          <span class="chip">P1–P3 Incident Mgmt</span>
-          <span class="chip">Azure • AWS • GCP</span>
-          <span class="chip">SQL • ADX • Cosmos</span>
-        </div>
-      </section>
-
-      <section id="what" class="card reveal">
-        <h2>What I Do</h2>
-        <div class="grid">
-          <div class="mini"><h3>Production Support</h3><p>24×7 monitoring & RCA.</p></div>
-          <div class="mini"><h3>DTCC Reporting</h3><p>Regulatory workflows & reconciliation.</p></div>
-          <div class="mini"><h3>Data & Automation</h3><p>SQL, ADX, Python automation.</p></div>
-          <div class="mini"><h3>Observability</h3><p>Grafana & App Insights.</p></div>
-        </div>
-      </section>
-
-      <section id="experience" class="card reveal">
-        <h2>Experience</h2>
-        <div class="timeline">
-          <div class="job">
-            <h3>System Engineer — Publicis Sapient</h3>
-            <span class="period">Jan 2025 – Present</span>
-            <ul>
-              <li>P1–P3 incident handling</li>
-              <li>DTCC reporting support</li>
-              <li>SQL & cloud troubleshooting</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" class="card reveal">
-        <h2>Projects</h2>
-        <div class="projects-grid">
-          <a class="project-card" href="https://github.com/rahul6469/Gold-Prediction-Model" target="_blank">
-            <h3>Gold Price Prediction</h3><p>ML forecasting model.</p><span>Python • ML</span>
-          </a>
-          <a class="project-card" href="https://github.com/rahul6469/House-Price-Prediction-Model" target="_blank">
-            <h3>House Price Prediction</h3><p>Regression ML model.</p><span>Python</span>
-          </a>
-          <a class="project-card" href="https://github.com/rahul6469/Sales-Prediction" target="_blank">
-            <h3>Sales Prediction</h3><p>Business forecasting.</p><span>ML</span>
-          </a>
-        </div>
-      </section>
-
-      <section id="skills" class="card reveal">
-        <h2>Skills</h2>
-        <div class="chips">
-          <span class="chip">Python</span>
-          <span class="chip">SQL</span>
-          <span class="chip">Linux</span>
-          <span class="chip">Azure</span>
-          <span class="chip">Grafana</span>
-          <span class="chip">ServiceNow</span>
-        </div>
-      </section>
-
-      <section id="education" class="card reveal">
-        <h2>Education</h2>
-        <p><strong>M.S. Ramaiah University</strong> — B.Tech CSE (AI & ML), CGPA 7.37</p>
-      </section>
-
-      <section id="contact" class="card reveal">
-        <h2>Contact</h2>
-        <div class="contact-grid">
-          <a class="contact-item" href="mailto:manishrahul3333@gmail.com">📧 Email</a>
-          <a class="contact-item" href="tel:+917645959259">📞 Call</a>
-          <a class="contact-item" href="https://www.linkedin.com/in/rahul3333" target="_blank">LinkedIn</a>
-          <a class="contact-item" href="https://github.com/rahul6469" target="_blank">GitHub</a>
-        </div>
-      </section>
-
-      <footer class="footer">
-        <p>© <span id="year"></span> Rahul Kumar</p>
-      </footer>
-
     </section>
-  </main>
 
-  <script src="index.js"></script>
+    <!-- What I Do -->
+    <section id="what" class="card reveal">
+      <h2>What I Do</h2>
+      <div class="grid">
+        <div class="mini">
+          <h3>Production Support (L2)</h3>
+          <p>
+            Provide 24×7 support by monitoring systems, responding to alerts,
+            triaging incidents, coordinating escalations, and ensuring SLA adherence.
+          </p>
+        </div>
+        <div class="mini">
+          <h3>DTCC Regulatory Reporting</h3>
+          <p>
+            Support DTCC workflows including trade lifecycle events, validation errors,
+            reconciliation issues, and client‑facing RCA within ReportHub / CMRS.
+          </p>
+        </div>
+        <div class="mini">
+          <h3>Data Troubleshooting</h3>
+          <p>
+            Analyze trade data and source payloads using SQL, Azure Data Explorer,
+            and Cosmos DB to identify mismatches and reporting failures.
+          </p>
+        </div>
+        <div class="mini">
+          <h3>Automation & Optimization</h3>
+          <p>
+            Build Python and SQL‑based automations to reduce repetitive operational work
+            and improve incident response time.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="card reveal">
+      <h2>Experience</h2>
+
+      <div class="job">
+        <h3>System Engineer — Publicis Sapient</h3>
+        <span class="period">Jan 2025 – Present</span>
+        <ul>
+          <li>Handle P1–P3 production incidents across DTCC regulatory reporting platforms.</li>
+          <li>Analyze trade rejections, validation errors, and lifecycle mismatches.</li>
+          <li>Perform RCA using SQL, ADX, and Cosmos DB.</li>
+          <li>Monitor applications using Grafana across Azure, AWS, and GCP.</li>
+          <li>Coordinate with L1 teams, clients, and internal stakeholders.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <h3>Trainee System Engineer — Publicis Sapient</h3>
+        <span class="period">Jul 2024 – Dec 2024</span>
+        <ul>
+          <li>Supported transaction reporting and monitoring workflows.</li>
+          <li>Assisted in incident triage and operational stability activities.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <h3>Intern Engineer — Publicis Sapient</h3>
+        <span class="period">Jan 2024 – Jul 2024</span>
+        <ul>
+          <li>Monitored services using ServiceNow, Grafana, and Zoho.</li>
+          <li>Gained exposure to enterprise production support processes.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="card reveal">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <a class="project-card" href="https://github.com/rahul6469/Gold-Prediction-Model" target="_blank">
+          <h3>Gold Price Prediction</h3>
+          <p>Machine learning model to forecast gold prices using historical data.</p>
+          <span>Python • ML</span>
+        </a>
+        <a class="project-card" href="https://github.com/rahul6469/House-Price-Prediction-Model" target="_blank">
+          <h3>House Price Prediction</h3>
+          <p>Regression‑based ML model for housing price prediction.</p>
+          <span>Python • Scikit‑Learn</span>
+        </a>
+        <a class="project-card" href="https://github.com/rahul6469/Sales-Prediction" target="_blank">
+          <h3>Sales Prediction</h3>
+          <p>Predictive analytics model for business forecasting.</p>
+          <span>Python • ML</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section id="case-studies" class="card reveal">
+      <h2>Production Case Studies</h2>
+
+      <details class="acc-item">
+        <summary class="acc-summary">
+          DTCC Trade Rejection – Lifecycle Mapping Issue
+          <span class="badge badge-p2">P2</span>
+        </summary>
+        <div class="acc-body">
+          <p>
+            Investigated recurring trade rejections caused by incorrect lifecycle
+            event mapping between source systems and DTCC validation rules.
+            Identified mapping inconsistencies and provided L1/client‑ready RCA.
+          </p>
+        </div>
+      </details>
+
+      <details class="acc-item">
+        <summary class="acc-summary">
+          Cloud Service Degradation – Incident Handling
+          <span class="badge badge-p1">P1</span>
+        </summary>
+        <div class="acc-body">
+          <p>
+            Led triage for high‑severity production degradation using Grafana alerts,
+            dependency checks, and coordinated restoration within SLA.
+          </p>
+        </div>
+      </details>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="card reveal">
+      <h2>Skills</h2>
+      <div class="chips">
+        <span class="chip">Python</span>
+        <span class="chip">SQL / MySQL</span>
+        <span class="chip">Linux</span>
+        <span class="chip">Azure ADX</span>
+        <span class="chip">Cosmos DB</span>
+        <span class="chip">Grafana</span>
+        <span class="chip">ServiceNow</span>
+        <span class="chip">Jira</span>
+        <span class="chip">DTCC ReportHub</span>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="card reveal">
+      <h2>Education</h2>
+      <p>
+        <strong>M.S. Ramaiah University of Applied Sciences</strong><br />
+        B.Tech in Computer Science Engineering (AI & ML)<br />
+        CGPA: 7.37
+      </p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="card reveal">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <a href="mailto:manishrahul3333@gmail.com">📧 Email</a>
+        <a href="tel:+917645959259">📞 Phone</a>
+        <a href="https://www.linkedin.com/in/rahul3333" target="_blank">🔗 LinkedIn</a>
+        <a href="https://github.com/rahul6469" target="_blank">💻 GitHub</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Rahul Kumar</p>
+    </footer>
+
+  </section>
+</main>
+
+<script src="index.js"></script>
 </body>
 </html>
