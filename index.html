@@ -12,256 +12,506 @@
   <meta property="og:image" content="assets/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <!-- Icons (optional but matches Rahul feel) -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
   <style>
-    :root {
-      --bg:#0b1220; --card:rgba(255,255,255,.05);
-      --text:#e5e7eb; --muted:#9ca3af;
-      --accent:#38bdf8; --border:rgba(255,255,255,.14);
+    :root{
+      --bg:#0b1220;
+      --panel:rgba(255,255,255,.05);
+      --panel2:rgba(255,255,255,.04);
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#38bdf8;
+      --border:rgba(255,255,255,.14);
+
+      --ease:cubic-bezier(.22,1,.36,1);
+      --dur:420ms;
+      --durFast:200ms;
     }
     [data-theme="light"]{
-      --bg:#f8fafc; --card:#ffffff;
-      --text:#0f172a; --muted:#475569; --border:#e2e8f0;
+      --bg:#f8fafc;
+      --panel:#ffffff;
+      --panel2:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --border:#e2e8f0;
+      --accent:#2563eb;
     }
-    body{margin:0;font-family:system-ui;background:var(--bg);color:var(--text)}
-    .topbar{position:sticky;top:0;display:flex;justify-content:space-between;
-      padding:14px 18px;border-bottom:1px solid var(--border);background:var(--bg)}
-    .brand{display:flex;gap:10px;align-items:center;font-weight:600}
-    .brand-dot{width:10px;height:10px;border-radius:50%;
-      background:var(--accent);box-shadow:0 0 0 6px rgba(56,189,248,.2)}
-    .theme-btn{width:42px;height:42px;border-radius:12px;
-      border:1px solid var(--border);background:var(--card);cursor:pointer}
-    .layout{max-width:1150px;margin:0 auto;
-      display:grid;grid-template-columns:320px 1fr;gap:18px;padding:18px}
-    @media(max-width:900px){.layout{grid-template-columns:1fr}}
-    .sidebar,.card{background:var(--card);border:1px solid var(--border);
-      border-radius:16px;padding:18px}
-    .profile{text-align:center}
-    .avatar{width:130px;height:130px;border-radius:50%;
-      border:3px solid rgba(56,189,248,.4);object-fit:cover}
-    .nav{margin-top:16px;display:grid;gap:6px}
-    .nav a{padding:10px;border-radius:12px;color:inherit;text-decoration:none}
-    .nav a:hover{background:rgba(255,255,255,.06)}
-    h2{margin:0 0 10px}
-    .muted{color:var(--muted)}
 
-    
-    .projects-grid{display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:14px}
-    .project-card{display:flex;flex-direction:column;justify-content:space-between;
-      padding:16px;border-radius:16px;border:1px solid var(--border);
-      background:rgba(255,255,255,.04);min-height:170px;
-      transition:.25s;text-decoration:none;color:inherit}
-    .project-card:hover{transform:translateY(-4px);
-      background:rgba(255,255,255,.08);border-color:rgba(56,189,248,.4)}
-    .p-title{font-weight:700;margin:0 0 6px}
-    .p-desc{margin:0;color:var(--muted);line-height:1.5;
-      display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    main{display:flex;gap:18px;max-width:1200px;margin:0 auto;padding:18px}
+
+    /* ===== Sidebar (Rahul-like) ===== */
+    .sidebar{
+      width:320px;
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:16px;
+      position:sticky;
+      top:18px;
+      height:fit-content;
+    }
+    .sidebar-info{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .avatar-box{
+      width:78px;height:78px;border-radius:18px;
+      background:rgba(56,189,248,.10);
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid rgba(56,189,248,.22);
+      overflow:hidden;
+    }
+    .avatar-box img{
+      width:78px;height:78px;object-fit:cover;
+    }
+    .info-content .name{
+      margin:0;
+      font-size:18px;
+      font-weight:700;
+      line-height:1.1;
+    }
+    .info-content .title{
+      margin:6px 0 0;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .info_more-btn{
+      margin-left:auto;
+      border:1px solid var(--border);
+      background:var(--panel2);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:12px;
+      cursor:pointer;
+      transition:transform var(--durFast) var(--ease), background var(--durFast) var(--ease);
+    }
+    .info_more-btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.08)}
+    .sidebar-info_more{
+      display:none;
+      margin-top:14px;
+      padding-top:14px;
+      border-top:1px solid var(--border);
+    }
+    .sidebar-info_more.active{display:block}
+
+    .contacts-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+    .contact-item{display:flex;gap:10px;align-items:flex-start}
+    .icon-box{
+      width:36px;height:36px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid rgba(56,189,248,.18);
+      background:rgba(56,189,248,.10);
+      flex:0 0 auto;
+      transition:transform var(--durFast) var(--ease);
+    }
+    .contact-item:hover .icon-box{transform:translateY(-2px)}
+    .contact-title{margin:0;font-size:12px;color:var(--muted)}
+    .contact-link, address{font-style:normal;color:var(--text);font-size:13.5px}
+
+    .social-list{list-style:none;padding:0;margin:14px 0 0;display:flex;gap:10px;flex-wrap:wrap}
+    .social-link{
+      width:36px;height:36px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid var(--border);
+      background:var(--panel2);
+      transition:transform var(--durFast) var(--ease), border-color var(--durFast) var(--ease);
+      color:var(--text);
+    }
+    .social-link:hover{transform:translateY(-2px);border-color:rgba(56,189,248,.35);text-decoration:none}
+
+    .resume-btn{
+      margin-top:12px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(56,189,248,.22);
+      background:rgba(56,189,248,.10);
+      color:var(--text);
+      text-decoration:none;
+      transition:transform var(--durFast) var(--ease), background var(--durFast) var(--ease);
+    }
+    .resume-btn:hover{transform:translateY(-2px);background:rgba(56,189,248,.15);text-decoration:none}
+
+    /* ===== Main content (Rahul-like) ===== */
+    .main-content{
+      flex:1;
+      background:transparent;
+    }
+
+    .navbar{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:10px;
+      position:sticky;
+      top:18px;
+      z-index:5;
+    }
+    .navbar-list{list-style:none;padding:0;margin:0;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .navbar-link{
+      border:1px solid transparent;
+      background:transparent;
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:14px;
+      cursor:pointer;
+      transition:background var(--durFast) var(--ease), border-color var(--durFast) var(--ease), transform var(--durFast) var(--ease);
+      font-weight:600;
+    }
+    .navbar-link:hover{background:rgba(255,255,255,.06);transform:translateY(-1px)}
+    .navbar-link.active{
+      background:rgba(56,189,248,.14);
+      border-color:rgba(56,189,248,.28);
+      color:var(--text);
+    }
+
+    .theme-toggle{
+      margin-left:auto;
+      width:44px;height:44px;border-radius:14px;
+      border:1px solid var(--border);
+      background:var(--panel2);
+      color:var(--text);
+      cursor:pointer;
+      transition:transform var(--durFast) var(--ease);
+      display:flex;align-items:center;justify-content:center;
+    }
+    .theme-toggle:hover{transform:translateY(-1px)}
+
+    /* ===== Pages (only one visible) ===== */
+    article[data-page]{display:none;margin-top:14px}
+    article.active{display:block}
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+    }
+    .article-title{margin:0 0 10px;font-size:22px}
+    .about-text p{color:var(--muted);line-height:1.7;margin:0 0 12px}
+
+    /* Skills pills */
+    .skills-pills{list-style:none;padding:0;margin:12px 0 0;display:flex;gap:10px;flex-wrap:wrap}
+    .skills-pills li{
+      padding:9px 14px;border-radius:999px;
+      border:1px solid rgba(56,189,248,.18);
+      background:rgba(56,189,248,.10);
+      font-size:13px;
+    }
+
+    /* Rahul-style Projects cards */
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+      gap:16px;
+      margin-top:14px;
+    }
+    .project-card{
+      display:flex;flex-direction:column;justify-content:space-between;
+      padding:16px;border-radius:18px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      min-height:170px;
+      transition:transform var(--durFast) var(--ease), background var(--durFast) var(--ease), border-color var(--durFast) var(--ease);
+      color:inherit;text-decoration:none;
+    }
+    .project-card:hover{transform:translateY(-4px);background:rgba(255,255,255,.08);border-color:rgba(56,189,248,.35);text-decoration:none}
+    .p-title{font-weight:800;margin:0 0 6px;font-size:16px}
+    .p-desc{margin:0;color:var(--muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:3.1em}
     .p-tech{font-size:12px;color:var(--muted);margin-top:12px}
-    .pill{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;
-      border:1px solid rgba(56,189,248,.35);
-      background:rgba(56,189,248,.12);margin-right:6px}
-   
-.page-section {
-  display: none;
-}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;border:1px solid rgba(56,189,248,.28);background:rgba(56,189,248,.12);margin-right:6px}
 
-.page-section.active {
-  display: block;
-  animation: fadeSlide 0.4s ease;
-}
-
-@keyframes fadeSlide {
-  from {
-    opacity: 0;
-
+    /* Mobile */
+    @media(max-width:900px){
+      main{flex-direction:column}
+      .sidebar{width:auto;position:relative;top:auto}
+      .navbar{top:0}
+      .theme-toggle{margin-left:0}
+    }
   </style>
 </head>
 
 <body>
-<header class="topbar">
-  <div class="brand">
-    <span class="brand-dot"></span>
-    <span>Rahul Kumar</span>
+<main>
+
+  <!-- SIDEBAR (Rahul-like) -->
+  <aside class="sidebar" data-sidebar>
+    <div class="sidebar-info">
+      <figure class="avatar-box">
+        <img src="assets/avatar.png" alt="Rahul Kumar" />
+      </figure>
+
+      <div class="info-content">
+        <h1 class="name" title="Rahul Kumar">Rahul Kumar</h1>
+        <p class="title">Systems Engineer</p>
+      </div>
+
+      <button class="info_more-btn" type="button" data-sidebar-btn>
+        <span>Show Contacts</span>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </button>
+    </div>
+
+    <div class="sidebar-info_more" data-sidebar-more>
+      <ul class="contacts-list">
+        <li class="contact-item">
+          <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
+          <div class="contact-info">
+            <p class="contact-title">Email</p>
+            <a class="contact-link" href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a>
+          </div>
+        </li>
+
+        <li class="contact-item">
+          <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+          <div class="contact-info">
+            <p class="contact-title">Phone</p>
+            <a class="contact-link" href="tel:+917645959259">+91 7645959259</a>
+          </div>
+        </li>
+
+        <li class="contact-item">
+          <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
+          <div class="contact-info">
+            <p class="contact-title">Location</p>
+            <address class="contact-link">Bengaluru, Karnataka</address>
+          </div>
+        </li>
+      </ul>
+
+      <a class="resume-btn" href="assets/resume.pdf" download="Rahul_Kumar_Resume.pdf">
+        <ion-icon name="download-outline"></ion-icon>
+        Download Resume (PDF)
+      </a>
+
+      <ul class="social-list">
+        <li><a class="social-link" href="https://www.linkedin.com/in/rahul3333" target="_blank" rel="noopener">
+          <ion-icon name="logo-linkedin"></ion-icon></a>
+        </li>
+        <li><a class="social-link" href="https://github.com/rahul6469" target="_blank" rel="noopener">
+          <ion-icon name="logo-github"></ion-icon></a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- NAVBAR (Rahul-like) -->
+    <nav class="navbar" aria-label="Primary">
+      <ul class="navbar-list">
+        <li><button class="navbar-link active" data-nav-link data-target="about">About</button></li>
+        <li><button class="navbar-link" data-nav-link data-target="resume">Resume</button></li>
+        <li><button class="navbar-link" data-nav-link data-target="projects">Projects</button></li>
+        <li><button class="navbar-link" data-nav-link data-target="certifications">Certifications</button></li>
+        <li><button class="navbar-link" data-nav-link data-target="contact">Contact</button></li>
+
+        <li>
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+            <span id="themeIcon">🌙</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ABOUT PAGE -->
+    <article class="card active" data-page="about">
+      <header>
+        <h2 class="article-title">About me</h2>
+      </header>
+
+      <section class="about-text">
+        <p>
+          Results‑driven <strong>Systems Engineer</strong> with hands‑on experience in
+          <strong>Managed Services Operations (MSO–NOC)</strong> and the
+          <strong>DTCC regulatory reporting ecosystem</strong>, supporting mission‑critical
+          financial systems that demand high accuracy, availability, and compliance.
+        </p>
+        <p>
+          I specialize in <strong>L2 production support</strong>, including incident triage (P1–P3),
+          root cause analysis, trade lifecycle issue investigation, and SLA‑based service delivery.
+          I work extensively with <strong>SQL, Azure Data Explorer (ADX), Cosmos DB</strong>, and logs
+          to isolate discrepancies and operational issues.
+        </p>
+        <p>
+          I also drive proactive monitoring using <strong>Grafana, ServiceNow, Jira, and Zoho</strong>,
+          collaborating with L1 teams and stakeholders to ensure stability across
+          <strong>Azure, AWS, and GCP</strong>.
+        </p>
+      </section>
+    </article>
+
+    <!-- RESUME PAGE (Experience + Skills + Education summary) -->
+    <article class="card" data-page="resume">
+      <header><h2 class="article-title">Resume</h2></header>
+
+      <h3>Experience</h3>
+      <p class="muted"><strong>System Engineer — Publicis Sapient</strong> (Jan 2025 – Present)</p>
+      <ul>
+        <li>L2 production support for DTCC ReportHub and regulatory reporting workflows.</li>
+        <li>Handle P1–P3 incidents including triage, RCA, and resolution.</li>
+        <li>Investigate trade rejections, lifecycle mismatches, and validation failures.</li>
+        <li>Deep‑dive analysis using SQL, ADX, and Cosmos DB; monitoring via Grafana.</li>
+      </ul>
+
+      <p class="muted"><strong>Trainee System Engineer — Publicis Sapient</strong> (Jul 2024 – Dec 2024)</p>
+      <ul>
+        <li>Supported DTCC transaction reporting, clearing, and settlement processes.</li>
+        <li>Assisted in trade monitoring, reconciliation, and operational checks.</li>
+      </ul>
+
+      <p class="muted"><strong>Intern Engineer — Publicis Sapient</strong> (Jan 2024 – Jul 2024)</p>
+      <ul>
+        <li>Monitored applications/services using ServiceNow, Grafana, Jira, and Zoho.</li>
+        <li>Assisted with incident tracking, documentation, and operational tasks.</li>
+      </ul>
+
+      <h3 style="margin-top:14px;">Skills</h3>
+      <ul class="skills-pills">
+        <li>SQL</li><li>Linux</li><li>DTCC Reporting</li><li>L2 Production Support</li>
+        <li>Azure (ADX, Cosmos DB)</li><li>Grafana</li><li>ServiceNow</li><li>Python</li>
+      </ul>
+
+      <h3 style="margin-top:14px;">Education</h3>
+      <p class="muted">
+        <strong>M.S. Ramaiah University of Applied Sciences</strong><br />
+        B.Tech – Computer Science & Engineering (AI & ML) • CGPA: 7.37
+      </p>
+      <p class="muted">
+        <strong>Guru Gobind Singh Public School</strong><br />
+        Class 12th: 79% • Class 10th: 85%
+      </p>
+    </article>
+
+    <!-- PROJECTS PAGE -->
+    <article class="card" data-page="projects">
+      <header><h2 class="article-title">Projects</h2></header>
+      <p class="muted">A lightweight showcase of selected GitHub projects.</p>
+      <div id="projectsGrid" class="projects-grid"></div>
+    </article>
+
+    <!-- CERTIFICATIONS PAGE -->
+    <article class="card" data-page="certifications">
+      <header><h2 class="article-title">Certifications</h2></header>
+      <ul class="muted">
+        <li>AWS Cloud Practitioner (SimuLearn)</li>
+        <li>Azure Cloud Adoption Framework</li>
+        <li>GCP Fundamentals</li>
+        <li>ITIL 4 Foundation</li>
+        <li>ServiceNow System Administrator</li>
+        <li>Artificial Intelligence & Generative AI – IBM, Microsoft, LinkedIn</li>
+      </ul>
+    </article>
+
+    <!-- CONTACT PAGE -->
+    <article class="card" data-page="contact">
+      <header><h2 class="article-title">Contact</h2></header>
+
+      <ul class="contacts-list" style="margin-top:10px">
+        <li class="contact-item">
+          <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
+          <div class="contact-info">
+            <p class="contact-title">Email</p>
+            <a class="contact-link" href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a>
+          </div>
+        </li>
+
+        <li class="contact-item">
+          <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+          <div class="contact-info">
+            <p class="contact-title">Phone</p>
+            <a class="contact-link" href="tel:+917645959259">+91 7645959259</a>
+          </div>
+        </li>
+
+        <li class="contact-item">
+          <div class="icon-box"><ion-icon name="logo-linkedin"></ion-icon></div>
+          <div class="contact-info">
+            <p class="contact-title">LinkedIn</p>
+            <a class="contact-link" href="https://www.linkedin.com/in/rahul3333" target="_blank" rel="noopener">rahul3333</a>
+          </div>
+        </li>
+
+        <li class="contact-item">
+          <div class="icon-box"><ion-icon name="logo-github"></ion-icon></div>
+          <div class="contact-info">
+            <p class="contact-title">GitHub</p>
+            <a class="contact-link" href="https://github.com/rahul6469" target="_blank" rel="noopener">rahul6469</a>
+          </div>
+        </li>
+      </ul>
+    </article>
+
   </div>
-  <button id="themeToggle" class="theme-btn">
-    <span id="themeIcon">🌙</span>
-  </button>
-</header>
-
-<main class="layout">
-
-<!-- SIDEBAR -->
-<aside class="sidebar">
-  <div class="profile">
-    <img src="assets/avatar.png" class="avatar" alt="Rahul Kumar" />
-    <h3>Rahul Kumar</h3>
-    <p class="muted">Systems Engineer<br/>Publicis Sapient</p>
-  </div>
-
-  <p>📍 Bengaluru, Karnataka</p>
-  <p>📧 <a href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a></p>
-  <p>📞 +91 7645959259</p>
-  <p><a href="assets/resume.pdf" download>⬇ Download Resume (PDF)</a></p>
-
-  <nav class="nav">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>  
-  </nav>
-</aside>
-
-<!-- CONTENT -->
-<section class="content">
-
-<!-- ABOUT (EXPANDED FROM RESUME) -->
-<section id="about" class="page-section active">
-  <h2>About</h2>
-
-  <p class="muted">
-    Results‑driven <strong>Systems Engineer</strong> with hands‑on experience in
-    <strong>Managed Services Operations (MSO–NOC)</strong> and the
-    <strong>DTCC regulatory reporting ecosystem</strong>, supporting mission‑critical
-    financial systems that demand high accuracy, availability, and compliance.
-  </p>
-
-  <p class="muted">
-    I specialize in <strong>L2 production support</strong>, including incident triage
-    (P1–P3), root cause analysis, trade lifecycle issue investigation, and
-    SLA‑based service delivery. I work extensively with
-    <strong>SQL, Azure Data Explorer (ADX), Cosmos DB</strong>, and application logs
-    to identify data discrepancies and operational issues.
-  </p>
-
-  <p class="muted">
-    My role also involves proactive monitoring using <strong>Grafana, ServiceNow,
-    Jira, and Zoho</strong>, collaborating closely with L1 teams, clients, and
-    cross‑functional stakeholders to ensure system stability across
-    <strong>Azure, AWS, and GCP</strong> environments.
-  </p>
-</section>
-
-<!-- EXPERIENCE (EXPANDED FROM RESUME) -->
-<section id="experience" class="page-section">
-  <h2>Experience</h2>
-
-  <h3>System Engineer — Publicis Sapient</h3>
-  <p class="muted">Jan 2025 – Present</p>
-  <ul>
-    <li>L2 production support for DTCC ReportHub and related regulatory reporting workflows.</li>
-    <li>Handle P1–P3 incidents including impact assessment, root cause analysis, and resolution.</li>
-    <li>Analyze trade rejections, lifecycle mismatches, validation errors, and data inconsistencies.</li>
-    <li>Perform deep‑dive investigations using SQL, ADX, and Cosmos DB.</li>
-    <li>Proactively monitor systems using Grafana and incident tools like ServiceNow and Jira.</li>
-    <li>Work closely with L1 teams and stakeholders to ensure SLA adherence and system stability.</li>
-  </ul>
-
-  <h3>Trainee System Engineer — Publicis Sapient</h3>
-  <p class="muted">Jul 2024 – Dec 2024</p>
-  <ul>
-    <li>Supported DTCC transaction reporting, clearing, and settlement processes.</li>
-    <li>Assisted in trade monitoring, reconciliation, and operational checks.</li>
-    <li>Gained exposure to DTCC proprietary tools and regulatory reporting workflows.</li>
-  </ul>
-
-  <h3>Intern Engineer — Publicis Sapient</h3>
-  <p class="muted">Jan 2024 – Jul 2024</p>
-  <ul>
-    <li>Monitored applications and services using ServiceNow, Grafana, Jira, and Zoho.</li>
-    <li>Assisted with incident tracking, documentation, and daily operational tasks.</li>
-    <li>Adapted quickly to enterprise production environments and support processes.</li>
-  </ul>
-</section>
-
-<section id="skills" class="page-section">
-  <h2>Skills</h2>
-
-  <ul class="skills">
-    <li>SQL</li>
-    <li>Linux</li>
-    <li>DTCC Reporting</li>
-    <li>L2 Production Support</li>
-    <li>Azure (ADX, Cosmos DB)</li>
-    <li>Grafana</li>
-    <li>ServiceNow</li>
-    <li>Python</li>
-  </ul>
-</section>
-
-<section id="projects" class="page-section">
-  <h2>Projects</h2>
-  <p class="muted">A lightweight showcase of selected GitHub projects.</p>
-  <div id="projectsGrid" class="projects-grid"></div>
-</section>
-
-<section id="certifications" class="page-section">
-  <h2>Certifications</h2>
-  <ul class="muted">
-    <li>AWS Cloud Practitioner (SimuLearn)</li>
-    <li>Azure Cloud Adoption Framework</li>
-    <li>GCP Fundamentals</li>
-    <li>ITIL 4 Foundation</li>
-    <li>ServiceNow System Administrator</li>
-    <li>Artificial Intelligence & Generative AI – IBM, Microsoft, LinkedIn</li>
-  </ul>
-</section>
-
-<section id="education" class="page-section">
-  <h2>Education</h2>
-  <p><strong>M.S. Ramaiah University of Applied Sciences</strong><br/>
-    B.Tech – Computer Science and Engineering with specialization in Artificial and Machine learning • CGPA: 7.37</p>
-  <p><strong>Guru Gobind Singh Public School</strong><br/>
-    Class 12th: 79% • Class 10th: 85%</p>
-</section>
-
-<section id="contact" class="page-section">
-  <h2>Contact</h2>
-
-  <div class="contact-item">
-    <span class="icon">📧</span>
-    <a href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a>
-  </div>
-
-  <div class="contact-item">
-    <span class="icon">📞</span>
-    <a href="tel:+917645959259">+91 7645959259</a>
-  </div>
-
-  <div class="contact-item">
-    <span class="icon">📄</span>
-    <a href="assets/resume.pdf" target="_blank">Download Resume (PDF)</a>
-  </div>
-
-  <div class="contact-item">
-    <span class="icon">🔗</span>
-    <a href="https://www.linkedin.com/in/rahul3333" target="_blank">LinkedIn</a>
-  </div>
-
-  <div class="contact-item">
-    <span class="icon">💻</span>
-    <a href="https://github.com/rahul6469" target="_blank">GitHub</a>
-  </div>
-</section>
-
 </main>
 
 <script>
-  // theme toggle
-  const root=document.documentElement,icon=document.getElementById("themeIcon");
-  const saved=localStorage.getItem("theme")||"dark";
-  root.setAttribute("data-theme",saved);
-  icon.textContent=saved==="dark"?"🌙":"☀️";
-  document.getElementById("themeToggle").onclick=()=>{
-    const t=root.getAttribute("data-theme")==="dark"?"light":"dark";
-    root.setAttribute("data-theme",t);
-    localStorage.setItem("theme",t);
-    icon.textContent=t==="dark"?"🌙":"☀️";
-  };
+  /* Sidebar contacts toggle (Rahul-like) */
+  const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+  const sidebarMore = document.querySelector("[data-sidebar-more]");
+  if (sidebarBtn && sidebarMore) {
+    sidebarBtn.addEventListener("click", () => {
+      sidebarMore.classList.toggle("active");
+    });
+  }
 
-  const projects={
+  /* Active-nav highlight + page switching (Rahul-like) */
+  const navLinks = document.querySelectorAll("[data-nav-link]");
+  const pages = document.querySelectorAll("[data-page]");
+
+  function setActivePage(pageName) {
+    // pages
+    pages.forEach(p => p.classList.toggle("active", p.getAttribute("data-page") === pageName));
+    // nav buttons
+    navLinks.forEach(b => b.classList.toggle("active", b.getAttribute("data-target") === pageName));
+    // hash (nice UX)
+    history.replaceState(null, "", `#${pageName}`);
+  }
+
+  navLinks.forEach(btn => {
+    btn.addEventListener("click", () => {
+      setActivePage(btn.getAttribute("data-target"));
+    });
+  });
+
+  // Load initial from hash
+  const initial = (location.hash || "#about").replace("#", "");
+  const valid = ["about","resume","projects","certifications","contact"].includes(initial) ? initial : "about";
+  setActivePage(valid);
+
+  // Theme toggle (kept)
+  const root = document.documentElement;
+  const themeIcon = document.getElementById("themeIcon");
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  root.setAttribute("data-theme", savedTheme);
+  themeIcon.textContent = savedTheme === "dark" ? "🌙" : "☀️";
+
+  document.getElementById("themeToggle").addEventListener("click", () => {
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    themeIcon.textContent = next === "dark" ? "🌙" : "☀️";
+  });
+
+  /* Projects (Rahul-style cards, concise) */
+  const projects = {
     "Gold-Prediction-Model":["ML regression for gold price prediction","Python • ML • Jupyter"],
     "House-Price-Prediction-Model":["House price estimation using regression","Python • Regression"],
     "Sales-Prediction":["Sales forecasting using supervised ML","Python • Analytics"],
@@ -275,75 +525,29 @@
   };
 
   fetch("https://api.github.com/users/rahul6469/repos?per_page=100")
-    .then(r=>r.json()).then(repos=>{
+    .then(r=>r.json())
+    .then(repos=>{
       const g=document.getElementById("projectsGrid");
+      if (!g) return;
+      g.innerHTML = "";
       repos.forEach(r=>{
         if(!projects[r.name])return;
         const c=document.createElement("a");
         c.className="project-card";
-        c.href=r.html_url;c.target="_blank";
-        c.innerHTML=`<div>
-          <h3 class="p-title">${r.name}</h3>
-          <p class="p-desc">${projects[r.name][0]}</p>
-        </div>
-        <p class="p-tech"><span class="pill">Tech</span>${projects[r.name][1]}</p>`;
+        c.href=r.html_url;
+        c.target="_blank";
+        c.rel="noopener";
+        c.innerHTML = `
+          <div>
+            <h3 class="p-title">${r.name}</h3>
+            <p class="p-desc">${projects[r.name][0]}</p>
+          </div>
+          <p class="p-tech"><span class="pill">Tech</span>${projects[r.name][1]}</p>
+        `;
         g.appendChild(c);
       });
     });
 </script>
-  <script>
 
-const sections = document.querySelectorAll('.page-section');
-const navLinks = document.querySelectorAll('.nav a');
-
-function showSection(sectionId) {
-  sections.forEach(section => {
-    section.classList.toggle(
-      'active',
-      section.id === sectionId
-    );
-  });
-}
-
-navLinks.forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const id = link.getAttribute('href').substring(1);
-    history.pushState(null, '', `#${id}`);
-    showSection(id);
-  });
-});
-
-/* Load correct section on page load */
-const current = location.hash
-  ? location.hash.substring(1)
-  : 'about';
-
-showSection(current);
-</script>
-<script>
-
-const sections = document.querySelectorAll('.page-section');
-const navLinks = document.querySelectorAll('.links a');
-
-function showSection(sectionId) {
-  sections.forEach(section => {
-    section.classList.toggle('active', section.id === sectionId);
-  });
-}
-
-navLinks.forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const id = link.getAttribute('href').substring(1);
-    history.pushState(null, '', `#${id}`);
-    showSection(id);
-  });
-});
-
-/* Load correct section on refresh */
-const current = location.hash ? location.hash.substring(1) : 'about';
-showSection(current);
-</script>
 </body>
 </html>
