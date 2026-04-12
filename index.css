@@ -329,3 +329,61 @@ ion-icon{ font-size:18px; }
   .app{ flex-direction:column; }
   .sidebar{ width:auto; }
 }
+/* ================= Resume Sub Sections ================= */
+
+.resume-tabs{
+  display:flex;
+  gap:10px;
+  margin:16px 0 20px;
+  flex-wrap:wrap;
+}
+
+.resume-tab{
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:var(--panel2);
+  color:var(--text);
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  transition:background var(--durFast) var(--ease),
+             border-color var(--durFast) var(--ease),
+             transform var(--durFast) var(--ease);
+}
+
+.resume-tab:hover{
+  background:rgba(255,255,255,.08);
+  transform:translateY(-1px);
+}
+
+.resume-tab.active{
+  background:rgba(56,189,248,.14);
+  border-color:rgba(56,189,248,.35);
+}
+
+/* Resume sections behave like Contact / Certifications */
+.resume-section{
+  display:none;
+}
+
+.resume-section.active{
+  display:block;
+}
+
+.resume-section h3{
+  margin-top:16px;
+  font-size:15px;
+  font-weight:700;
+}
+
+.resume-section h3 span{
+  font-weight:400;
+  color:var(--muted);
+}
+
+.resume-section ul{
+  margin:8px 0 0 18px;
+  color:var(--muted);
+  line-height:1.7;
+}
