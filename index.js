@@ -94,3 +94,14 @@ if (!prefersReducedMotion) {
   // If user prefers reduced motion, show everything immediately
   $$(".reveal").forEach((el) => el.classList.add("is-visible"));
 }
+// Resume download analytics (local)
+const resumeBtn = document.getElementById("resumeDownload");
+
+if (resumeBtn) {
+  resumeBtn.addEventListener("click", () => {
+    let count = localStorage.getItem("resumeDownloads") || 0;
+    count++;
+    localStorage.setItem("resumeDownloads", count);
+    console.log("Resume downloaded:", count, "times");
+  });
+}
