@@ -5,256 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rahul Kumar | Systems Engineer</title>
 
-  <meta name="description"
-    content="Rahul Kumar – Systems Engineer at Publicis Sapient with experience in DTCC regulatory reporting, L2 production support, incident management, monitoring, and multi-cloud operations." />
-
+  <meta name="description" content="Rahul Kumar – Systems Engineer at Publicis Sapient with experience in DTCC regulatory reporting, L2 production support, incident management, monitoring, and multi-cloud operations." />
   <meta property="og:title" content="Rahul Kumar | Portfolio" />
   <meta property="og:image" content="assets/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Icons (optional but matches Rahul feel) -->
+  <!-- Use ONLY index.css (do NOT link style.css to avoid conflicts) -->
+  <link rel="stylesheet" href="./index.css" />
+
+  <!-- Ionicons (Tanvi uses ion-icon style icons) -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-  <style>
-    :root{
-      --bg:#0b1220;
-      --panel:rgba(255,255,255,.05);
-      --panel2:rgba(255,255,255,.04);
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --accent:#38bdf8;
-      --border:rgba(255,255,255,.14);
-
-      --ease:cubic-bezier(.22,1,.36,1);
-      --dur:420ms;
-      --durFast:200ms;
-    }
-    [data-theme="light"]{
-      --bg:#f8fafc;
-      --panel:#ffffff;
-      --panel2:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
-      --border:#e2e8f0;
-      --accent:#2563eb;
-    }
-
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    main{display:flex;gap:18px;max-width:1200px;margin:0 auto;padding:18px}
-
-    /* ===== Sidebar (Rahul-like) ===== */
-    .sidebar{
-      width:320px;
-      background:var(--panel);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:16px;
-      position:sticky;
-      top:18px;
-      height:fit-content;
-    }
-    .sidebar-info{
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
-    .avatar-box{
-      width:78px;height:78px;border-radius:18px;
-      background:rgba(56,189,248,.10);
-      display:flex;align-items:center;justify-content:center;
-      border:1px solid rgba(56,189,248,.22);
-      overflow:hidden;
-    }
-    .avatar-box img{
-      width:78px;height:78px;object-fit:cover;
-    }
-    .info-content .name{
-      margin:0;
-      font-size:18px;
-      font-weight:700;
-      line-height:1.1;
-    }
-    .info-content .title{
-      margin:6px 0 0;
-      font-size:13px;
-      color:var(--muted);
-    }
-
-    .info_more-btn{
-      margin-left:auto;
-      border:1px solid var(--border);
-      background:var(--panel2);
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:12px;
-      cursor:pointer;
-      transition:transform var(--durFast) var(--ease), background var(--durFast) var(--ease);
-    }
-    .info_more-btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.08)}
-    .sidebar-info_more{
-      display:none;
-      margin-top:14px;
-      padding-top:14px;
-      border-top:1px solid var(--border);
-    }
-    .sidebar-info_more.active{display:block}
-
-    .contacts-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
-    .contact-item{display:flex;gap:10px;align-items:flex-start}
-    .icon-box{
-      width:36px;height:36px;border-radius:12px;
-      display:flex;align-items:center;justify-content:center;
-      border:1px solid rgba(56,189,248,.18);
-      background:rgba(56,189,248,.10);
-      flex:0 0 auto;
-      transition:transform var(--durFast) var(--ease);
-    }
-    .contact-item:hover .icon-box{transform:translateY(-2px)}
-    .contact-title{margin:0;font-size:12px;color:var(--muted)}
-    .contact-link, address{font-style:normal;color:var(--text);font-size:13.5px}
-
-    .social-list{list-style:none;padding:0;margin:14px 0 0;display:flex;gap:10px;flex-wrap:wrap}
-    .social-link{
-      width:36px;height:36px;border-radius:12px;
-      display:flex;align-items:center;justify-content:center;
-      border:1px solid var(--border);
-      background:var(--panel2);
-      transition:transform var(--durFast) var(--ease), border-color var(--durFast) var(--ease);
-      color:var(--text);
-    }
-    .social-link:hover{transform:translateY(-2px);border-color:rgba(56,189,248,.35);text-decoration:none}
-
-    .resume-btn{
-      margin-top:12px;
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid rgba(56,189,248,.22);
-      background:rgba(56,189,248,.10);
-      color:var(--text);
-      text-decoration:none;
-      transition:transform var(--durFast) var(--ease), background var(--durFast) var(--ease);
-    }
-    .resume-btn:hover{transform:translateY(-2px);background:rgba(56,189,248,.15);text-decoration:none}
-
-    /* ===== Main content (Rahul-like) ===== */
-    .main-content{
-      flex:1;
-      background:transparent;
-    }
-
-    .navbar{
-      background:var(--panel);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:10px;
-      position:sticky;
-      top:18px;
-      z-index:5;
-    }
-    .navbar-list{list-style:none;padding:0;margin:0;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    .navbar-link{
-      border:1px solid transparent;
-      background:transparent;
-      color:var(--text);
-      padding:10px 14px;
-      border-radius:14px;
-      cursor:pointer;
-      transition:background var(--durFast) var(--ease), border-color var(--durFast) var(--ease), transform var(--durFast) var(--ease);
-      font-weight:600;
-    }
-    .navbar-link:hover{background:rgba(255,255,255,.06);transform:translateY(-1px)}
-    .navbar-link.active{
-      background:rgba(56,189,248,.14);
-      border-color:rgba(56,189,248,.28);
-      color:var(--text);
-    }
-
-    .theme-toggle{
-      margin-left:auto;
-      width:44px;height:44px;border-radius:14px;
-      border:1px solid var(--border);
-      background:var(--panel2);
-      color:var(--text);
-      cursor:pointer;
-      transition:transform var(--durFast) var(--ease);
-      display:flex;align-items:center;justify-content:center;
-    }
-    .theme-toggle:hover{transform:translateY(-1px)}
-
-    /* ===== Pages (only one visible) ===== */
-    article[data-page]{display:none;margin-top:14px}
-    article.active{display:block}
-
-    .card{
-      background:var(--panel);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:18px;
-    }
-    .article-title{margin:0 0 10px;font-size:22px}
-    .about-text p{color:var(--muted);line-height:1.7;margin:0 0 12px}
-
-    /* Skills pills */
-    .skills-pills{list-style:none;padding:0;margin:12px 0 0;display:flex;gap:10px;flex-wrap:wrap}
-    .skills-pills li{
-      padding:9px 14px;border-radius:999px;
-      border:1px solid rgba(56,189,248,.18);
-      background:rgba(56,189,248,.10);
-      font-size:13px;
-    }
-
-    /* Rahul-style Projects cards */
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-      gap:16px;
-      margin-top:14px;
-    }
-    .project-card{
-      display:flex;flex-direction:column;justify-content:space-between;
-      padding:16px;border-radius:18px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
-      min-height:170px;
-      transition:transform var(--durFast) var(--ease), background var(--durFast) var(--ease), border-color var(--durFast) var(--ease);
-      color:inherit;text-decoration:none;
-    }
-    .project-card:hover{transform:translateY(-4px);background:rgba(255,255,255,.08);border-color:rgba(56,189,248,.35);text-decoration:none}
-    .p-title{font-weight:800;margin:0 0 6px;font-size:16px}
-    .p-desc{margin:0;color:var(--muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:3.1em}
-    .p-tech{font-size:12px;color:var(--muted);margin-top:12px}
-    .pill{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;border:1px solid rgba(56,189,248,.28);background:rgba(56,189,248,.12);margin-right:6px}
-
-    /* Mobile */
-    @media(max-width:900px){
-      main{flex-direction:column}
-      .sidebar{width:auto;position:relative;top:auto}
-      .navbar{top:0}
-      .theme-toggle{margin-left:0}
-    }
-  </style>
 </head>
 
 <body>
-<main>
 
-  <!-- SIDEBAR (Rahul-like) -->
+<main class="app">
+
+  <!-- SIDEBAR (Tanvi-like) -->
   <aside class="sidebar" data-sidebar>
     <div class="sidebar-info">
       <figure class="avatar-box">
-        <img src="assets/avatar.png" alt="Rahul Kumar" />
+        <img src="assets/avatar.png" alt="Rahul Kumar" width="80" height="80">
       </figure>
 
       <div class="info-content">
@@ -262,13 +34,15 @@
         <p class="title">Systems Engineer</p>
       </div>
 
-      <button class="info_more-btn" type="button" data-sidebar-btn>
+      <button class="info_more-btn" type="button" data-sidebar-btn aria-expanded="false">
         <span>Show Contacts</span>
-        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ion-icon class="chev" name="chevron-down-outline"></ion-icon>
       </button>
     </div>
 
     <div class="sidebar-info_more" data-sidebar-more>
+      <div class="separator"></div>
+
       <ul class="contacts-list">
         <li class="contact-item">
           <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
@@ -295,17 +69,21 @@
         </li>
       </ul>
 
-      <a class="resume-btn" href="assets/resume.pdf" download="Rahul_Kumar_Resume.pdf">
+      <a class="resume-btn" href="assets/resume.pdf" download>
         <ion-icon name="download-outline"></ion-icon>
         Download Resume (PDF)
       </a>
 
       <ul class="social-list">
-        <li><a class="social-link" href="https://www.linkedin.com/in/rahul3333" target="_blank" rel="noopener">
-          <ion-icon name="logo-linkedin"></ion-icon></a>
+        <li class="social-item">
+          <a class="social-link" href="https://www.linkedin.com/in/rahul3333" target="_blank" rel="noopener">
+            <ion-icon name="logo-linkedin"></ion-icon>
+          </a>
         </li>
-        <li><a class="social-link" href="https://github.com/rahul6469" target="_blank" rel="noopener">
-          <ion-icon name="logo-github"></ion-icon></a>
+        <li class="social-item">
+          <a class="social-link" href="https://github.com/rahul6469" target="_blank" rel="noopener">
+            <ion-icon name="logo-github"></ion-icon>
+          </a>
         </li>
       </ul>
     </div>
@@ -314,240 +92,158 @@
   <!-- MAIN CONTENT -->
   <div class="main-content">
 
-    <!-- NAVBAR (Rahul-like) -->
+    <!-- NAVBAR (Tanvi-like) -->
     <nav class="navbar" aria-label="Primary">
-      <ul class="navbar-list">
-        <li><button class="navbar-link active" data-nav-link data-target="about">About</button></li>
-        <li><button class="navbar-link" data-nav-link data-target="resume">Resume</button></li>
-        <li><button class="navbar-link" data-nav-link data-target="projects">Projects</button></li>
-        <li><button class="navbar-link" data-nav-link data-target="certifications">Certifications</button></li>
-        <li><button class="navbar-link" data-nav-link data-target="contact">Contact</button></li>
+      <ul class="navbar-list" id="navbarList">
+        <li class="navbar-item"><button class="navbar-link active" data-nav-link data-target="about">About</button></li>
+        <li class="navbar-item"><button class="navbar-link" data-nav-link data-target="resume">Resume</button></li>
+        <li class="navbar-item"><button class="navbar-link" data-nav-link data-target="projects">Projects</button></li>
+        <li class="navbar-item"><button class="navbar-link" data-nav-link data-target="certifications">Certifications</button></li>
+        <li class="navbar-item"><button class="navbar-link" data-nav-link data-target="contact">Contact</button></li>
 
-        <li>
+        <li class="navbar-item navbar-spacer"></li>
+
+        <li class="navbar-item">
           <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">
             <span id="themeIcon">🌙</span>
           </button>
         </li>
+
+        <!-- Moving underline indicator -->
+        <li class="nav-indicator" aria-hidden="true"></li>
       </ul>
     </nav>
 
-    <!-- ABOUT PAGE -->
-    <article class="card active" data-page="about">
-      <header>
-        <h2 class="article-title">About me</h2>
-      </header>
+    <!-- PAGES STACK (for smooth transitions) -->
+    <div class="page-stack" id="pageStack">
 
-      <section class="about-text">
-        <p>
-          Results‑driven <strong>Systems Engineer</strong> with hands‑on experience in
-          <strong>Managed Services Operations (MSO–NOC)</strong> and the
-          <strong>DTCC regulatory reporting ecosystem</strong>, supporting mission‑critical
-          financial systems that demand high accuracy, availability, and compliance.
+      <!-- ABOUT -->
+      <article class="page card active" data-page="about">
+        <header><h2 class="h2 article-title">About me</h2></header>
+        <section class="about-text">
+          <p>
+            Results‑driven <strong>Systems Engineer</strong> with hands‑on experience in
+            <strong>Managed Services Operations (MSO–NOC)</strong> and the
+            <strong>DTCC regulatory reporting ecosystem</strong>, supporting mission‑critical
+            systems requiring accuracy, availability, and compliance.
+          </p>
+          <p>
+            Specialize in <strong>L2 production support</strong> including incident triage (P1–P3),
+            root cause analysis, trade lifecycle issue investigation, and SLA‑based service delivery.
+            Strong in <strong>SQL, ADX, Cosmos DB</strong> and operational investigations.
+          </p>
+          <p>
+            Proactive monitoring using <strong>Grafana, ServiceNow, Jira, Zoho</strong> and cross‑team collaboration
+            across <strong>Azure, AWS, and GCP</strong>.
+          </p>
+        </section>
+      </article>
+
+      <!-- RESUME (Experience + Skills + Education) -->
+      <article class="page card" data-page="resume">
+        <header><h2 class="h2 article-title">Resume</h2></header>
+
+        <h3 class="h3">Experience</h3>
+        <p class="muted"><strong>System Engineer — Publicis Sapient</strong> (Jan 2025 – Present)</p>
+        <ul class="bullets">
+          <li>L2 production support for DTCC ReportHub and regulatory reporting workflows.</li>
+          <li>P1–P3 incident triage, escalation, RCA, and resolution with SLA adherence.</li>
+          <li>Investigate trade rejections, lifecycle mismatches, and validation failures.</li>
+          <li>Deep-dive analysis using SQL, ADX, Cosmos DB; monitoring via Grafana.</li>
+        </ul>
+
+        <p class="muted"><strong>Trainee System Engineer — Publicis Sapient</strong> (Jul 2024 – Dec 2024)</p>
+        <ul class="bullets">
+          <li>Supported transaction reporting workflows and operational checks.</li>
+          <li>Assisted in trade monitoring and reconciliation.</li>
+        </ul>
+
+        <p class="muted"><strong>Intern Engineer — Publicis Sapient</strong> (Jan 2024 – Jul 2024)</p>
+        <ul class="bullets">
+          <li>Monitoring using ServiceNow/Jira/Zoho/Grafana; supported daily operations.</li>
+          <li>Incident tracking and documentation support.</li>
+        </ul>
+
+        <h3 class="h3">Skills</h3>
+        <ul class="skills-pills">
+          <li>SQL</li><li>Linux</li><li>DTCC Reporting</li><li>L2 Production Support</li>
+          <li>Azure (ADX, Cosmos DB)</li><li>Grafana</li><li>ServiceNow</li><li>Python</li>
+        </ul>
+
+        <h3 class="h3">Education</h3>
+        <p class="muted">
+          <strong>M.S. Ramaiah University of Applied Sciences</strong><br />
+          B.Tech – CSE (AI & ML) • CGPA: 7.37
         </p>
-        <p>
-          I specialize in <strong>L2 production support</strong>, including incident triage (P1–P3),
-          root cause analysis, trade lifecycle issue investigation, and SLA‑based service delivery.
-          I work extensively with <strong>SQL, Azure Data Explorer (ADX), Cosmos DB</strong>, and logs
-          to isolate discrepancies and operational issues.
+        <p class="muted">
+          <strong>Guru Gobind Singh Public School</strong><br />
+          Class 12: 79% • Class 10: 85%
         </p>
-        <p>
-          I also drive proactive monitoring using <strong>Grafana, ServiceNow, Jira, and Zoho</strong>,
-          collaborating with L1 teams and stakeholders to ensure stability across
-          <strong>Azure, AWS, and GCP</strong>.
-        </p>
-      </section>
-    </article>
+      </article>
 
-    <!-- RESUME PAGE (Experience + Skills + Education summary) -->
-    <article class="card" data-page="resume">
-      <header><h2 class="article-title">Resume</h2></header>
+      <!-- PROJECTS -->
+      <article class="page card" data-page="projects">
+        <header><h2 class="h2 article-title">Projects</h2></header>
+        <p class="muted">A lightweight showcase of selected GitHub projects.</p>
+        <div id="projectsGrid" class="projects-grid"></div>
+      </article>
 
-      <h3>Experience</h3>
-      <p class="muted"><strong>System Engineer — Publicis Sapient</strong> (Jan 2025 – Present)</p>
-      <ul>
-        <li>L2 production support for DTCC ReportHub and regulatory reporting workflows.</li>
-        <li>Handle P1–P3 incidents including triage, RCA, and resolution.</li>
-        <li>Investigate trade rejections, lifecycle mismatches, and validation failures.</li>
-        <li>Deep‑dive analysis using SQL, ADX, and Cosmos DB; monitoring via Grafana.</li>
-      </ul>
+      <!-- CERTIFICATIONS -->
+      <article class="page card" data-page="certifications">
+        <header><h2 class="h2 article-title">Certifications</h2></header>
+        <ul class="bullets muted">
+          <li>AWS Cloud Practitioner (SimuLearn)</li>
+          <li>Azure Cloud Adoption Framework</li>
+          <li>GCP Fundamentals</li>
+          <li>ITIL 4 Foundation</li>
+          <li>ServiceNow System Administrator</li>
+          <li>Artificial Intelligence & Generative AI – IBM, Microsoft, LinkedIn</li>
+        </ul>
+      </article>
 
-      <p class="muted"><strong>Trainee System Engineer — Publicis Sapient</strong> (Jul 2024 – Dec 2024)</p>
-      <ul>
-        <li>Supported DTCC transaction reporting, clearing, and settlement processes.</li>
-        <li>Assisted in trade monitoring, reconciliation, and operational checks.</li>
-      </ul>
+      <!-- CONTACT -->
+      <article class="page card" data-page="contact">
+        <header><h2 class="h2 article-title">Contact</h2></header>
 
-      <p class="muted"><strong>Intern Engineer — Publicis Sapient</strong> (Jan 2024 – Jul 2024)</p>
-      <ul>
-        <li>Monitored applications/services using ServiceNow, Grafana, Jira, and Zoho.</li>
-        <li>Assisted with incident tracking, documentation, and operational tasks.</li>
-      </ul>
+        <ul class="contacts-list contact-page">
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a class="contact-link" href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a>
+            </div>
+          </li>
 
-      <h3 style="margin-top:14px;">Skills</h3>
-      <ul class="skills-pills">
-        <li>SQL</li><li>Linux</li><li>DTCC Reporting</li><li>L2 Production Support</li>
-        <li>Azure (ADX, Cosmos DB)</li><li>Grafana</li><li>ServiceNow</li><li>Python</li>
-      </ul>
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+              <a class="contact-link" href="tel:+917645959259">+91 7645959259</a>
+            </div>
+          </li>
 
-      <h3 style="margin-top:14px;">Education</h3>
-      <p class="muted">
-        <strong>M.S. Ramaiah University of Applied Sciences</strong><br />
-        B.Tech – Computer Science & Engineering (AI & ML) • CGPA: 7.37
-      </p>
-      <p class="muted">
-        <strong>Guru Gobind Singh Public School</strong><br />
-        Class 12th: 79% • Class 10th: 85%
-      </p>
-    </article>
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="logo-linkedin"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">LinkedIn</p>
+              <a class="contact-link" href="https://www.linkedin.com/in/rahul3333" target="_blank" rel="noopener">rahul3333</a>
+            </div>
+          </li>
 
-    <!-- PROJECTS PAGE -->
-    <article class="card" data-page="projects">
-      <header><h2 class="article-title">Projects</h2></header>
-      <p class="muted">A lightweight showcase of selected GitHub projects.</p>
-      <div id="projectsGrid" class="projects-grid"></div>
-    </article>
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="logo-github"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">GitHub</p>
+              <a class="contact-link" href="https://github.com/rahul6469" target="_blank" rel="noopener">rahul6469</a>
+            </div>
+          </li>
+        </ul>
+      </article>
 
-    <!-- CERTIFICATIONS PAGE -->
-    <article class="card" data-page="certifications">
-      <header><h2 class="article-title">Certifications</h2></header>
-      <ul class="muted">
-        <li>AWS Cloud Practitioner (SimuLearn)</li>
-        <li>Azure Cloud Adoption Framework</li>
-        <li>GCP Fundamentals</li>
-        <li>ITIL 4 Foundation</li>
-        <li>ServiceNow System Administrator</li>
-        <li>Artificial Intelligence & Generative AI – IBM, Microsoft, LinkedIn</li>
-      </ul>
-    </article>
-
-    <!-- CONTACT PAGE -->
-    <article class="card" data-page="contact">
-      <header><h2 class="article-title">Contact</h2></header>
-
-      <ul class="contacts-list" style="margin-top:10px">
-        <li class="contact-item">
-          <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
-          <div class="contact-info">
-            <p class="contact-title">Email</p>
-            <a class="contact-link" href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a>
-          </div>
-        </li>
-
-        <li class="contact-item">
-          <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
-          <div class="contact-info">
-            <p class="contact-title">Phone</p>
-            <a class="contact-link" href="tel:+917645959259">+91 7645959259</a>
-          </div>
-        </li>
-
-        <li class="contact-item">
-          <div class="icon-box"><ion-icon name="logo-linkedin"></ion-icon></div>
-          <div class="contact-info">
-            <p class="contact-title">LinkedIn</p>
-            <a class="contact-link" href="https://www.linkedin.com/in/rahul3333" target="_blank" rel="noopener">rahul3333</a>
-          </div>
-        </li>
-
-        <li class="contact-item">
-          <div class="icon-box"><ion-icon name="logo-github"></ion-icon></div>
-          <div class="contact-info">
-            <p class="contact-title">GitHub</p>
-            <a class="contact-link" href="https://github.com/rahul6469" target="_blank" rel="noopener">rahul6469</a>
-          </div>
-        </li>
-      </ul>
-    </article>
-
+    </div>
   </div>
 </main>
 
-<script>
-  /* Sidebar contacts toggle (Rahul-like) */
-  const sidebarBtn = document.querySelector("[data-sidebar-btn]");
-  const sidebarMore = document.querySelector("[data-sidebar-more]");
-  if (sidebarBtn && sidebarMore) {
-    sidebarBtn.addEventListener("click", () => {
-      sidebarMore.classList.toggle("active");
-    });
-  }
-
-  /* Active-nav highlight + page switching (Rahul-like) */
-  const navLinks = document.querySelectorAll("[data-nav-link]");
-  const pages = document.querySelectorAll("[data-page]");
-
-  function setActivePage(pageName) {
-    // pages
-    pages.forEach(p => p.classList.toggle("active", p.getAttribute("data-page") === pageName));
-    // nav buttons
-    navLinks.forEach(b => b.classList.toggle("active", b.getAttribute("data-target") === pageName));
-    // hash (nice UX)
-    history.replaceState(null, "", `#${pageName}`);
-  }
-
-  navLinks.forEach(btn => {
-    btn.addEventListener("click", () => {
-      setActivePage(btn.getAttribute("data-target"));
-    });
-  });
-
-  // Load initial from hash
-  const initial = (location.hash || "#about").replace("#", "");
-  const valid = ["about","resume","projects","certifications","contact"].includes(initial) ? initial : "about";
-  setActivePage(valid);
-
-  // Theme toggle (kept)
-  const root = document.documentElement;
-  const themeIcon = document.getElementById("themeIcon");
-  const savedTheme = localStorage.getItem("theme") || "dark";
-  root.setAttribute("data-theme", savedTheme);
-  themeIcon.textContent = savedTheme === "dark" ? "🌙" : "☀️";
-
-  document.getElementById("themeToggle").addEventListener("click", () => {
-    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    root.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-    themeIcon.textContent = next === "dark" ? "🌙" : "☀️";
-  });
-
-  /* Projects (Rahul-style cards, concise) */
-  const projects = {
-    "Gold-Prediction-Model":["ML regression for gold price prediction","Python • ML • Jupyter"],
-    "House-Price-Prediction-Model":["House price estimation using regression","Python • Regression"],
-    "Sales-Prediction":["Sales forecasting using supervised ML","Python • Analytics"],
-    "IRIS-Flower-Classification":["Iris dataset ML classification","Python • Classification"],
-    "Personality-Prediction-Using-opencv-":["Computer vision using OpenCV","Python • OpenCV"],
-    "Virtual-assistance-healthcare-chatbot":["Healthcare chatbot automation","Python • Chatbot"],
-    "Computer-Aided-Detection-of-Melanoma-skin-cancer-based-on-Lesion-images-using-Machine-Learning":
-      ["Melanoma detection using ML","Python • Medical ML"],
-    "Cognitive-Resurgence-Machine-Learning-Approaches-to-Drug-Repurposing-in-Alzheimer-s-":
-      ["Drug repurposing ML research","Python • Research"]
-  };
-
-  fetch("https://api.github.com/users/rahul6469/repos?per_page=100")
-    .then(r=>r.json())
-    .then(repos=>{
-      const g=document.getElementById("projectsGrid");
-      if (!g) return;
-      g.innerHTML = "";
-      repos.forEach(r=>{
-        if(!projects[r.name])return;
-        const c=document.createElement("a");
-        c.className="project-card";
-        c.href=r.html_url;
-        c.target="_blank";
-        c.rel="noopener";
-        c.innerHTML = `
-          <div>
-            <h3 class="p-title">${r.name}</h3>
-            <p class="p-desc">${projects[r.name][0]}</p>
-          </div>
-          <p class="p-tech"><span class="pill">Tech</span>${projects[r.name][1]}</p>
-        `;
-        g.appendChild(c);
-      });
-    });
-</script>
-
+<script src="./index.js"></script>
 </body>
 </html>
