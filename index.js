@@ -223,7 +223,7 @@
           );
         });
     });
-  })
+  });
 
     // initial underline/height on first paint
     requestAnimationFrame(() => {
