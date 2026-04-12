@@ -1,3 +1,12 @@
+/* ===== ROOT VARIABLES (REQUIRED) ===== */
+:root {
+  --accent: #00c6ff;
+  --durFast: 220ms;
+  --dur: 520ms;
+  --easeOut: cubic-bezier(.22, 1, .36, 1);
+}
+
+/* ===== BASE STYLES ===== */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -15,32 +24,120 @@ header {
 header img {
   width: 150px;
   border-radius: 50%;
+  transition: transform var(--durFast) var(--easeOut);
 }
 
+header img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== HEADER LINKS ===== */
 .links a {
   margin: 10px;
-  color: #00c6ff;
+  color: var(--accent);
   text-decoration: none;
+  position: relative;
 }
 
+/* underline glide */
+.links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width var(--durFast) var(--easeOut);
+}
+
+.links a:hover::after {
+  width: 100%;
+}
+
+/* ===== SECTIONS ===== */
 section {
   padding: 40px;
   background: white;
   margin: 20px;
   border-radius: 8px;
+  transition:
+    transform var(--durFast) var(--easeOut),
+    box-shadow var(--durFast) var(--easeOut);
 }
 
+section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+}
+
+/* ===== SKILLS TAGS ===== */
 .skills li {
   display: inline-block;
   margin: 8px;
-  padding: 8px 12px;
+  padding: 8px 14px;
   background: #e0e0e0;
   border-radius: 20px;
+  transition:
+    transform var(--durFast) var(--easeOut),
+    background var(--durFast) var(--easeOut);
 }
 
+.skills li:hover {
+  background: #d4f3ff;
+  transform: translateY(-2px);
+}
+
+/* ===== FOOTER ===== */
 footer {
   text-align: center;
   padding: 20px;
   background: #111;
   color: white;
+}
+
+/* ===== REVEAL ANIMATIONS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--dur) var(--easeOut),
+    transform var(--dur) var(--easeOut);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== LINK MICRO‑INTERACTION ===== */
+a.inline-link {
+  position: relative;
+}
+
+a.inline-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--durFast) var(--easeOut);
+}
+
+a.inline-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
 }
