@@ -348,3 +348,66 @@ ion-icon{ font-size:18px; }
 @media (prefers-reduced-motion: reduce){
   *{ transition:none !important; }
 }
+/* ================= Theme-Consistent Text Fix ================= */
+
+/* Page titles (About me, Resume, Certifications, Contact) */
+.article-title,
+.page h2,
+.page h3 {
+  color: var(--text);
+}
+
+/* Body text inside pages */
+.page p,
+.page li,
+.page span,
+.page div {
+  color: var(--muted);
+}
+
+/* Strong / emphasized text */
+.page strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Lists (Certifications, Experience bullets, Skills text) */
+.page ul {
+  padding-left: 18px;
+}
+
+.page ul li {
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+/* Certifications specific fix */
+[data-page="certifications"] li {
+  color: var(--muted);
+}
+
+/* About section text */
+.about-text p {
+  color: var(--muted);
+}
+
+/* Resume section headings */
+.resume-section h3 {
+  color: var(--text);
+}
+
+.resume-section h3 span {
+  color: var(--muted);
+}
+
+/* Skills pills text fix */
+.skills-pills li {
+  color: var(--text);
+}
+
+/* Prevent blue body text in light mode */
+[data-theme="light"] .p-desc,
+[data-theme="light"] .page li,
+[data-theme="light"] .about-text p {
+  color: var(--muted);
+}
