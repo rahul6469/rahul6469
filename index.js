@@ -1,5 +1,5 @@
 /* ===========================
-   Tanvi-aligned interactions
+   Rahul-aligned interactions
    (Robust init + underline + transitions + sidebar)
    =========================== */
 
@@ -136,7 +136,7 @@
     });
   }
 
-  // ---------- Projects (Tanvi-style cards) ----------
+  // ---------- Projects (Rahul-style cards) ----------
   function initProjects() {
     const grid = $("#projectsGrid");
     if (!grid) return;
