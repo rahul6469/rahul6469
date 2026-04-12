@@ -411,3 +411,57 @@ ion-icon{ font-size:18px; }
 [data-theme="light"] .about-text p {
   color: var(--muted);
 }
+/* ================= Theme Consistency Fix ================= */
+
+/* Headings */
+.article-title,
+.page h2,
+.page h3 {
+  color: var(--text);
+}
+
+/* Body text */
+.page p,
+.page li,
+.page span {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Strong text */
+.page strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Lists spacing + readability */
+.page ul {
+  padding-left: 18px;
+}
+.page ul li {
+  margin-bottom: 6px;
+}
+
+/* About section */
+.about-text p {
+  color: var(--muted);
+}
+
+/* Certifications section */
+[data-page="certifications"] li {
+  color: var(--muted);
+}
+
+/* Resume sub sections */
+.resume-section h3 {
+  color: var(--text);
+}
+.resume-section h3 span {
+  color: var(--muted);
+}
+
+/* Light theme contrast protection */
+[data-theme="light"] .page p,
+[data-theme="light"] .page li {
+  color: var(--muted);
+}
