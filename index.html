@@ -274,5 +274,29 @@
       });
     });
 </script>
+<script>
+/* ===== Tanvi‑style section toggle ===== */
+const sections = document.querySelectorAll('.page-section');
+const navLinks = document.querySelectorAll('.links a');
+
+function showSection(sectionId) {
+  sections.forEach(section => {
+    section.classList.toggle('active', section.id === sectionId);
+  });
+}
+
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const id = link.getAttribute('href').substring(1);
+    history.pushState(null, '', `#${id}`);
+    showSection(id);
+  });
+});
+
+/* Load correct section on refresh */
+const current = location.hash ? location.hash.substring(1) : 'about';
+showSection(current);
+</script>
 </body>
 </html>
