@@ -3,444 +3,214 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="Rahul Kumar" />
-  <meta name="robots" content="index, follow" />
 
-  <title>Rahul Kumar | System Engineer (L2 Production Support)</title>
-  <link rel="stylesheet" href="index.css" />
+  <title>Rahul Kumar | Systems Engineer</title>
+  index.css
 
   <meta name="description"
-    content="Rahul Kumar – Systems Engineer at Publicis Sapient specializing in DTCC regulatory reporting, L2 production support, incident management, multi-cloud operations, monitoring, SQL troubleshooting, and automation." />
+    content="Rahul Kumar – Systems Engineer at Publicis Sapient specializing in DTCC regulatory reporting, L2 production support, incident management, cloud operations, monitoring, and data analytics." />
 
-  <!-- OpenGraph -->
+  <!-- Social Preview -->
   <meta property="og:title" content="Rahul Kumar | Systems Engineer Portfolio" />
-  <meta property="og:description" content="DTCC • ReportHub • L2 Production Support • Incident Management • SQL/ADX • Automation" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://rahul6469.github.io/rahul6469/" />
+  <meta property="og:description" content="DTCC • ReportHub • L2 Production Support • Cloud & Data Analytics" />
   <meta property="og:image" content="https://rahul6469.github.io/rahul6469/assets/avatar.png" />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Rahul Kumar | Systems Engineer" />
-  <meta name="twitter:description" content="Systems Engineer | DTCC | L2 Production Support | Cloud Ops | Data Analytics" />
-  <meta name="twitter:image" content="https://rahul6469.github.io/rahul6469/assets/avatar.png" />
 
+  <!-- Minimal fallback styling -->
   <style>
-    /* Small safety styles (works even if your CSS misses some classes) */
-    .muted{opacity:.82}
-    .section-gap{margin-top:18px}
-    .rankpill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);font-size:12px;margin-left:8px}
-    .skills-inline{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .skills-inline .chip{display:inline-block;padding:7px 10px;border-radius:999px;border:1px solid rgba(56,189,248,.18);background:rgba(56,189,248,.10);font-size:12px}
-    .proj-bullets{margin:10px 0 0 18px;line-height:1.6}
-    .proj-meta{margin-top:8px;font-size:12px;opacity:.85}
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:12px}
-    .project-card{display:block;padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,.14);text-decoration:none;color:inherit;background:rgba(255,255,255,.04);transition:transform .2s ease,background .2s ease}
-    .project-card:hover{transform:translateY(-3px);background:rgba(255,255,255,.07)}
-    .project-card h3{margin:0 0 6px;font-size:16px}
-    .project-card p{margin:0;color:rgba(255,255,255,.78);line-height:1.65}
-    .project-card .small{font-size:12px;color:rgba(255,255,255,.7)}
-    .resume-bullets{margin:10px 0 0 18px;line-height:1.7}
-    .topbar{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(56,189,248,.18);position:sticky;top:0;background:rgba(10,18,34,.55);backdrop-filter:blur(10px);z-index:50}
-    .brand{display:flex;align-items:center;gap:10px}
-    .brand-dot{width:10px;height:10px;border-radius:50%;background:#38bdf8;box-shadow:0 0 0 6px rgba(56,189,248,.12)}
-    .layout{max-width:1180px;margin:0 auto;padding:18px 16px 60px;display:grid;grid-template-columns:320px 1fr;gap:16px}
-    @media (max-width:980px){.layout{grid-template-columns:1fr}}
-    .sidebar{border:1px solid rgba(56,189,248,.18);border-radius:14px;padding:16px;background:rgba(255,255,255,.03)}
-    .profile{text-align:center}
-    .avatar{width:132px;height:132px;border-radius:50%;object-fit:cover;border:3px solid rgba(56,189,248,.35)}
-    .nav{display:grid;gap:6px;margin-top:14px}
-    .nav a{text-decoration:none;color:inherit;padding:10px 12px;border-radius:12px}
-    .nav a:hover{background:rgba(255,255,255,.06)}
-    .content{display:grid;gap:16px}
-    .card{border:1px solid rgba(56,189,248,.18);border-radius:14px;padding:18px;background:rgba(255,255,255,.03)}
-    .contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
-    @media (max-width:980px){.contact-grid{grid-template-columns:1fr}}
-    .contact-item{padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.14);text-decoration:none;color:inherit;background:rgba(255,255,255,.04)}
+    .theme-btn{width:42px;height:42px;border-radius:12px;border:1px solid rgba(56,189,248,.25);
+      background:rgba(255,255,255,.06);cursor:pointer}
+    .theme-btn:hover{background:rgba(255,255,255,.1)}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+    .project-card{padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,.15);
+      background:rgba(255,255,255,.04);text-decoration:none;color:inherit}
+    .project-card h3{margin:0 0 6px}
+    .project-card p{margin:0;line-height:1.6;opacity:.85}
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .skill{padding:6px 10px;border-radius:999px;font-size:12px;
+      background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.2)}
+    .muted{opacity:.85}
   </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header class="topbar">
   <div class="brand">
     <span class="brand-dot"></span>
     <span class="brand-text">Rahul Kumar</span>
   </div>
-  <div class="topbar-actions">
-    <span class="muted">Systems Engineer • DTCC / ReportHub • L2 Support</span>
-  </div>
+
+  <!-- THEME TOGGLE -->
+  <button id="themeToggle" class="theme-btn" title="Toggle dark/light mode">
+    <span id="themeIcon">🌙</span>
+  </button>
 </header>
 
 <main class="layout">
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="profile">
-      <img class="avatar" src="assets/avatar.png" alt="Rahul Kumar" />
-      <h1 class="name" style="margin:12px 0 2px;">Rahul Kumar</h1>
-      <p class="muted" style="margin:0;">Systems Engineer • Publicis Sapient</p>
-    </div>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="profile">
+    assets/avatar.png
+    <h1>Rahul Kumar</h1>
+    <p class="muted">Systems Engineer • Publicis Sapient</p>
+  </div>
 
-    <div class="section-gap">
-      <p class="muted" style="margin:8px 0;">📍 Bengaluru, Karnataka</p>
-      <p class="muted" style="margin:8px 0;">📧 <a href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a></p>
-      <p class="muted" style="margin:8px 0;">📞 <a href="tel:+917645959259">+91 7645959259</a></p>
-    </div>
+  <p>📍 Bengaluru, Karnataka</p>
+  <p>📧 <a href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a></p>
+  <p>📞 +91 7645959259</p>
 
-    <div class="section-gap">
-      <a id="resumeDownload" class="contact-item" href="assets/resume.pdf" download="Rahul_Kumar_Resume.pdf">⬇️ Download Resume (PDF)</a>
-      <div style="height:10px;"></div>
-      <a class="contact-item" href="https://www.linkedin.com/in/rahul3333" target="_blank" rel="noopener">🔗 LinkedIn</a>
-      <div style="height:10px;"></div>
-      <a class="contact-item" href="https://github.com/rahul6469" target="_blank" rel="noopener">💻 GitHub</a>
-    </div>
+  assets/resume.pdf⬇️ Download Resume (PDF)</a>
 
-    <nav class="nav" aria-label="Primary">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects (Ranked)</a>
-      <a href="#resume-bullets">Resume Bullets (Projects)</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </aside>
+  <nav class="nav">
+    #aboutAbout</a>
+    #experienceExperience</a>
+    #projectsProjects</a>
+    #certificationsCertifications</a>
+    #educationEducation</a>
+    #contactContact</a>
+  </nav>
+</aside>
 
-  <!-- CONTENT -->
-  <section class="content">
+<!-- CONTENT -->
+<section class="content">
 
-    <!-- ABOUT (resume-grounded) -->
-    <section id="about" class="card">
-      <h2 style="margin:0 0 10px;color:#38bdf8;">About Me</h2>
-      <p class="muted" style="margin:0;line-height:1.75;">
-        Results-driven <strong>Systems Engineer</strong> with hands-on experience in <strong>Managed Services Operations (MSO–NOC)</strong> and the <strong>DTCC</strong> project, specializing in trade workflow management, data reconciliation, and operational analytics. Skilled in ensuring 24×7 reliability, incident/problem management, and multi-cloud operations (Azure, AWS, GCP), using tools like ServiceNow, Jira, Zoho, and Grafana for monitoring and SLA-based delivery.
-      </p>
-      <p class="muted" style="margin:10px 0 0;line-height:1.75;">
-        Strong command over <strong>SQL</strong>, <strong>Linux</strong>, and Azure data platforms (ADX/Cosmos DB), with a focus on accuracy, stability, and fast RCA in production environments.
-      </p>
+<!-- ABOUT -->
+<section id="about" class="card">
+  <h2>About Me</h2>
+  <p class="muted">
+    Systems Engineer with hands‑on experience in Managed Services Operations (MSO–NOC) and DTCC
+    regulatory reporting. Strong background in L2 production support, incident management,
+    monitoring, and multi‑cloud operations (Azure, AWS, GCP).
+  </p>
+</section>
 
-      <div class="skills-inline">
-        <span class="chip">L2 Production Support</span>
-        <span class="chip">Incident Management (P1–P3)</span>
-        <span class="chip">DTCC / ReportHub</span>
-        <span class="chip">SQL • Linux</span>
-        <span class="chip">Azure ADX • Cosmos DB</span>
-        <span class="chip">Grafana • ServiceNow • Jira</span>
-        <span class="chip">Automation (Python/SQL)</span>
-        <span class="chip">Azure • AWS • GCP</span>
-      </div>
-    </section>
+<!-- EXPERIENCE -->
+<section id="experience" class="card">
+  <h2>Experience</h2>
 
-    <!-- EXPERIENCE (full descriptions) -->
-    <section id="experience" class="card">
-      <h2 style="margin:0 0 10px;color:#38bdf8;">Experience</h2>
+  <h3>System Engineer — Publicis Sapient</h3>
+  <p class="muted">Jan 2025 – Present</p>
+  <ul>
+    <li>L2 production support for DTCC ReportHub workflows.</li>
+    <li>P1–P3 incident triage, RCA, and SLA adherence.</li>
+    <li>SQL, ADX, and Cosmos DB investigations.</li>
+    <li>Monitoring and alerting using Grafana.</li>
+  </ul>
 
-      <h3 style="margin:0;">System Engineer — Publicis Sapient</h3>
-      <div class="proj-meta">Jan 2025 – Present</div>
-      <ul class="resume-bullets">
-        <li>Managed 24×7 production support and NOC operations across Azure, AWS, and GCP, ensuring high availability and operational resilience.</li>
-        <li>Led P1–P3 incident triage and RCA using ServiceNow/Jira; improved stability by identifying recurring patterns and implementing preventive fixes.</li>
-        <li>Supported DTCC regulatory reporting workflows (ReportHub/CMRS) and trade reconciliation to ensure data accuracy and compliance readiness.</li>
-        <li>Performed large-scale analysis using SQL, Cosmos DB and ADX to detect discrepancies and improve reporting efficiency.</li>
-        <li>Used Grafana and monitoring telemetry to optimize alerting and improve incident response.</li>
-      </ul>
+  <h3>Trainee System Engineer — Publicis Sapient</h3>
+  <p class="muted">Jul 2024 – Dec 2024</p>
+  <ul>
+    <li>Supported DTCC transaction reporting workflows.</li>
+    <li>Assisted with trade monitoring and reconciliation.</li>
+  </ul>
 
-      <h3 style="margin:18px 0 0;">Trainee System Engineer — Publicis Sapient</h3>
-      <div class="proj-meta">Jul 2024 – Dec 2024</div>
-      <ul class="resume-bullets">
-        <li>Supported transaction reporting, clearing, and settlement services at DTCC.</li>
-        <li>Assisted in trade monitoring and operational oversight using enterprise tooling and reporting workflows.</li>
-        <li>Supported issue analysis and basic reconciliation checks to improve processing consistency.</li>
-      </ul>
+  <h3>Intern Engineer — Publicis Sapient</h3>
+  <p class="muted">Jan 2024 – Jul 2024</p>
+  <ul>
+    <li>Service monitoring using ServiceNow, Jira, Zoho, Grafana.</li>
+  </ul>
+</section>
 
-      <h3 style="margin:18px 0 0;">Intern Engineer — Publicis Sapient</h3>
-      <div class="proj-meta">Jan 2024 – Jul 2024</div>
-      <ul class="resume-bullets">
-        <li>Contributed to reliability by monitoring services and dashboards; supported day-to-day operational tasks in production environments.</li>
-        <li>Worked with cross-functional teams and adapted quickly to new systems and incident workflows.</li>
-      </ul>
-    </section>
+<!-- PROJECTS -->
+<section id="projects" class="card">
+  <h2>Projects</h2>
+  <div id="projectsGrid" class="projects-grid"></div>
+</section>
 
-    <!-- PROJECTS (ranked + role-aligned description + key skills + resume bullets) -->
-    <section id="projects" class="card">
-      <h2 style="margin:0 0 6px;color:#38bdf8;">Projects (Ranked for Systems Engineer / L2 Role)</h2>
-      <p class="muted" style="margin:0;line-height:1.7;">
-        Below projects are ranked by relevance to an L2/Production Support profile (automation, troubleshooting mindset, data analytics, reliability).
-        All repositories are fetched directly from your GitHub and then enriched with role-aligned descriptions, skills, and resume bullets.
-      </p>
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="card">
+  <h2>Certifications</h2>
 
-      <div id="projectsGrid" class="projects-grid">
-        <div class="project-card">
-          <h3>Loading projects…</h3>
-          <p>Fetching repositories and applying role-aligned descriptions.</p>
-          <span class="small">GitHub API</span>
-        </div>
-      </div>
-    </section>
+  <h3>Cloud & Infrastructure</h3>
+  <ul>
+    <li>AWS SimuLearn: Cloud Practitioner</li>
+    <li>GCP Fundamentals</li>
+    <li>Azure Cloud Adoption Framework (CAF)</li>
+    <li>Oracle Cloud Infrastructure 2025 – AI Foundations</li>
+  </ul>
 
-    <!-- RESUME BULLETS (consolidated) -->
-    <section id="resume-bullets" class="card">
-      <h2 style="margin:0 0 10px;color:#38bdf8;">Resume Bullets (Project Highlights)</h2>
-      <p class="muted" style="margin:0;line-height:1.75;">
-        These are ready-to-copy bullets generated from your GitHub projects and aligned to your target role.
-      </p>
-      <div id="resumeBulletsWrap" class="section-gap"></div>
-    </section>
+  <h3>DevOps & Service Management</h3>
+  <ul>
+    <li>ITIL 4 Foundation – Service Management</li>
+    <li>ServiceNow System Administrator</li>
+    <li>Azure DevOps Bootcamp</li>
+  </ul>
 
-    <!-- EDUCATION (full history) -->
-    <section id="education" class="card">
-      <h2 style="margin:0 0 10px;color:#38bdf8;">Education</h2>
-      <p class="muted" style="margin:0;line-height:1.75;">
-        <strong>M.S. Ramaiah University of Applied Sciences</strong> — Bengaluru, Karnataka<br/>
-        B.Tech in Computer Science Engineering (AI & ML) • CGPA: 7.37
-      </p>
-      <p class="muted" style="margin:12px 0 0;line-height:1.75;">
-        <strong>Guru Gobind Singh Public School</strong> — Bokaro Steel City (Jharkhand)<br/>
-        Class 12 (CBSE – PCMIP) • 79%
-      </p>
-      <p class="muted" style="margin:12px 0 0;line-height:1.75;">
-        <strong>Guru Gobind Singh Public School</strong> — Bokaro Steel City (Jharkhand)<br/>
-        Class 10 (CBSE) • 85%
-      </p>
-    </section>
+  <h3>AI / Data / Security</h3>
+  <ul>
+    <li>Artificial Intelligence Fundamentals – IBM</li>
+    <li>Machine Learning Pipelines with Azure ML</li>
+    <li>Generative AI & Agentic AI (LinkedIn, Microsoft)</li>
+    <li>Cybersecurity Fundamentals</li>
+  </ul>
+</section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="card">
-      <h2 style="margin:0 0 10px;color:#38bdf8;">Contact</h2>
-      <div class="contact-grid">
-        <a class="contact-item" href="mailto:manishrahul3333@gmail.com">📧 manishrahul3333@gmail.com</a>
-        <a class="contact-item" href="tel:+917645959259">📞 +91 7645959259</a>
-        <a class="contact-item" href="https://www.linkedin.com/in/rahul3333" target="_blank" rel="noopener">🔗 LinkedIn</a>
-        <a class="contact-item" href="https://github.com/rahul6469" target="_blank" rel="noopener">💻 GitHub</a>
-      </div>
-      <p class="muted" style="margin:12px 0 0;">© <span id="year"></span> Rahul Kumar</p>
-    </section>
+<!-- EDUCATION -->
+<section id="education" class="card">
+  <h2>Education</h2>
+  <p><strong>M.S. Ramaiah University of Applied Sciences</strong><br>B.Tech CSE (AI & ML) • CGPA 7.37</p>
+  <p><strong>Guru Gobind Singh Public School</strong><br>Class 12 – 79% | Class 10 – 85%</p>
+</section>
 
-  </section>
+<!-- CONTACT -->
+<section id="contact" class="card">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/rahul3333" target="_blank">rahul3333</a></p>
+  <p>GitHub: <a href="https://github.com/rahul6469" target="_blank">rahul6469</a></p>
+</section>
+
+</section>
 </main>
 
+<!-- JS: THEME TOGGLE + PROJECT LOAD -->
 <script>
-  // year
-  document.getElementById("year").textContent = new Date().getFullYear();
+  // THEME TOGGLE
+  const root = document.documentElement;
+  const btn = document.getElementById("themeToggle");
+  const icon = document.getElementById("themeIcon");
 
-  // Role-aligned enrichment for ALL repos (rank + description + key skills + resume bullets)
-  // Ranking logic: lower rank number = higher importance.
-  const projectMeta = {
-    "rahul6469.github.io": {
-      rank: 1,
-      title: "Portfolio Website (GitHub Pages)",
-      desc: "Built a responsive, recruiter-friendly portfolio website to present production support experience, education, and projects—demonstrating strong documentation and communication skills required for L2 roles.",
-      skills: ["HTML", "CSS", "JavaScript", "GitHub Pages", "Responsive UI", "Documentation"],
-      bullets: [
-        "Designed and deployed a responsive portfolio on GitHub Pages to showcase experience and technical work.",
-        "Implemented structured sections (Experience/Projects/Education) improving readability for recruiters.",
-        "Maintained source control and iterative updates using Git workflows."
-      ]
-    },
-    "Virtual-assistance-healthcare-chatbot": {
-      rank: 2,
-      title: "Healthcare Virtual Assistant Chatbot",
-      desc: "Demonstrates automation mindset and troubleshooting logic—similar to building runbook-style assistants for operational support tasks.",
-      skills: ["Python", "Chatbot Logic", "Automation", "Debugging", "Problem Solving"],
-      bullets: [
-        "Built a Python-based chatbot to automate common query handling and responses.",
-        "Structured conversational flows and tested edge cases to improve response correctness.",
-        "Applied debugging practices and modular code design for maintainability."
-      ]
-    },
-    "CodeAlpha_FIBONACCI-GENERATOR": {
-      rank: 3,
-      title: "Fibonacci Generator",
-      desc: "Shows core programming fundamentals and algorithmic discipline—valuable for writing reliable automation scripts in production support.",
-      skills: ["Python", "Algorithms", "Control Flow", "Edge Case Handling"],
-      bullets: [
-        "Implemented Fibonacci sequence generation with clean control flow and validations.",
-        "Handled boundary conditions to ensure correct outputs across inputs.",
-        "Practiced readable coding conventions aligned to maintainable operations scripts."
-      ]
-    },
-    "Sales-Prediction": {
-      rank: 4,
-      title: "Sales Prediction (ML)",
-      desc: "Highlights data analysis and model evaluation skills—translatable to production incident investigations and data discrepancy analysis using SQL/ADX.",
-      skills: ["Python", "Data Analysis", "Jupyter", "Model Evaluation", "Feature Engineering"],
-      bullets: [
-        "Built predictive model pipeline including data preprocessing and evaluation.",
-        "Performed exploratory analysis to understand data behavior and quality issues.",
-        "Documented workflow to support reproducibility and troubleshooting."
-      ]
-    },
-    "House-Price-Prediction-Model": {
-      rank: 5,
-      title: "House Price Prediction (Regression)",
-      desc: "Demonstrates structured data preparation and validation discipline—useful for reconciliation-style work in reporting and support environments.",
-      skills: ["Python", "Regression", "EDA", "Data Cleaning", "Model Metrics"],
-      bullets: [
-        "Prepared and cleaned structured datasets, improving signal quality for modeling.",
-        "Trained and evaluated regression models using standard accuracy metrics.",
-        "Captured insights and assumptions to support repeatable analysis."
-      ]
-    },
-    "Gold-Prediction-Model": {
-      rank: 6,
-      title: "Gold Price Prediction (Regression)",
-      desc: "Shows strong analytical approach in preparing datasets and building predictive workflows—aligned to data reliability and investigation skills.",
-      skills: ["Python", "Regression", "Data Preparation", "Evaluation", "Jupyter"],
-      bullets: [
-        "Developed an end-to-end ML workflow from data preparation through evaluation.",
-        "Validated data consistency and handled missing/dirty values during preprocessing.",
-        "Produced clear outputs to communicate model behavior."
-      ]
-    },
-    "IRIS-Flower-Classification": {
-      rank: 7,
-      title: "Iris Classification (ML Fundamentals)",
-      desc: "Demonstrates ML fundamentals and accuracy validation—similar discipline applies to validating production data outputs and expected vs actual checks.",
-      skills: ["Python", "Classification", "Data Splitting", "Metrics", "Jupyter"],
-      bullets: [
-        "Implemented supervised classification workflow on Iris dataset.",
-        "Evaluated model performance using standard metrics.",
-        "Reinforced structured testing mindset applicable to production validations."
-      ]
-    },
-    "Personality-Prediction-Using-opencv-": {
-      rank: 8,
-      title: "Personality Prediction (OpenCV)",
-      desc: "Showcases computer vision processing and feature extraction—demonstrating troubleshooting across data pipelines and handling noisy inputs.",
-      skills: ["Python", "OpenCV", "Image Processing", "Feature Extraction", "ML"],
-      bullets: [
-        "Applied OpenCV preprocessing techniques for image feature extraction.",
-        "Experimented with ML-based inference on derived features.",
-        "Improved reliability by validating inputs and handling image edge cases."
-      ]
-    },
-    "Computer-Aided-Detection-of-Melanoma-skin-cancer-based-on-Lesion-images-using-Machine-Learning": {
-      rank: 9,
-      title: "Melanoma Detection (Medical Imaging ML)",
-      desc: "Research-focused ML project demonstrating disciplined experimentation, documentation, and data quality awareness—valuable in regulated and accuracy-critical environments.",
-      skills: ["Python", "ML", "Image Classification", "Data Quality", "Evaluation"],
-      bullets: [
-        "Developed image-based ML classification workflow for melanoma detection research.",
-        "Focused on dataset preparation and evaluation consistency.",
-        "Documented approach to support reproducibility and review."
-      ]
-    },
-    "Cognitive-Resurgence-Machine-Learning-Approaches-to-Drug-Repurposing-in-Alzheimer-s-": {
-      rank: 10,
-      title: "Drug Repurposing (Alzheimer’s) – ML Research",
-      desc: "Demonstrates large dataset handling, structured experimentation, and analytical reporting—transferable to operational analytics and troubleshooting.",
-      skills: ["Python", "Jupyter", "Data Science", "Feature Engineering", "Analysis"],
-      bullets: [
-        "Analyzed biomedical datasets and explored ML approaches for prediction.",
-        "Built repeatable notebook workflows with documented assumptions.",
-        "Demonstrated structured analysis suitable for operational reporting contexts."
-      ]
-    }
+  function setTheme(t){
+    root.setAttribute("data-theme", t);
+    localStorage.setItem("theme", t);
+    icon.textContent = t === "light" ? "☀️" : "🌙";
+  }
+  setTheme(localStorage.getItem("theme") || "dark");
+  btn.onclick = () => setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
+
+  // PROJECT DESCRIPTIONS
+  const projectMap={
+    "Gold-Prediction-Model":{d:"ML regression model for gold price prediction.",s:["Python","ML","Data Analysis"]},
+    "House-Price-Prediction-Model":{d:"Regression ML model for housing price estimation.",s:["Python","Regression"]},
+    "Sales-Prediction":{d:"Sales forecasting using supervised ML techniques.",s:["Python","ML"]},
+    "IRIS-Flower-Classification":{d:"ML classification using Iris dataset.",s:["Python","Classification"]},
+    "Virtual-assistance-healthcare-chatbot":{d:"Healthcare chatbot built in Python.",s:["Python","Automation"]},
+    "Personality-Prediction-Using-opencv-":{d:"OpenCV-based personality analysis.",s:["Python","OpenCV"]},
+    "Computer-Aided-Detection-of-Melanoma-skin-cancer-based-on-Lesion-images-using-Machine-Learning":
+      {d:"ML system for melanoma detection.",s:["Python","Medical ML"]},
+    "Cognitive-Resurgence-Machine-Learning-Approaches-to-Drug-Repurposing-in-Alzheimer-s-":
+      {d:"ML research for Alzheimer’s drug repurposing.",s:["Python","Research"]}
   };
 
-  // Helper: infer skills from language if repo not mapped
-  function inferSkills(repo) {
-    const base = [];
-    if (repo.language) base.push(repo.language);
-    base.push("Git", "Documentation");
-    if ((repo.name || "").toLowerCase().includes("notebook")) base.push("Jupyter");
-    if ((repo.name || "").toLowerCase().includes("chatbot")) base.push("Automation");
-    return base;
-  }
-
-  function defaultRoleAlignedDesc(repo) {
-    return "Repository showcasing applied development and analysis skills. Demonstrates structured implementation, documentation, and a troubleshooting mindset aligned to support and engineering roles.";
-  }
-
-  function bulletsFallback(repo) {
-    return [
-      "Implemented a structured solution with focus on correctness and readability.",
-      "Documented approach to support reproducibility and maintenance.",
-      "Applied debugging and validation practices to improve reliability."
-    ];
-  }
-
-  async function loadProjects() {
-    const grid = document.getElementById("projectsGrid");
-    const bulletsWrap = document.getElementById("resumeBulletsWrap");
-
-    try {
-      const res = await fetch("https://api.github.com/users/rahul6469/repos?per_page=100&sort=updated", {
-        headers: { "Accept": "application/vnd.github+json" }
+  fetch("https://api.github.com/users/rahul6469/repos?per_page=100")
+    .then(r=>r.json())
+    .then(repos=>{
+      const g=document.getElementById("projectsGrid");
+      repos.forEach(r=>{
+        const p=projectMap[r.name];
+        if(!p) return;
+        const c=document.createElement("a");
+        c.className="project-card";
+        c.href=r.html_url; c.target="_blank";
+        c.innerHTML=`<h3>${r.name}</h3><p>${p.d}</p>
+          <div class="skills">${p.s.map(x=>`<span class="skill">${x}</span>`).join("")}</div>`;
+        g.appendChild(c);
       });
-      const repos = await res.json();
-
-      const normalized = (Array.isArray(repos) ? repos : [])
-        .filter(r => r && r.name)
-        .map(r => {
-          const meta = projectMeta[r.name] || null;
-          const rank = meta ? meta.rank : 999;
-          return {
-            name: r.name,
-            html_url: r.html_url,
-            language: r.language || "—",
-            updated_at: r.updated_at,
-            stars: r.stargazers_count || 0,
-            title: meta?.title || r.name,
-            rank,
-            desc: meta?.desc || defaultRoleAlignedDesc(r),
-            skills: meta?.skills || inferSkills(r),
-            bullets: meta?.bullets || bulletsFallback(r)
-          };
-        })
-        .sort((a,b) => a.rank - b.rank || (b.stars - a.stars));
-
-      // Render project cards
-      grid.innerHTML = "";
-      normalized.forEach(p => {
-        const updated = p.updated_at ? new Date(p.updated_at).toLocaleDateString() : "";
-        const rankLabel = p.rank < 999 ? `Rank #${p.rank}` : "Other";
-
-        const card = document.createElement("a");
-        card.className = "project-card";
-        card.href = p.html_url;
-        card.target = "_blank";
-        card.rel = "noopener";
-
-        card.innerHTML = `
-          <h3>${p.title} <span class="rankpill">${rankLabel}</span></h3>
-          <p>${p.desc}</p>
-          <div class="skills-inline">
-            ${p.skills.map(s => `<span class="chip">${s}</span>`).join("")}
-          </div>
-          <ul class="proj-bullets">
-            ${p.bullets.map(b => `<li>${b}</li>`).join("")}
-          </ul>
-          <div class="proj-meta">Language: ${p.language} ${updated ? " • Updated: " + updated : ""}</div>
-        `;
-        grid.appendChild(card);
-      });
-
-      // Consolidated resume bullets (Top 5 ranked)
-      const top = normalized.filter(p => p.rank < 999).slice(0, 5);
-      bulletsWrap.innerHTML = top.map(p => `
-        <div class="card" style="margin-top:12px;">
-          <h3 style="margin:0 0 6px;">${p.title}</h3>
-          <div class="skills-inline">${p.skills.slice(0,6).map(s => `<span class="chip">${s}</span>`).join("")}</div>
-          <ul class="resume-bullets">
-            ${p.bullets.map(b => `<li>${b}</li>`).join("")}
-          </ul>
-        </div>
-      `).join("");
-
-    } catch (e) {
-      grid.innerHTML = `
-        <div class="project-card">
-          <h3>Projects failed to load</h3>
-          <p>GitHub API may be rate-limited or blocked. Please refresh or try again later.</p>
-          <span class="small">Fallback mode</span>
-        </div>
-      `;
-      bulletsWrap.innerHTML = `<p class="muted">Unable to generate consolidated bullets because GitHub projects couldn't be fetched.</p>`;
-    }
-  }
-
-  loadProjects();
+    });
 </script>
 
 </body>
