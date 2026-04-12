@@ -206,6 +206,25 @@
     initPages();
     initProjects();
 
+ // ✅ ADD RESUME SUB-TABS CODE HERE
+  document.querySelectorAll(".resume-tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      const target = tab.dataset.resumeTab;
+
+      document.querySelectorAll(".resume-tab")
+        .forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      document.querySelectorAll(".resume-section")
+        .forEach(sec => {
+          sec.classList.toggle(
+            "active",
+            sec.dataset.resumeSection === target
+          );
+        });
+    });
+  })
+
     // initial underline/height on first paint
     requestAnimationFrame(() => {
       syncPageStackHeight();
