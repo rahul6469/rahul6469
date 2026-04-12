@@ -1,5 +1,5 @@
 /* ===========================
-   Tanvi-aligned interactions
+   Rahul-aligned interactions
    =========================== */
 
 // Sidebar contacts toggle (smooth + chevron rotate)
@@ -86,7 +86,7 @@ if (themeToggle) {
   });
 }
 
-// Projects (Tanvi-style cards, concise)
+// Projects (Rahul-style cards, concise)
 const projectMeta = {
   "Gold-Prediction-Model": ["ML regression for gold price prediction", "Python • ML • Jupyter"],
   "House-Price-Prediction-Model": ["House price estimation using regression", "Python • Regression"],
