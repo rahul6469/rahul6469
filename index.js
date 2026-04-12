@@ -1,134 +1,143 @@
 /* ===========================
-   Rahul-aligned interactions
-   Fixes JS loading / init timing
+   Tanvi-aligned interactions
+   (Robust init + underline + transitions + sidebar)
    =========================== */
 
-(function () {
-  // ---- helpers ----
-  const $ = (sel) => document.querySelector(sel);
-  const $$ = (sel) => document.querySelectorAll(sel);
+(() => {
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-  function onReady(fn) {
-    // If DOM already parsed, run now; else wait for DOMContentLoaded
+  // Run when DOM is ready (works with/without defer)
+  const onReady = (fn) => {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", fn, { once: true });
     } else {
       fn();
     }
-  }
+  };
 
-  // ---- sidebar contacts toggle ----
-  function setupSidebar() {
+  // ---------- Sidebar: Show Contacts ----------
+  function initSidebar() {
     const sidebar = $("[data-sidebar]");
-    const sidebarBtn = $("[data-sidebar-btn]");
-    const sidebarMore = $("[data-sidebar-more]");
+    const btn = $("[data-sidebar-btn]");
+    const more = $("[data-sidebar-more]");
+    if (!sidebar || !btn || !more) return;
 
-    if (!sidebar || !sidebarBtn || !sidebarMore) return;
+    btn.setAttribute("aria-expanded", "false");
 
-    sidebarBtn.setAttribute("aria-expanded", "false");
-
-    sidebarBtn.addEventListener("click", () => {
-      const isOpen = sidebarMore.classList.toggle("active");
+    btn.addEventListener("click", () => {
+      const isOpen = more.classList.toggle("active");
       sidebar.classList.toggle("open", isOpen);
-      sidebarBtn.setAttribute("aria-expanded", String(isOpen));
+      btn.setAttribute("aria-expanded", String(isOpen));
     });
   }
 
-  // ---- page switching + transitions ----
-  function setupPages() {
+  // ---------- Navbar underline indicator ----------
+  function moveIndicatorToActive() {
+    const activeBtn = $(".navbar-link.active");
+    const indicator = $(".nav-indicator");
+    const list = $("#navbarList") || $(".navbar-list");
+    if (!activeBtn || !indicator || !list) return;
+
+    const listRect = list.getBoundingClientRect();
+    const btnRect = activeBtn.getBoundingClientRect();
+
+    // slide + resize underline
+    indicator.style.transform = `translateX(${btnRect.left - listRect.left}px)`;
+    indicator.style.width = `${btnRect.width}px`;
+    indicator.style.opacity = "1";
+  }
+
+  // ---------- Page stack height ----------
+  function syncPageStackHeight() {
+    const stack = $("#pageStack");
+    if (!stack) return;
+
+    const activePage = $(".page.active") || $("article[data-page].active");
+    if (!activePage) return;
+
+    stack.style.minHeight = `${activePage.offsetHeight}px`;
+  }
+
+  // ---------- Page switching ----------
+  function initPages() {
     const navButtons = $$("[data-nav-link]");
     const pages = $$("[data-page]");
-    const stack = $("#pageStack");
 
     if (!navButtons.length || !pages.length) return;
 
-    const validPages = Array.from(pages).map((p) => p.dataset.page);
+    const validPages = pages.map(p => p.dataset.page).filter(Boolean);
 
-    function syncPageStackHeight() {
-      if (!stack) return;
-      const activePage = $(".page.active") || $("article[data-page].active");
-      if (!activePage) return;
-      stack.style.minHeight = activePage.offsetHeight + "px";
-    }
+    function setActivePage(name) {
+      const pageName = validPages.includes(name) ? name : (validPages[0] || "about");
 
-    function moveIndicatorToActive() {
-      const activeBtn = $(".navbar-link.active");
-      const indicator = $(".nav-indicator");
-      const list = $("#navbarList") || $(".navbar-list");
+      // toggle pages
+      pages.forEach(p => p.classList.toggle("active", p.dataset.page === pageName));
 
-      if (!activeBtn || !indicator || !list) return;
+      // toggle navbar buttons
+      navButtons.forEach(b => b.classList.toggle("active", b.dataset.target === pageName));
 
-      const listRect = list.getBoundingClientRect();
-      const btnRect = activeBtn.getBoundingClientRect();
-
-      // Move & resize underline
-      indicator.style.transform = `translateX(${btnRect.left - listRect.left}px)`;
-      indicator.style.width = `${btnRect.width}px`;
-      indicator.style.opacity = "1";
-    }
-
-    function setActivePage(pageName) {
-      if (!validPages.includes(pageName)) pageName = validPages[0] || "about";
-
-      pages.forEach((p) => p.classList.toggle("active", p.dataset.page === pageName));
-      navButtons.forEach((b) => b.classList.toggle("active", b.dataset.target === pageName));
-
-      // Keep hash for deep-linking
+      // update hash (deep link)
       history.replaceState(null, "", `#${pageName}`);
 
-      // Next frame ensures classes applied before measuring/positioning
+      // after layout update
       requestAnimationFrame(() => {
         syncPageStackHeight();
         moveIndicatorToActive();
       });
     }
 
-    // Click handlers
-    navButtons.forEach((btn) => {
+    // click handlers
+    navButtons.forEach(btn => {
       btn.addEventListener("click", () => setActivePage(btn.dataset.target));
     });
 
-    // Initial page from URL hash
+    // load initial page from hash
     const initial = (location.hash || `#${validPages[0] || "about"}`).replace("#", "");
-    setActivePage(validPages.includes(initial) ? initial : (validPages[0] || "about"));
+    setActivePage(initial);
 
-    // Recompute on resize
+    // adjust on resize
     window.addEventListener("resize", () => {
       syncPageStackHeight();
       moveIndicatorToActive();
     });
 
-    // Also re-run after full load (fonts/icons can change button widths)
+    // adjust after full load (fonts/icons can change widths)
     window.addEventListener("load", () => {
       syncPageStackHeight();
       moveIndicatorToActive();
     });
   }
 
-  // ---- theme toggle ----
-  function setupTheme() {
+  // ---------- Theme toggle ----------
+  function initTheme() {
     const root = document.documentElement;
-    const themeIcon = $("#themeIcon");
-    const themeToggle = $("#themeToggle");
+    const toggle = $("#themeToggle");
+    const icon = $("#themeIcon");
+    if (!toggle) return;
 
-    if (!themeToggle) return;
-
-    function applyTheme(theme) {
-      root.setAttribute("data-theme", theme);
-      localStorage.setItem("theme", theme);
-      if (themeIcon) themeIcon.textContent = theme === "dark" ? "🌙" : "☀️";
-    }
+    const applyTheme = (t) => {
+      root.setAttribute("data-theme", t);
+      localStorage.setItem("theme", t);
+      if (icon) icon.textContent = t === "dark" ? "🌙" : "☀️";
+    };
 
     applyTheme(localStorage.getItem("theme") || "dark");
 
-    themeToggle.addEventListener("click", () => {
+    toggle.addEventListener("click", () => {
       const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
       applyTheme(next);
+
+      // theme change can affect sizes slightly
+      requestAnimationFrame(() => {
+        syncPageStackHeight();
+        moveIndicatorToActive();
+      });
     });
   }
 
-  // ---- projects rendering (Rahul-style cards) ----
-  function setupProjects() {
+  // ---------- Projects (Tanvi-style cards) ----------
+  function initProjects() {
     const grid = $("#projectsGrid");
     if (!grid) return;
 
@@ -146,11 +155,11 @@
     };
 
     fetch("https://api.github.com/users/rahul6469/repos?per_page=100")
-      .then((r) => r.json())
-      .then((repos) => {
+      .then(r => r.json())
+      .then(repos => {
         grid.innerHTML = "";
 
-        repos.forEach((repo) => {
+        repos.forEach(repo => {
           const meta = projectMeta[repo.name];
           if (!meta) return;
 
@@ -171,10 +180,11 @@
           grid.appendChild(card);
         });
 
-        // Update stack height after projects render (important for smooth transitions)
-        const stack = $("#pageStack");
-        const activePage = $(".page.active") || $("article[data-page].active");
-        if (stack && activePage) stack.style.minHeight = activePage.offsetHeight + "px";
+        // projects change height of page
+        requestAnimationFrame(() => {
+          syncPageStackHeight();
+          moveIndicatorToActive();
+        });
       })
       .catch(() => {
         grid.innerHTML = `
@@ -189,12 +199,17 @@
       });
   }
 
-  // ---- init (safe) ----
+  // ---------- Init all ----------
   onReady(() => {
-    setupSidebar();
-    setupTheme();
-    setupPages();
-    setupProjects();
-  });
+    initSidebar();
+    initTheme();
+    initPages();
+    initProjects();
 
+    // initial underline/height on first paint
+    requestAnimationFrame(() => {
+      syncPageStackHeight();
+      moveIndicatorToActive();
+    });
+  });
 })();
