@@ -360,8 +360,7 @@ ion-icon{ font-size:18px; }
 /* Body text inside pages */
 .page p,
 .page li,
-.page span,
-.page div {
+.page span, {
   color: var(--muted);
 }
 
