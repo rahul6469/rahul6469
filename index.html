@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rahul Kumar | Systems Engineer</title>
 
-  <meta name="description" content="Rahul Kumar – Systems Engineer with experience in DevOps, SRE mindset, L2 Production Support, DTCC regulatory reporting, and cloud operations." />
-
+  <!-- CSS -->
   <link rel="stylesheet" href="index.css" />
 
   <!-- Ionicons -->
@@ -14,13 +13,12 @@
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
-<body>
+<body class="no-js">
 <main class="app">
 
-  <!-- ================= Sidebar ================= -->
+  <!-- Sidebar -->
   <aside class="sidebar" data-sidebar>
     <div class="sidebar-info">
-
       <figure class="avatar-box">
         <img src="assets/avatar.png" alt="Rahul Kumar" />
       </figure>
@@ -28,7 +26,7 @@
       <h1 class="name">Rahul Kumar</h1>
       <p class="title">Systems Engineer</p>
 
-      <button class="info_more-btn" data-sidebar-btn type="button">
+      <button class="info_more-btn" data-sidebar-btn>
         <span>Show Contacts</span>
         <ion-icon class="chev" name="chevron-down-outline"></ion-icon>
       </button>
@@ -42,91 +40,40 @@
           <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
           <div>
             <p class="contact-title">Email</p>
-            <a class="contact-link" href="mailto:manishrahul3333@gmail.com">
-              manishrahul3333@gmail.com
-            </a>
+            <a href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a>
           </div>
-        </li>
-
-        <li class="contact-item">
-          <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
-          <div>
-            <p class="contact-title">Phone</p>
-            <a class="contact-link" href="tel:+917645959259">
-              +91 76459 59259
-            </a>
-          </div>
-        </li>
-
-        <li class="contact-item">
-          <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
-          <div>
-            <p class="contact-title">Location</p>
-            <address>Bengaluru, India</address>
-          </div>
-        </li>
-      </ul>
-
-      <a class="resume-btn" href="assets/resume.pdf" download>
-        <ion-icon name="download-outline"></ion-icon>
-        Download Resume
-      </a>
-
-      <ul class="social-list">
-        <li>
-          <a href="https://www.linkedin.com/in/rahul3333" target="_blank">
-            <ion-icon name="logo-linkedin"></ion-icon>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/rahul6469" target="_blank">
-            <ion-icon name="logo-github"></ion-icon>
-          </a>
         </li>
       </ul>
     </div>
   </aside>
 
-  <!-- ================= Main Content ================= -->
+  <!-- Main -->
   <div class="main-content">
 
     <!-- Navbar -->
     <nav class="navbar">
-      <ul class="navbar-list" id="navbarList">
+      <ul class="navbar-list">
         <li><button class="navbar-link active" data-nav-link data-target="about">About</button></li>
         <li><button class="navbar-link" data-nav-link data-target="resume">Resume</button></li>
         <li><button class="navbar-link" data-nav-link data-target="projects">Projects</button></li>
         <li><button class="navbar-link" data-nav-link data-target="certifications">Certifications</button></li>
         <li><button class="navbar-link" data-nav-link data-target="contact">Contact</button></li>
-        <li class="navbar-spacer"></li>
-        <li>
-          <button id="themeToggle" class="theme-toggle">
-            <span id="themeIcon">🌙</span>
-          </button>
-        </li>
         <li class="nav-indicator"></li>
       </ul>
     </nav>
 
-    <div class="page-stack" id="pageStack">
+    <div class="page-stack">
 
-      <!-- ================= About ================= -->
+      <!-- About -->
       <article class="page card active" data-page="about">
         <h2 class="article-title">About me</h2>
-
         <p>
-          Results‑driven Systems Engineer working in L2 Production Support and
-          Managed Services Operations, supporting highly available, business‑critical
-          financial systems in fast‑paced environments.
+          Systems Engineer with hands‑on experience in L2 Production Support and
+          Managed Services Operations. I focus on reliability, monitoring,
+          incident management, and operational excellence.
         </p>
 
-        <p>
-          I bring a strong reliability mindset, combining hands‑on incident
-          management, monitoring, data analysis, and automation to ensure
-          system stability, compliance, and continuous improvement.
-        </p>
-
-        <!-- ✅ WHAT I'M DOING (Rahul-style) -->
+        <!-- ✅ WHAT I'M DOING -->
         <section class="what-im-doing">
           <h3 class="article-subtitle">What I’m Doing</h3>
 
@@ -138,8 +85,8 @@
               </div>
               <h4>Production Support & Reliability</h4>
               <p>
-                Handling P1–P3 incidents in production systems, ensuring high
-                availability, quick restoration, and strict SLA/SLO adherence.
+                Managing P1–P3 incidents, ensuring uptime, stability,
+                and SLA/SLO adherence in critical production environments.
               </p>
             </div>
 
@@ -147,10 +94,10 @@
               <div class="doing-icon">
                 <ion-icon name="cloud-outline"></ion-icon>
               </div>
-              <h4>Cloud & Platform Operations</h4>
+              <h4>Cloud Operations</h4>
               <p>
-                Operating and supporting services across Azure, AWS, and GCP
-                with a focus on resilience, scalability, and operational excellence.
+                Supporting services across Azure, AWS, and GCP with a
+                reliability‑first, DevOps mindset.
               </p>
             </div>
 
@@ -160,8 +107,8 @@
               </div>
               <h4>Monitoring & Observability</h4>
               <p>
-                Designing and maintaining dashboards and alerts using Grafana
-                to proactively detect system issues and reduce MTTR.
+                Creating Grafana dashboards and alerts to detect issues early
+                and reduce MTTR.
               </p>
             </div>
 
@@ -169,10 +116,10 @@
               <div class="doing-icon">
                 <ion-icon name="code-slash-outline"></ion-icon>
               </div>
-              <h4>Automation & Root Cause Analysis</h4>
+              <h4>Automation & RCA</h4>
               <p>
-                Performing deep RCA using SQL, ADX, and Cosmos DB, and
-                automating repetitive operational tasks for efficiency.
+                Performing root cause analysis using SQL, ADX,
+                Cosmos DB, and automating repetitive ops tasks.
               </p>
             </div>
 
@@ -180,126 +127,26 @@
         </section>
       </article>
 
-      <!-- ================= Resume ================= -->
       <article class="page card" data-page="resume">
         <h2 class="article-title">Resume</h2>
-        <!-- existing resume content -->
-        <!-- Resume sub-navigation -->
-  <div class="resume-tabs">
-    <button class="resume-tab active" data-resume-tab="experience">Experience</button>
-    <button class="resume-tab" data-resume-tab="skills">Skills</button>
-    <button class="resume-tab" data-resume-tab="education">Education</button>
-  </div>
-
-  <!-- EXPERIENCE -->
-  <div class="resume-section active" data-resume-section="experience">
-
-    <h3>System Engineer — Publicis Sapient <span>(Jan 2025 – Present)</span></h3>
-    <ul>
-      <li>L2 production support for DTCC ReportHub and regulatory reporting workflows.</li>
-      <li>P1–P3 incident triage, escalation, RCA, and resolution with SLA adherence.</li>
-      <li>Investigated trade rejections, lifecycle mismatches, and validation failures.</li>
-      <li>Deep‑dive analysis using SQL, ADX, Cosmos DB; monitoring via Grafana.</li>
-    </ul>
-
-    <h3>Trainee System Engineer — Publicis Sapient <span>(Jul 2024 – Dec 2024)</span></h3>
-    <ul>
-      <li>Supported transaction reporting workflows and operational checks.</li>
-      <li>Assisted in trade monitoring and reconciliation.</li>
-    </ul>
-
-    <h3>Intern Engineer — Publicis Sapient <span>(Jan 2024 – Jul 2024)</span></h3>
-    <ul>
-      <li>Monitoring using ServiceNow/Jira/Zoho/Grafana; supported daily operations.</li>
-      <li>Incident tracking and documentation support.</li>
-    </ul>
-
-  </div>
-        <!-- SKILLS -->
-  <div class="resume-section" data-resume-section="skills">
-    <ul class="skills-pills">
-      <li>SQL</li>
-      <li>Linux</li>
-      <li>DTCC Reporting</li>
-      <li>L2 Production Support</li>
-      <li>Azure (ADX, Cosmos DB)</li>
-      <li>Grafana</li>
-      <li>ServiceNow</li>
-      <li>Python</li>
-    </ul>
-  </div>
-
-  <!-- EDUCATION -->
-  <div class="resume-section" data-resume-section="education">
-    <h3>M.S. Ramaiah University of Applied Sciences</h3>
-    <p>B.Tech — CSE (AI & ML) • CGPA: 7.37</p>
-
-    <h3>Guru Gobind Singh Public School</h3>
-    <p>Class 12: 79% • Class 10: 85%</p>
-  </div>
       </article>
 
-      <!-- ================= Projects ================= -->
       <article class="page card" data-page="projects">
         <h2 class="article-title">Projects</h2>
-        <div class="projects-grid" id="projectsGrid"></div>
       </article>
 
-      <!-- ================= Certifications ================= -->
       <article class="page card" data-page="certifications">
         <h2 class="article-title">Certifications</h2>
-        <ul>
-          <li>AWS Cloud Practitioner</li>
-          <li>Azure Cloud Adoption Framework</li>
-          <li>GCP Fundamentals</li>
-          <li>ITIL 4 Foundation</li>
-          <li>ServiceNow System Administrator</li>
-        </ul>
       </article>
 
-      <!-- ================= Contact ================= -->
       <article class="page card" data-page="contact">
         <h2 class="article-title">Contact</h2>
-        <!-- contact content -->
-        <ul class="contacts-list contact-page">
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-              <a class="contact-link" href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a>
-            </div>
-          </li>
-
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-              <a class="contact-link" href="tel:+917645959259">+91 7645959259</a>
-            </div>
-          </li>
-
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="logo-linkedin"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">LinkedIn</p>
-              <a class="contact-link" href="https://www.linkedin.com/in/rahul3333" target="_blank" rel="noopener">rahul3333</a>
-            </div>
-          </li>
-
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="logo-github"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">GitHub</p>
-              <a class="contact-link" href="https://github.com/rahul6469" target="_blank" rel="noopener">rahul6469</a>
-            </div>
-          </li>
-        </ul>
       </article>
 
     </div>
   </div>
 </main>
 
-<script src="index.js" defer></script>
+<script src="index.js"></script>
 </body>
 </html>
