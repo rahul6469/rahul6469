@@ -255,13 +255,14 @@ ion-icon{ font-size:18px; }
   padding:18px;
   transition:transform 260ms var(--ease), box-shadow 260ms var(--ease), border-color 260ms var(--ease);
 }
+/* What I'm Doing — keep base same, improve hover only */
 .doing-card:hover{
-  transform:translateY(-6px);
-  border-color:rgba(56,189,248,.4);
+  transform: translateY(-8px);
+  border-color: rgba(56,189,248,.45);
   box-shadow:
-    0 20px 45px rgba(0,0,0,.55),
-    0 0 0 1px rgba(56,189,248,.22),
-    0 0 28px rgba(56,189,248,.18);
+    0 22px 50px rgba(0,0,0,.55),
+    0 0 0 1px rgba(56,189,248,.25),
+    0 0 24px rgba(56,189,248,.18);
 }
 .doing-icon{
   width:44px;
@@ -294,9 +295,10 @@ ion-icon{ font-size:18px; }
   box-shadow:0 10px 30px rgba(0,0,0,.35);
   transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
 }
+/* Projects — keep hover behavior as-is (lift + glow) */
 .project-card:hover{
-  transform:translateY(-8px);
-  border-color:rgba(56,189,248,.45);
+  transform: translateY(-8px);
+  border-color: rgba(56,189,248,.45);
   box-shadow:
     0 22px 50px rgba(0,0,0,.55),
     0 0 0 1px rgba(56,189,248,.25),
