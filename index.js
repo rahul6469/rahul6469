@@ -2,7 +2,6 @@
    Rahul-aligned interactions
    (Robust init + underline + transitions + sidebar)
    =========================== */
-document.body.classList.remove("no-js");
 (() => {
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
