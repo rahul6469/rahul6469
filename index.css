@@ -360,7 +360,8 @@ ion-icon{ font-size:18px; }
 /* Body text inside pages */
 .page p,
 .page li,
-.page span, {
+.page span,
+.page div {
   color: var(--muted);
 }
 
@@ -613,21 +614,16 @@ ion-icon{ font-size:18px; }
   font-size: 14px;
 }
 
-/* ---------- Scroll reveal animation (Rahul-style) ---------- */
+/* ---------- Scroll reveal animation (Tanvi-style) ---------- */
 .reveal{
   opacity: 0;
   transform: translateY(14px);
+  transition: opacity 520ms var(--ease), transform 520ms var(--ease);
 }
 
 .reveal.in-view{
   opacity: 1;
   transform: translateY(0);
-}
-
-/* ✅ Fallback if JS ever fails */
-.no-js .reveal{
-  opacity: 1;
-  transform: none;
 }
 
 /* Reduced motion accessibility */
