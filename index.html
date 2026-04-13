@@ -5,28 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rahul Kumar | Systems Engineer</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="index.css" />
+  <meta name="description" content="Rahul Kumar – Systems Engineer at Publicis Sapient with experience in DTCC regulatory reporting, L2 production support, incident management, monitoring, and multi-cloud operations." />
+  <meta property="og:title" content="Rahul Kumar | Portfolio" />
+  <meta property="og:image" content="assets/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Ionicons -->
+  <!-- Use ONLY index.css (do NOT link style.css to avoid conflicts) -->
+  <link rel="stylesheet" href="./index.css" />
+
+  <!-- Ionicons (Rahul uses ion-icon style icons) -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
-<body class="no-js">
+<body>
+
 <main class="app">
 
-  <!-- Sidebar -->
+  <!-- SIDEBAR (Rahul-like) -->
   <aside class="sidebar" data-sidebar>
     <div class="sidebar-info">
       <figure class="avatar-box">
-        <img src="assets/avatar.png" alt="Rahul Kumar" />
+        <img src="assets/avatar.png" alt="Rahul Kumar" width="80" height="80">
       </figure>
 
-      <h1 class="name">Rahul Kumar</h1>
-      <p class="title">Systems Engineer</p>
+      <div class="info-content">
+        <h1 class="name" title="Rahul Kumar">Rahul Kumar</h1>
+        <p class="title">Systems Engineer</p>
+      </div>
 
-      <button class="info_more-btn" data-sidebar-btn>
+      <button class="info_more-btn" type="button" data-sidebar-btn aria-expanded="false">
         <span>Show Contacts</span>
         <ion-icon class="chev" name="chevron-down-outline"></ion-icon>
       </button>
@@ -38,42 +46,98 @@
       <ul class="contacts-list">
         <li class="contact-item">
           <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
-          <div>
+          <div class="contact-info">
             <p class="contact-title">Email</p>
-            <a href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a>
+            <a class="contact-link" href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a>
           </div>
+        </li>
+
+        <li class="contact-item">
+          <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+          <div class="contact-info">
+            <p class="contact-title">Phone</p>
+            <a class="contact-link" href="tel:+917645959259">+91 7645959259</a>
+          </div>
+        </li>
+
+        <li class="contact-item">
+          <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
+          <div class="contact-info">
+            <p class="contact-title">Location</p>
+            <address class="contact-link">Bengaluru, Karnataka</address>
+          </div>
+        </li>
+      </ul>
+
+      <a class="resume-btn" href="assets/resume.pdf" download>
+        <ion-icon name="download-outline"></ion-icon>
+        Download Resume (PDF)
+      </a>
+
+      <ul class="social-list">
+        <li class="social-item">
+          <a class="social-link" href="https://www.linkedin.com/in/rahul3333" target="_blank" rel="noopener">
+            <ion-icon name="logo-linkedin"></ion-icon>
+          </a>
+        </li>
+        <li class="social-item">
+          <a class="social-link" href="https://github.com/rahul6469" target="_blank" rel="noopener">
+            <ion-icon name="logo-github"></ion-icon>
+          </a>
         </li>
       </ul>
     </div>
   </aside>
 
-  <!-- Main -->
+  <!-- MAIN CONTENT -->
   <div class="main-content">
 
-    <!-- Navbar -->
-    <nav class="navbar">
-      <ul class="navbar-list">
-        <li><button class="navbar-link active" data-nav-link data-target="about">About</button></li>
-        <li><button class="navbar-link" data-nav-link data-target="resume">Resume</button></li>
-        <li><button class="navbar-link" data-nav-link data-target="projects">Projects</button></li>
-        <li><button class="navbar-link" data-nav-link data-target="certifications">Certifications</button></li>
-        <li><button class="navbar-link" data-nav-link data-target="contact">Contact</button></li>
-        <li class="nav-indicator"></li>
+    <!-- NAVBAR (Rahul-like) -->
+    <nav class="navbar" aria-label="Primary">
+      <ul class="navbar-list" id="navbarList">
+        <li class="navbar-item"><button class="navbar-link active" data-nav-link data-target="about">About</button></li>
+        <li class="navbar-item"><button class="navbar-link" data-nav-link data-target="contact">What I Do</button></li>
+        <li class="navbar-item"><button class="navbar-link" data-nav-link data-target="resume">Resume</button></li>
+        <li class="navbar-item"><button class="navbar-link" data-nav-link data-target="projects">Projects</button></li>
+        <li class="navbar-item"><button class="navbar-link" data-nav-link data-target="certifications">Certifications</button></li>
+        <li class="navbar-item"><button class="navbar-link" data-nav-link data-target="contact">Contact</button></li>
+
+        <li class="navbar-item navbar-spacer"></li>
+
+        <li class="navbar-item">
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+            <span id="themeIcon">🌙</span>
+          </button>
+        </li>
+
+        <!-- Moving underline indicator -->
+        <div class="nav-indicator" aria-hidden="true"></div>
       </ul>
     </nav>
 
-    <div class="page-stack">
+    <!-- PAGES STACK (for smooth transitions) -->
+    <div class="page-stack" id="pageStack">
 
-      <!-- About -->
+      <!-- ABOUT -->
       <article class="page card active" data-page="about">
-        <h2 class="article-title">About me</h2>
-        <p>
-          Systems Engineer with hands‑on experience in L2 Production Support and
-          Managed Services Operations. I focus on reliability, monitoring,
-          incident management, and operational excellence.
-        </p>
-
-        <!-- ✅ WHAT I'M DOING -->
+        <header><h2 class="h2 article-title">About me</h2></header>
+        <section class="about-text">
+          <p>
+            Results‑driven <strong>Systems Engineer</strong> with hands‑on experience in
+            <strong>Managed Services Operations (MSO–NOC)</strong> and the
+            <strong>DTCC regulatory reporting ecosystem</strong>, supporting mission‑critical
+            systems requiring accuracy, availability, and compliance.
+          </p>
+          <p>
+            Specialize in <strong>L2 production support</strong> including incident triage (P1–P3),
+            root cause analysis, trade lifecycle issue investigation, and SLA‑based service delivery.
+            Strong in <strong>SQL, ADX, Cosmos DB</strong> and operational investigations.
+          </p>
+          <p>
+            Proactive monitoring using <strong>Grafana, ServiceNow, Jira, Zoho</strong> and cross‑team collaboration
+            across <strong>Azure, AWS, and GCP</strong>.
+          </p>
+		  <!-- ✅ WHAT I'M DOING -->
         <section class="what-im-doing">
           <h3 class="article-subtitle">What I’m Doing</h3>
 
@@ -126,27 +190,130 @@
           </div>
         </section>
       </article>
+      <!-- RESUME (Experience + Skills + Education) -->
+      <article class="page card active" data-page="resume">
 
-      <article class="page card" data-page="resume">
-        <h2 class="article-title">Resume</h2>
-      </article>
+  <h2 class="article-title">Resume</h2>
 
+  <!-- Resume sub-navigation -->
+  <div class="resume-tabs">
+    <button class="resume-tab active" data-resume-tab="experience">Experience</button>
+    <button class="resume-tab" data-resume-tab="skills">Skills</button>
+    <button class="resume-tab" data-resume-tab="education">Education</button>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="resume-section active" data-resume-section="experience">
+
+    <h3>System Engineer — Publicis Sapient <span>(Jan 2025 – Present)</span></h3>
+    <ul>
+      <li>L2 production support for DTCC ReportHub and regulatory reporting workflows.</li>
+      <li>P1–P3 incident triage, escalation, RCA, and resolution with SLA adherence.</li>
+      <li>Investigated trade rejections, lifecycle mismatches, and validation failures.</li>
+      <li>Deep‑dive analysis using SQL, ADX, Cosmos DB; monitoring via Grafana.</li>
+    </ul>
+
+    <h3>Trainee System Engineer — Publicis Sapient <span>(Jul 2024 – Dec 2024)</span></h3>
+    <ul>
+      <li>Supported transaction reporting workflows and operational checks.</li>
+      <li>Assisted in trade monitoring and reconciliation.</li>
+    </ul>
+
+    <h3>Intern Engineer — Publicis Sapient <span>(Jan 2024 – Jul 2024)</span></h3>
+    <ul>
+      <li>Monitoring using ServiceNow/Jira/Zoho/Grafana; supported daily operations.</li>
+      <li>Incident tracking and documentation support.</li>
+    </ul>
+
+  </div>
+
+  <!-- SKILLS -->
+  <div class="resume-section" data-resume-section="skills">
+    <ul class="skills-pills">
+      <li>SQL</li>
+      <li>Linux</li>
+      <li>DTCC Reporting</li>
+      <li>L2 Production Support</li>
+      <li>Azure (ADX, Cosmos DB)</li>
+      <li>Grafana</li>
+      <li>ServiceNow</li>
+      <li>Python</li>
+    </ul>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="resume-section" data-resume-section="education">
+    <h3>M.S. Ramaiah University of Applied Sciences</h3>
+    <p>B.Tech — CSE (AI & ML) • CGPA: 7.37</p>
+
+    <h3>Guru Gobind Singh Public School</h3>
+    <p>Class 12: 79% • Class 10: 85%</p>
+  </div>
+
+</article>
+      <!-- PROJECTS -->
       <article class="page card" data-page="projects">
-        <h2 class="article-title">Projects</h2>
+        <header><h2 class="h2 article-title">Projects</h2></header>
+        <p class="muted">A lightweight showcase of selected GitHub projects.</p>
+        <div id="projectsGrid" class="projects-grid"></div>
       </article>
 
+      <!-- CERTIFICATIONS -->
       <article class="page card" data-page="certifications">
-        <h2 class="article-title">Certifications</h2>
+        <header><h2 class="h2 article-title">Certifications</h2></header>
+        <ul class="bullets muted">
+          <li>AWS Cloud Practitioner (SimuLearn)</li>
+          <li>Azure Cloud Adoption Framework</li>
+          <li>GCP Fundamentals</li>
+          <li>ITIL 4 Foundation</li>
+          <li>ServiceNow System Administrator</li>
+          <li>Artificial Intelligence & Generative AI – IBM, Microsoft, LinkedIn</li>
+        </ul>
       </article>
 
+      <!-- CONTACT -->
       <article class="page card" data-page="contact">
-        <h2 class="article-title">Contact</h2>
+        <header><h2 class="h2 article-title">Contact</h2></header>
+
+        <ul class="contacts-list contact-page">
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a class="contact-link" href="mailto:manishrahul3333@gmail.com">manishrahul3333@gmail.com</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+              <a class="contact-link" href="tel:+917645959259">+91 7645959259</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="logo-linkedin"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">LinkedIn</p>
+              <a class="contact-link" href="https://www.linkedin.com/in/rahul3333" target="_blank" rel="noopener">rahul3333</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="logo-github"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">GitHub</p>
+              <a class="contact-link" href="https://github.com/rahul6469" target="_blank" rel="noopener">rahul6469</a>
+            </div>
+          </li>
+        </ul>
       </article>
 
     </div>
   </div>
 </main>
 
-<script src="index.js"></script>
+<script src="./index.js" defer></script>
 </body>
 </html>
