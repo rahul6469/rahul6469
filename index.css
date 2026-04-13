@@ -6,184 +6,56 @@
   --muted:#9ca3af;
   --accent:#38bdf8;
   --border:rgba(255,255,255,.14);
-
   --ease:cubic-bezier(.22,1,.36,1);
-  --dur:420ms;
-  --durFast:200ms;
-}
-
-[data-theme="light"]{
-  --bg:#f8fafc;
-  --panel:#ffffff;
-  --panel2:#f1f5f9;
-  --text:#0f172a;
-  --muted:#475569;
-  --border:#e2e8f0;
-  --accent:#2563eb;
 }
 
 *{ box-sizing:border-box; }
 
 body{
   margin:0;
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto;
   background:radial-gradient(1200px 600px at 20% -10%, #0f172a 0%, var(--bg) 60%);
   color:var(--text);
 }
 
-a{ color:var(--accent); text-decoration:none; }
-a:hover{ text-decoration:underline; }
-
-ion-icon{ font-size:18px; }
-
-/* ================= Layout ================= */
 .app{
-  display:flex;
-  gap:18px;
   max-width:1200px;
   margin:0 auto;
   padding:18px;
+  display:flex;
+  gap:18px;
 }
 
-/* ================= Sidebar ================= */
+/* SIDEBAR */
 .sidebar{
   width:320px;
   background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
   border:1px solid var(--border);
   border-radius:18px;
   padding:16px;
-  position:sticky;
-  top:18px;
-  height:fit-content;
-}
-
-.sidebar-info{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-  text-align:center;
 }
 
 .avatar-box{
   width:78px;
   height:78px;
   border-radius:18px;
-  background:rgba(56,189,248,.12);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid rgba(56,189,248,.25);
   overflow:hidden;
-}
-
-.avatar-box img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.name{
-  font-size:18px;
-  font-weight:800;
-}
-
-.title{
-  font-size:13px;
-  color:var(--muted);
-}
-
-/* Sidebar button */
-.info_more-btn{
-  margin-top:8px;
-  padding:8px 16px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:var(--panel2);
-  color:var(--text);
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-
-.info_more-btn:hover{
-  background:rgba(255,255,255,.08);
-}
-
-.info_more-btn .chev{ transition:transform .25s ease; }
-.sidebar.open .info_more-btn .chev{ transform:rotate(180deg); }
-
-/* Sidebar dropdown */
-.sidebar-info_more{
-  max-height:0;
-  opacity:0;
-  overflow:hidden;
-  transition:max-height .4s ease, opacity .3s ease;
-  margin-top:14px;
-}
-.sidebar-info_more.active{
-  max-height:700px;
-  opacity:1;
-}
-
-.separator{
-  height:1px;
-  background:var(--border);
-  margin:12px 0;
-}
-
-/* Contacts */
-.contacts-list{
-  list-style:none;
-  padding:0;
-  margin:0;
-  display:grid;
-  gap:12px;
-}
-
-.contact-item{
-  display:flex;
-  gap:8px;
-  align-items:flex-start;
-}
-
-.icon-box{
-  width:36px;
-  height:36px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(56,189,248,.12);
   border:1px solid rgba(56,189,248,.25);
 }
 
-.contact-title{
-  font-size:12px;
-  color:var(--muted);
-}
+.avatar-box img{ width:100%; height:100%; object-fit:cover; }
 
-.contact-link,address{
-  font-size:13.5px;
-  color:var(--text);
-}
+.name{ font-size:18px; font-weight:800; }
+.title{ font-size:13px; color:var(--muted); }
 
-/* ================= Main ================= */
-.main-content{
-  flex:1;
-  min-width:0;
-}
+/* MAIN */
+.main-content{ flex:1; }
 
-/* ================= Navbar ================= */
 .navbar{
   background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
   border:1px solid var(--border);
   border-radius:18px;
   padding:10px;
-  position:sticky;
-  top:18px;
-  z-index:5;
   margin-bottom:18px;
 }
 
@@ -191,50 +63,26 @@ ion-icon{ font-size:18px; }
   list-style:none;
   display:flex;
   gap:10px;
-  align-items:center;
-  position:relative;
   padding:0;
   margin:0;
+  position:relative;
 }
-
-.navbar-spacer{ flex:1; }
 
 .navbar-link{
-  padding:10px 14px;
-  border-radius:14px;
+  border:none;
+  background:none;
+  color:var(--text);
   font-weight:700;
-  background:transparent;
-  border:1px solid transparent;
   cursor:pointer;
-}
-
-.navbar-link:hover{
-  background:rgba(255,255,255,.06);
 }
 
 .navbar-link.active{
   background:rgba(56,189,248,.16);
-  border-color:rgba(56,189,248,.4);
+  border-radius:14px;
 }
 
-/* underline */
-.nav-indicator{
-  position:absolute;
-  left:0;
-  bottom:6px;
-  height:2px;
-  width:40px;
-  background:linear-gradient(90deg,var(--accent),rgba(56,189,248,.4));
-  border-radius:999px;
-}
-
-/* ================= Pages ================= */
-.page-stack{
-  margin-top:24px;
-}
-
+/* PAGES */
 .page{ display:none; }
-
 .page.active{ display:block; }
 
 .page.card{
@@ -244,473 +92,65 @@ ion-icon{ font-size:18px; }
   padding:18px;
 }
 
-/* ================= Resume Tabs ================= */
-.resume-tabs{
-  display:flex;
-  gap:10px;
-  margin:16px 0 20px;
-}
+.article-title{ font-size:22px; font-weight:800; }
+.article-subtitle{ font-size:20px; font-weight:700; margin-top:24px; }
 
-.resume-tab{
-  padding:8px 14px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:var(--panel2);
-  cursor:pointer;
-}
-
-.resume-tab.active{
-  background:rgba(56,189,248,.16);
-  border-color:rgba(56,189,248,.4);
-}
-
-.resume-section{ display:none; }
-.resume-section.active{ display:block; }
-
-/* ================= Projects ================= */
-.projects-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:20px;
-}
-
-/* ✅ Polished Project Cards */
-.project-card{
-  padding:18px;
-  border-radius:20px;
-  background:
-    radial-gradient(600px 200px at 20% 0%, rgba(56,189,248,.12), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-  border:1px solid rgba(255,255,255,.18);
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.35);
-
-  transition:
-    transform .35s var(--ease),
-    box-shadow .35s var(--ease),
-    border-color .35s var(--ease);
-}
-
-.project-card:hover{
-  transform:translateY(-8px);
-  border-color:rgba(56,189,248,.45);
-
-  box-shadow:
-    0 22px 50px rgba(0,0,0,.55),
-    0 0 0 1px rgba(56,189,248,.25),
-    0 0 24px rgba(56,189,248,.18);
-}
-
-/* Title */
-.p-title{
+.about-lead{
   font-size:16px;
-  font-weight:800;
-  margin-bottom:6px;
-  color:#7dd3fc;
-
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
+  font-weight:600;
+  margin-bottom:10px;
 }
 
-/* Description */
-.p-desc{
-  font-size:14px;
-  color:var(--muted);
-  margin-bottom:12px;
-}
+/* WHAT I'M DOING */
+.what-im-doing{ margin-top:24px; }
 
-/* Tech row */
-.p-tech{
-  font-size:12px;
-  color:#93c5fd;
-}
-
-.pill{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:999px;
-  background:rgba(56,189,248,.2);
-  border:1px solid rgba(56,189,248,.45);
-  color:#bae6fd;
-  margin-right:6px;
-}
-
-/* ================= Responsive ================= */
-@media(max-width:900px){
-  .app{ flex-direction:column; }
-  .sidebar{ width:auto; }
-}
-
-/* ================= Reduce Motion ================= */
-@media (prefers-reduced-motion: reduce){
-  *{ transition:none !important; }
-}
-/* ================= Theme-Consistent Text Fix ================= */
-
-/* Page titles (About me, Resume, Certifications, Contact) */
-.article-title,
-.page h2,
-.page h3 {
-  color: var(--text);
-}
-
-/* Body text inside pages */
-.page p,
-.page li,
-.page span,
-.page div {
-  color: var(--muted);
-}
-
-/* Strong / emphasized text */
-.page strong {
-  color: var(--text);
-  font-weight: 600;
-}
-
-/* Lists (Certifications, Experience bullets, Skills text) */
-.page ul {
-  padding-left: 18px;
-}
-
-.page ul li {
-  margin-bottom: 6px;
-  line-height: 1.6;
-}
-
-/* Certifications specific fix */
-[data-page="certifications"] li {
-  color: var(--muted);
-}
-
-/* About section text */
-.about-text p {
-  color: var(--muted);
-}
-
-/* Resume section headings */
-.resume-section h3 {
-  color: var(--text);
-}
-
-.resume-section h3 span {
-  color: var(--muted);
-}
-
-/* Skills pills text fix */
-.skills-pills li {
-  color: var(--text);
-}
-
-/* Prevent blue body text in light mode */
-[data-theme="light"] .p-desc,
-[data-theme="light"] .page li,
-[data-theme="light"] .about-text p {
-  color: var(--muted);
-}
-/* ================= Theme Consistency Fix ================= */
-
-/* Headings */
-.article-title,
-.page h2,
-.page h3 {
-  color: var(--text);
-}
-
-/* Body text */
-.page p,
-.page li,
-.page span {
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-/* Strong text */
-.page strong {
-  color: var(--text);
-  font-weight: 600;
-}
-
-/* Lists spacing + readability */
-.page ul {
-  padding-left: 18px;
-}
-.page ul li {
-  margin-bottom: 6px;
-}
-
-/* About section */
-.about-text p {
-  color: var(--muted);
-}
-
-/* Certifications section */
-[data-page="certifications"] li {
-  color: var(--muted);
-}
-
-/* Resume sub sections */
-.resume-section h3 {
-  color: var(--text);
-}
-.resume-section h3 span {
-  color: var(--muted);
-}
-
-/* Light theme contrast protection */
-[data-theme="light"] .page p,
-[data-theme="light"] .page li {
-  color: var(--muted);
-}
-/* ================= FIX: Heading & Tab Readability ================= */
-
-/* Page main headings (About me, Resume, Certifications, Contact) */
-.article-title,
-.page h2 {
-  color: var(--text);
-}
-
-/* Section headings inside pages */
-.page h3 {
-  color: var(--text);
-}
-
-/* Body text */
-.page p,
-.page li {
-  color: var(--muted);
-}
-
-/* ----- Resume tabs (Experience / Skills / Education) ----- */
-
-/* Default tab */
-.resume-tab {
-  color: var(--text);
-  background: var(--panel2);
-  border: 1px solid var(--border);
-}
-
-/* Inactive tab hover */
-.resume-tab:hover {
-  background: rgba(255,255,255,0.08);
-}
-
-/* Active resume tab */
-.resume-tab.active {
-  color: var(--text);
-  background: rgba(56,189,248,0.25);
-  border-color: rgba(56,189,248,0.55);
-}
-
-/* ----- Certifications bullets ----- */
-[data-page="certifications"] li {
-  color: var(--muted);
-}
-
-/* ----- Light theme contrast correction ----- */
-[data-theme="light"] .page h2,
-[data-theme="light"] .page h3 {
-  color: var(--text);
-}
-
-[data-theme="light"] .resume-tab {
-  color: var(--text);
-  background: #eef2f7;
-}
-
-[data-theme="light"] .resume-tab.active {
-  background: rgba(37,99,235,0.18);
-  border-color: rgba(37,99,235,0.35);
-}
-/* ================= What I Do (DevOps / SRE leaning) ================= */
-
-.what-i-do{
-  margin-top: 26px;
-}
-
-.section-title{
-  color: var(--text);
-  font-size: 20px;
-  font-weight: 750;
-  margin: 0 0 8px;
-}
-
-.section-subtitle{
-  color: var(--muted);
-  margin: 0 0 18px;
-  line-height: 1.6;
-  max-width: 70ch;
-}
-
-.what-i-do-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 18px;
-}
-
-/* Card matches your other pages */
-.what-i-do-card{
-  padding: 18px;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,.16);
-  background:
-    radial-gradient(600px 220px at 15% 0%, rgba(56,189,248,.12), transparent 55%),
-    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-  box-shadow: 0 10px 26px rgba(0,0,0,.30);
-  transition:
-    transform 320ms var(--ease),
-    box-shadow 320ms var(--ease),
-    border-color 320ms var(--ease);
-}
-
-.what-i-do-card:hover{
-  transform: translateY(-6px);
-  border-color: rgba(56,189,248,.45);
-  box-shadow:
-    0 18px 45px rgba(0,0,0,.55),
-    0 0 0 1px rgba(56,189,248,.22),
-    0 0 22px rgba(56,189,248,.14);
-}
-
-.wid-head{
-  display:flex;
-  gap:12px;
-  align-items:center;
-  margin-bottom: 10px;
-}
-
-.wid-icon{
-  width: 40px;
-  height: 40px;
-  border-radius: 14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background: rgba(56,189,248,.15);
-  border: 1px solid rgba(56,189,248,.28);
-  color: var(--text);
-}
-
-.wid-icon ion-icon{
-  font-size: 20px;
-  color: var(--text);
-}
-
-.what-i-do-card h4{
-  margin: 0;
-  font-size: 15px;
-  font-weight: 750;
-  color: var(--text);
-  line-height: 1.35;
-}
-
-.what-i-do-card p{
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.6;
-  font-size: 14px;
-}
-
-/* ---------- Scroll reveal animation (Tanvi-style) ---------- */
-.reveal{
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 520ms var(--ease), transform 520ms var(--ease);
-}
-
-.reveal.in-view{
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Reduced motion accessibility */
-@media (prefers-reduced-motion: reduce){
-  .reveal{ opacity: 1 !important; transform: none !important; transition: none !important; }
-  .what-i-do-card{ transition:none !important; }
-}
-
-/* Light theme tweak (keep readable contrast) */
-[data-theme="light"] .what-i-do-card{
-  border: 1px solid rgba(15,23,42,.12);
-  box-shadow: 0 10px 22px rgba(2,6,23,.08);
-}
-/* ================= What I’m Doing (Tanvi-style) ================= */
-
-.what-im-doing{
-  margin-top:32px;
-}
-
-.article-subtitle{
-  font-size:20px;
-  font-weight:700;
-  color:var(--text);
-  margin-bottom:18px;
-}
-
-/* Grid */
 .doing-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
   gap:18px;
 }
 
-/* Card */
 .doing-card{
-  background:var(--panel);
+  background:var(--panel2);
   border:1px solid var(--border);
   border-radius:18px;
   padding:18px;
-  transition:
-    transform 260ms var(--ease),
-    box-shadow 260ms var(--ease),
-    border-color 260ms var(--ease);
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease);
 }
 
-/* Hover – subtle like Tanvi */
 .doing-card:hover{
-  transform:translateY(-5px);
-  border-color:rgba(56,189,248,.35);
+  transform:translateY(-6px);
   box-shadow:
-    0 14px 30px rgba(0,0,0,.35),
-    0 0 0 1px rgba(56,189,248,.15);
+    0 20px 45px rgba(0,0,0,.55),
+    0 0 28px rgba(56,189,248,.18);
 }
 
-/* Icon */
 .doing-icon{
   width:44px;
   height:44px;
   border-radius:14px;
   background:rgba(56,189,248,.15);
-  border:1px solid rgba(56,189,248,.3);
   display:flex;
   align-items:center;
   justify-content:center;
   margin-bottom:10px;
 }
 
-.doing-icon ion-icon{
-  font-size:22px;
-  color:var(--text);
+.doing-card p{ color:var(--muted); }
+
+/* REVEAL ANIMATION */
+.reveal{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .5s ease, transform .5s ease;
 }
 
-/* Text */
-.doing-card h4{
-  font-size:15px;
-  font-weight:700;
-  margin-bottom:6px;
-  color:var(--text);
+.reveal.in-view{
+  opacity:1;
+  transform:none;
 }
 
-.doing-card p{
-  font-size:14px;
-  line-height:1.6;
-  color:var(--muted);
-}
-
-/* Light theme safety */
-[data-theme="light"] .doing-card{
-  background:#ffffff;
+@media(max-width:900px){
+  .app{ flex-direction:column; }
+  .sidebar{ width:auto; }
 }
