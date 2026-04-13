@@ -613,16 +613,21 @@ ion-icon{ font-size:18px; }
   font-size: 14px;
 }
 
-/* ---------- Scroll reveal animation (Tanvi-style) ---------- */
+/* ---------- Scroll reveal animation (Rahul-style) ---------- */
 .reveal{
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 520ms var(--ease), transform 520ms var(--ease);
 }
 
 .reveal.in-view{
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ✅ Fallback if JS ever fails */
+.no-js .reveal{
+  opacity: 1;
+  transform: none;
 }
 
 /* Reduced motion accessibility */
