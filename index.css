@@ -525,3 +525,115 @@ ion-icon{ font-size:18px; }
   background: rgba(37,99,235,0.18);
   border-color: rgba(37,99,235,0.35);
 }
+/* ================= What I Do (DevOps / SRE leaning) ================= */
+
+.what-i-do{
+  margin-top: 26px;
+}
+
+.section-title{
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 750;
+  margin: 0 0 8px;
+}
+
+.section-subtitle{
+  color: var(--muted);
+  margin: 0 0 18px;
+  line-height: 1.6;
+  max-width: 70ch;
+}
+
+.what-i-do-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+/* Card matches your other pages */
+.what-i-do-card{
+  padding: 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.16);
+  background:
+    radial-gradient(600px 220px at 15% 0%, rgba(56,189,248,.12), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+  box-shadow: 0 10px 26px rgba(0,0,0,.30);
+  transition:
+    transform 320ms var(--ease),
+    box-shadow 320ms var(--ease),
+    border-color 320ms var(--ease);
+}
+
+.what-i-do-card:hover{
+  transform: translateY(-6px);
+  border-color: rgba(56,189,248,.45);
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.55),
+    0 0 0 1px rgba(56,189,248,.22),
+    0 0 22px rgba(56,189,248,.14);
+}
+
+.wid-head{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-bottom: 10px;
+}
+
+.wid-icon{
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(56,189,248,.15);
+  border: 1px solid rgba(56,189,248,.28);
+  color: var(--text);
+}
+
+.wid-icon ion-icon{
+  font-size: 20px;
+  color: var(--text);
+}
+
+.what-i-do-card h4{
+  margin: 0;
+  font-size: 15px;
+  font-weight: 750;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.what-i-do-card p{
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* ---------- Scroll reveal animation (Tanvi-style) ---------- */
+.reveal{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 520ms var(--ease), transform 520ms var(--ease);
+}
+
+.reveal.in-view{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity: 1 !important; transform: none !important; transition: none !important; }
+  .what-i-do-card{ transition:none !important; }
+}
+
+/* Light theme tweak (keep readable contrast) */
+[data-theme="light"] .what-i-do-card{
+  border: 1px solid rgba(15,23,42,.12);
+  box-shadow: 0 10px 22px rgba(2,6,23,.08);
+}
