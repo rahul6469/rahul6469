@@ -2,7 +2,7 @@
    Rahul-aligned interactions
    (Robust init + underline + transitions + sidebar)
    =========================== */
-
+document.body.classList.remove("no-js");
 (() => {
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
@@ -201,10 +201,48 @@
 
   // ---------- Init all ----------
   onReady(() => {
-    initSidebar();
-    initTheme();
-    initPages();
-    initProjects();
+  initSidebar();
+  initTheme();
+  initPages();
+  initProjects();
+
+  // ✅ Resume sub-tabs
+  document.querySelectorAll(".resume-tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      const target = tab.dataset.resumeTab;
+
+      document.querySelectorAll(".resume-tab")
+        .forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      document.querySelectorAll(".resume-section")
+        .forEach(sec => {
+          sec.classList.toggle("active", sec.dataset.resumeSection === target);
+        });
+    });
+  });
+
+  // ✅ Reveal animation for "What I’m Doing"
+  const revealItems = document.querySelectorAll(".reveal");
+  if (revealItems.length) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealItems.forEach(el => observer.observe(el));
+  }
+
+  // initial underline/height on first paint
+  requestAnimationFrame(() => {
+    syncPageStackHeight();
+    moveIndicatorToActive();
+  });
+});
 
  // ✅ ADD RESUME SUB-TABS CODE HERE
   document.querySelectorAll(".resume-tab").forEach(tab => {
@@ -230,5 +268,23 @@
       syncPageStackHeight();
       moveIndicatorToActive();
     });
+     // ✅ Reveal animation for "What I’m Doing"
+const revealItems = document.querySelectorAll(".reveal");
+
+if (revealItems.length) {
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  revealItems.forEach(el => observer.observe(el));
+}
   });
 })();
