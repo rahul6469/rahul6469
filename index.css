@@ -1,3 +1,4 @@
+/* ================= Root & Theme ================= */
 :root{
   --bg:#0b1220;
   --panel:#111827;
@@ -6,10 +7,7 @@
   --muted:#9ca3af;
   --accent:#38bdf8;
   --border:rgba(255,255,255,.14);
-
   --ease:cubic-bezier(.22,1,.36,1);
-  --dur:420ms;
-  --durFast:200ms;
 }
 
 [data-theme="light"]{
@@ -18,8 +16,8 @@
   --panel2:#f1f5f9;
   --text:#0f172a;
   --muted:#475569;
-  --border:#e2e8f0;
   --accent:#2563eb;
+  --border:#e2e8f0;
 }
 
 *{ box-sizing:border-box; }
@@ -31,12 +29,7 @@ body{
   color:var(--text);
 }
 
-a{ color:var(--accent); text-decoration:none; }
-a:hover{ text-decoration:underline; }
-
-ion-icon{ font-size:18px; }
-
-/* Layout */
+/* ================= Layout ================= */
 .app{
   display:flex;
   gap:18px;
@@ -50,7 +43,7 @@ ion-icon{ font-size:18px; }
   min-width:0;
 }
 
-/* Sidebar */
+/* ================= Sidebar ================= */
 .sidebar{
   width:320px;
   background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
@@ -59,28 +52,16 @@ ion-icon{ font-size:18px; }
   padding:16px;
   position:sticky;
   top:18px;
-  height:fit-content;
-}
-
-.sidebar-info{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-  text-align:center;
 }
 
 .avatar-box{
   width:78px;
   height:78px;
   border-radius:18px;
-  background:rgba(56,189,248,.12);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid rgba(56,189,248,.25);
   overflow:hidden;
+  border:1px solid rgba(56,189,248,.25);
 }
+
 .avatar-box img{
   width:100%;
   height:100%;
@@ -90,69 +71,12 @@ ion-icon{ font-size:18px; }
 .name{ font-size:18px; font-weight:800; }
 .title{ font-size:13px; color:var(--muted); }
 
-.info_more-btn{
-  margin-top:8px;
-  padding:8px 16px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:var(--panel2);
-  color:var(--text);
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-.info_more-btn:hover{ background:rgba(255,255,255,.08); }
-
-.sidebar-info_more{
-  max-height:0;
-  opacity:0;
-  overflow:hidden;
-  transition:max-height .4s ease, opacity .3s ease;
-  margin-top:14px;
-}
-.sidebar-info_more.active{
-  max-height:700px;
-  opacity:1;
-}
-
-.separator{ height:1px; background:var(--border); margin:12px 0; }
-
-/* Contacts */
-.contacts-list{
-  list-style:none;
-  padding:0;
-  margin:0;
-  display:grid;
-  gap:12px;
-}
-.contact-item{
-  display:flex;
-  gap:8px;
-  align-items:flex-start;
-}
-.icon-box{
-  width:36px;
-  height:36px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(56,189,248,.12);
-  border:1px solid rgba(56,189,248,.25);
-}
-.contact-title{ font-size:12px; color:var(--muted); }
-.contact-link,address{ font-size:13.5px; color:var(--text); }
-
-/* Navbar */
+/* ================= Navbar ================= */
 .navbar{
   background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
   border:1px solid var(--border);
   border-radius:18px;
   padding:10px;
-  position:sticky;
-  top:18px;
-  z-index:5;
   margin-bottom:18px;
 }
 
@@ -160,41 +84,25 @@ ion-icon{ font-size:18px; }
   list-style:none;
   display:flex;
   gap:10px;
-  align-items:center;
-  position:relative;
-  padding:0;
   margin:0;
+  padding:0;
 }
 
 .navbar-link{
   padding:10px 14px;
   border-radius:14px;
   font-weight:700;
-  background:transparent;
-  border:1px solid transparent;
-  cursor:pointer;
+  background:none;
+  border:none;
   color:var(--text);
+  cursor:pointer;
 }
-.navbar-link:hover{ background:rgba(255,255,255,.06); }
+
 .navbar-link.active{
   background:rgba(56,189,248,.16);
-  border-color:rgba(56,189,248,.4);
 }
 
-.nav-indicator{
-  position:absolute;
-  left:0;
-  bottom:6px;
-  height:2px;
-  width:40px;
-  background:linear-gradient(90deg,var(--accent),rgba(56,189,248,.4));
-  border-radius:999px;
-  opacity:1;
-}
-
-/* Pages */
-.page-stack{ margin-top:24px; }
-
+/* ================= Pages ================= */
 .page{ display:none; }
 .page.active{ display:block; }
 
@@ -205,117 +113,107 @@ ion-icon{ font-size:18px; }
   padding:18px;
 }
 
-/* Typography (theme-consistent) */
 .article-title{
-  color:var(--text);
   font-size:22px;
   font-weight:800;
-  margin:0 0 14px;
 }
+
 .article-subtitle{
-  color:var(--text);
   font-size:20px;
   font-weight:700;
   margin:24px 0 18px;
 }
-.page p, .page li, .page span{ color:var(--muted); line-height:1.6; }
-.page strong{ color:var(--text); font-weight:600; }
-.page ul{ padding-left:18px; }
-.page ul li{ margin-bottom:6px; }
 
-/* Resume tabs */
-.resume-tabs{ display:flex; gap:10px; margin:16px 0 20px; flex-wrap:wrap; }
-.resume-tab{
-  padding:8px 14px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:var(--panel2);
-  color:var(--text);
-  cursor:pointer;
+.page p,
+.page li{
+  color:var(--muted);
+  line-height:1.6;
 }
-.resume-tab:hover{ background:rgba(255,255,255,.08); }
-.resume-tab.active{
-  background:rgba(56,189,248,.25);
-  border-color:rgba(56,189,248,.55);
-}
-.resume-section{ display:none; }
-.resume-section.active{ display:block; }
 
-/* What I'm Doing (Tanvi-style) */
-.what-im-doing{ margin-top:32px; }
-.doing-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-  gap:18px;
-}
-.doing-card{
+/* =======================================================
+   ✅ UNIFIED CARD SYSTEM (THIS FIXES YOUR ISSUE)
+   ======================================================= */
+
+/* Base shared appearance */
+.doing-card,
+.project-card{
   background:var(--panel);
   border:1px solid var(--border);
   border-radius:18px;
   padding:18px;
-  transition:transform 260ms var(--ease), box-shadow 260ms var(--ease), border-color 260ms var(--ease);
+  text-decoration:none;
+  color:inherit;
+
+  transition:
+    transform .3s var(--ease),
+    box-shadow .3s var(--ease),
+    border-color .3s var(--ease);
 }
-/* What I'm Doing — keep base same, improve hover only */
-.doing-card:hover{
-  transform: translateY(-8px);
-  border-color: rgba(56,189,248,.45);
+
+/* Lift + glow on hover (SAME for both) */
+.doing-card:hover,
+.project-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(56,189,248,.45);
   box-shadow:
     0 22px 50px rgba(0,0,0,.55),
     0 0 0 1px rgba(56,189,248,.25),
     0 0 24px rgba(56,189,248,.18);
 }
+
+/* Icons inside cards */
 .doing-icon{
   width:44px;
   height:44px;
   border-radius:14px;
   background:rgba(56,189,248,.15);
-  border:1px solid rgba(56,189,248,.3);
   display:flex;
   align-items:center;
   justify-content:center;
   margin-bottom:10px;
 }
-.doing-icon ion-icon{ font-size:22px; color:var(--text); }
-.doing-card h4{ color:var(--text); font-size:15px; font-weight:700; margin:0 0 6px; }
-.doing-card p{ color:var(--muted); font-size:14px; margin:0; }
 
-/* Projects */
+.doing-card h4,
+.project-card h3{
+  color:var(--text);
+  font-size:15px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+/* ================= What I'm Doing ================= */
+.what-im-doing{ margin-top:32px; }
+
+.doing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:18px;
+}
+
+/* ================= Projects ================= */
 .projects-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
   gap:20px;
 }
-.project-card{
-  padding:18px;
-  border-radius:20px;
-  background:
-    radial-gradient(600px 200px at 20% 0%, rgba(56,189,248,.12), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
-  transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
-}
-/* Projects — keep hover behavior as-is (lift + glow) */
-.project-card:hover{
-  transform: translateY(-8px);
-  border-color: rgba(56,189,248,.45);
-  box-shadow:
-    0 22px 50px rgba(0,0,0,.55),
-    0 0 0 1px rgba(56,189,248,.25),
-    0 0 24px rgba(56,189,248,.18);
-}
+
 .p-title{
   font-size:16px;
   font-weight:800;
-  margin:0 0 6px;
+  margin-bottom:6px;
   color:var(--accent);
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
 }
-.p-desc{ font-size:14px; color:var(--muted); margin:0 0 12px; }
-.p-tech{ font-size:12px; color:var(--muted); margin:0; }
+
+.p-desc{
+  font-size:14px;
+  color:var(--muted);
+}
+
+.p-tech{
+  font-size:12px;
+  color:var(--muted);
+}
+
 .pill{
   display:inline-block;
   padding:4px 10px;
@@ -326,25 +224,20 @@ ion-icon{ font-size:18px; }
   margin-right:6px;
 }
 
-/* Reveal animation */
+/* ================= Reveal Animation ================= */
 .reveal{
   opacity:0;
   transform:translateY(16px);
-  transition:opacity .6s var(--ease), transform .6s var(--ease);
+  transition:opacity .5s var(--ease), transform .5s var(--ease);
 }
+
 .reveal.in-view{
   opacity:1;
   transform:none;
 }
 
-/* Responsive */
+/* ================= Responsive ================= */
 @media(max-width:900px){
   .app{ flex-direction:column; }
   .sidebar{ width:auto; }
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce){
-  *{ transition:none !important; }
-  .reveal{ opacity:1 !important; transform:none !important; }
 }
