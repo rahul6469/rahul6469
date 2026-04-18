@@ -460,3 +460,11 @@ ion-icon{ font-size:18px; }
 .project-card:hover {
   transform: translateY(-8px) !important;
 }
+/* ===== FINAL: Force "What I'm Doing" cards to LIFT on hover (no other changes) ===== */
+.doing-card{
+  will-change: transform;
+}
+
+.doing-card.reveal.in-view:hover{
+  transform: translate3d(0, -8px, 0) !important;
+}
