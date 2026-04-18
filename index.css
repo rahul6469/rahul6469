@@ -731,3 +731,11 @@ ion-icon{ font-size:18px; }
   font-size: 18px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
+/* ================= Education Scores ================= */
+
+.edu-score{
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
