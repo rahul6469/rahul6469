@@ -514,5 +514,10 @@ ion-icon{ font-size:18px; }
   .navbar-link {
     flex: 0 1 auto;
   }
-
+}
+/* ===== Mobile navbar fix: remove spacer ===== */
+@media (max-width: 600px) {
+  .navbar-spacer {
+    display: none;
+  }
 }
