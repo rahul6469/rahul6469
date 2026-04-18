@@ -746,3 +746,11 @@ ion-icon{ font-size:18px; }
   font-size: 13px;
   color: var(--muted);
 }
+/* Push theme toggle to right */
+.nav-spacer {
+  margin-left: auto;
+}
+
+.theme-toggle {
+  font-size: 18px;
+}
