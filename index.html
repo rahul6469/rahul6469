@@ -91,18 +91,28 @@
   <div class="main-content">
 
     <!-- Navbar -->
-    <nav class="navbar">
-      <ul class="navbar-list" id="navbarList">
-        <li><button class="navbar-link active" data-nav-link data-target="about">About</button></li>
-        <li><button class="navbar-link" data-nav-link data-target="resume">Resume</button></li>
-        <li><button class="navbar-link" data-nav-link data-target="projects">Projects</button></li>
-        <li><button class="navbar-link" data-nav-link data-target="certifications">Certifications</button></li>
-        <li><button class="navbar-link" data-nav-link data-target="contact">Contact</button></li>
-        <div class="nav-indicator"></div>
-      </ul>
-    </nav>
+<nav class="navbar">
+  <ul class="navbar-list" id="navbarList">
+    <li><button class="navbar-link active" data-nav-link data-target="about">About</button></li>
+    <li><button class="navbar-link" data-nav-link data-target="resume">Resume</button></li>
+    <li><button class="navbar-link" data-nav-link data-target="projects">Projects</button></li>
+    <li><button class="navbar-link" data-nav-link data-target="certifications">Certifications</button></li>
+    <li><button class="navbar-link" data-nav-link data-target="contact">Contact</button></li>
 
-    <div class="page-stack" id="pageStack">
+    <!-- ✅ ADD THEME TOGGLE HERE -->
+    <li>
+      <button
+        id="themeToggle"
+        class="navbar-link"
+        aria-label="Toggle theme"
+        title="Toggle light / dark mode">
+        🌙
+      </button>
+    </li>
+
+    <div class="nav-indicator"></div>
+  </ul>
+</nav>
 
       <!-- ================= About ================= -->
       <article class="page card active" data-page="about">
