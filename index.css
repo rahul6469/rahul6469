@@ -500,5 +500,5 @@ ion-icon{ font-size:18px; }
 
 /* Reduce flex gap just for sidebar header */
 .sidebar-info {
-  gap: 4px !important;
+  gap: 6px !important;
 }
