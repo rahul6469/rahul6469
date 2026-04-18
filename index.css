@@ -468,3 +468,13 @@ ion-icon{ font-size:18px; }
 .doing-card.reveal.in-view:hover{
   transform: translate3d(0, -8px, 0) !important;
 }
+/* ===== Remove underline from Project card content ===== */
+.project-card,
+.project-card * {
+  text-decoration: none !important;
+}
+
+.project-card:hover,
+.project-card:hover * {
+  text-decoration: none !important;
+}
