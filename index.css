@@ -482,3 +482,23 @@ ion-icon{ font-size:18px; }
 .sidebar-info figure {
   margin: 0;
 }
+/* ===== FIX: Remove extra spacing between avatar, name & title ===== */
+
+/* Remove browser default figure margin */
+.avatar-box {
+  margin: 0 !important;
+}
+
+/* Remove default heading & paragraph margins */
+.sidebar-info h1.name {
+  margin: 0 !important;
+}
+
+.sidebar-info .title {
+  margin: 0 !important;
+}
+
+/* Reduce flex gap just for sidebar header */
+.sidebar-info {
+  gap: 4px !important;
+}
