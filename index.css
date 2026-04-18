@@ -502,3 +502,17 @@ ion-icon{ font-size:18px; }
 .sidebar-info {
   gap: 6px !important;
 }
+/* ===== Mobile navbar fix ===== */
+@media (max-width: 600px) {
+
+  .navbar-list {
+    flex-wrap: wrap;                  /* allow wrapping */
+    justify-content: center;          /* center items */
+    row-gap: 8px;
+  }
+
+  .navbar-link {
+    flex: 0 1 auto;
+  }
+
+}
