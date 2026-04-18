@@ -739,3 +739,10 @@ ion-icon{ font-size:18px; }
   font-size: 13px;
   color: var(--muted);
 }
+/* Education score styling */
+.edu-score {
+  display: block;        /* forces next line */
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
