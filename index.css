@@ -521,3 +521,7 @@ ion-icon{ font-size:18px; }
     display: none;
   }
 }
+/* FINAL FIX: disable navbar spacer completely */
+.navbar-spacer {
+  display: none !important;
+}
