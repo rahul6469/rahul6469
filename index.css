@@ -420,3 +420,24 @@ ion-icon{ font-size:18px; }
 .project-meta .pill {
   color: var(--text);
 }
+/* ================= FIX: Reveal + Hover conflict ================= */
+
+/* Let reveal only handle opacity */
+.reveal{
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.reveal.in-view{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure hover always wins after reveal */
+.reveal.doing-card:hover{
+  transform: translateY(-8px) !important;
+}
+
+.reveal.project-card:hover{
+  transform: translateY(-8px) !important;
+}
