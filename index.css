@@ -397,3 +397,26 @@ ion-icon{ font-size:18px; }
   align-items: center;
   gap: 8px;
 }
+/* ================= FIX: Project text color = What I'm Doing ================= */
+
+/* Project title */
+.project-title,
+.project-card h4,
+.project-card h3 {
+  color: var(--text) !important;
+}
+
+/* Project description */
+.project-desc {
+  color: var(--muted) !important;
+}
+
+/* Project tech/meta line */
+.project-meta {
+  color: var(--muted) !important;
+}
+
+/* Tech pill stays accent (this is OK) */
+.project-meta .pill {
+  color: var(--text);
+}
