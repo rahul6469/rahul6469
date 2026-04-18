@@ -441,3 +441,22 @@ ion-icon{ font-size:18px; }
 .reveal.project-card:hover{
   transform: translateY(-8px) !important;
 }
+/* =====================================================
+   FINAL FIX — allow lift on hover AFTER reveal
+   ===================================================== */
+
+/* Reveal ONLY controls opacity, not transform */
+.reveal {
+  opacity: 0;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: none !important;   /* neutral base */
+}
+
+/* Force hover lift to ALWAYS win */
+.doing-card:hover,
+.project-card:hover {
+  transform: translateY(-8px) !important;
+}
