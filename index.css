@@ -71,6 +71,32 @@ body{
 .name{ font-size:18px; font-weight:800; }
 .title{ font-size:13px; color:var(--muted); }
 
+/* Contacts */
+.contacts-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap:12px;
+}
+.contact-item{
+  display:flex;
+  gap:8px;
+  align-items:flex-start;
+}
+.icon-box{
+  width:36px;
+  height:36px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(56,189,248,.12);
+  border:1px solid rgba(56,189,248,.25);
+}
+.contact-title{ font-size:12px; color:var(--muted); }
+.contact-link,address{ font-size:13.5px; color:var(--text); }
+
 /* ================= Navbar ================= */
 .navbar{
   background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
@@ -241,29 +267,5 @@ body{
   .app{ flex-direction:column; }
   .sidebar{ width:auto; }
 }
-/* Contacts */
-.contacts-list{
-  list-style:none;
-  padding:0;
-  margin:0;
-  display:grid;
-  gap:12px;
-}
-.contact-item{
-  display:flex;
-  gap:8px;
-  align-items:flex-start;
-}
-.icon-box{
-  width:36px;
-  height:36px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(56,189,248,.12);
-  border:1px solid rgba(56,189,248,.25);
-}
-.contact-title{ font-size:12px; color:var(--muted); }
-.contact-link,address{ font-size:13.5px; color:var(--text); }
+
 
