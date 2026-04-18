@@ -150,7 +150,7 @@ ion-icon{ font-size:18px; }
   border:1px solid var(--border);
   border-radius:18px;
   padding:10px;
-  position:sticky;
+  position:static;
   top:18px;
   z-index:5;
   margin-bottom:18px;
