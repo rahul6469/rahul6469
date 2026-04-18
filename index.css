@@ -586,3 +586,91 @@ ion-icon{ font-size:18px; }
 .ai{ background:#00bcd4; }
 .genai{ background:#7c3aed; }
 .security{ background:#ef4444; }
+/* ================= Timeline ================= */
+
+.timeline {
+  position: relative;
+  margin-top: 24px;
+  padding-left: 40px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Header */
+.timeline-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.timeline-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.timeline-header h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+/* Items */
+.timeline-item {
+  position: relative;
+  margin-bottom: 34px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -28px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #f6c453;
+  box-shadow: 0 0 0 4px rgba(246,196,83,.15);
+}
+
+/* Content */
+.timeline-content h4 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.timeline-org {
+  margin: 0;
+  color: #f6c453;
+  font-size: 14px;
+}
+
+.timeline-period {
+  display: inline-block;
+  margin: 6px 0 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.timeline-content ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+
+.timeline-content ul li {
+  margin-bottom: 6px;
+  color: var(--muted);
+}
