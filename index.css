@@ -525,3 +525,64 @@ ion-icon{ font-size:18px; }
 .navbar-spacer {
   display: none !important;
 }
+/* ================= Certification Badge Cards ================= */
+
+.cert-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:16px;
+  margin-top:18px;
+}
+
+.cert-card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  transition:transform .25s var(--ease),
+             box-shadow .25s var(--ease),
+             border-color .25s var(--ease);
+}
+
+.cert-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(56,189,248,.45);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.55),
+    0 0 0 1px rgba(56,189,248,.25);
+}
+
+.cert-card p{
+  margin:0;
+  font-size:14px;
+  color:var(--text);
+  line-height:1.5;
+}
+
+/* Badge */
+.cert-badge{
+  align-self:flex-start;
+  padding:4px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.3px;
+  color:#fff;
+}
+
+/* Badge colors */
+.aws{ background:#ff9900; }
+.azure{ background:#0078d4; }
+.gcp{ background:#34a853; }
+.oracle{ background:#c74634; }
+.devops{ background:#5c2d91; }
+.itil{ background:#65338d; }
+.servicenow{ background:#00e5a1; color:#0b1220; }
+.python{ background:#3776ab; }
+.mongodb{ background:#13aa52; }
+.ai{ background:#00bcd4; }
+.genai{ background:#7c3aed; }
+.security{ background:#ef4444; }
