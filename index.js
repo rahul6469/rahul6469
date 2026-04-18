@@ -107,30 +107,28 @@ document.body.classList.remove("no-js");
 
   /* ---------- Theme toggle ---------- */
   function initTheme() {
-    const root = document.documentElement;
-    const toggle = $("#themeToggle");
-    const icon = $("#themeIcon");
-    if (!toggle) return;
+  const root = document.documentElement;
+  const toggle = $("#themeToggle");
+  if (!toggle) return;
 
-    const applyTheme = (t) => {
-      root.setAttribute("data-theme", t);
-      localStorage.setItem("theme", t);
-      if (icon) icon.textContent = (t === "dark") ? "🌙" : "☀️";
-    };
+  const applyTheme = (t) => {
+    root.setAttribute("data-theme", t);
+    localStorage.setItem("theme", t);
+    toggle.textContent = (t === "dark") ? "🌙" : "☀️";
+  };
 
-    applyTheme(localStorage.getItem("theme") || "dark");
+  applyTheme(localStorage.getItem("theme") || "dark");
 
-    toggle.addEventListener("click", () => {
-      const next = (root.getAttribute("data-theme") === "dark") ? "light" : "dark";
-      applyTheme(next);
+  toggle.addEventListener("click", () => {
+    const next = (root.getAttribute("data-theme") === "dark") ? "light" : "dark";
+    applyTheme(next);
 
-      requestAnimationFrame(() => {
-        syncPageStackHeight();
-        moveIndicatorToActive();
-      });
+    requestAnimationFrame(() => {
+      syncPageStackHeight();
+      moveIndicatorToActive();
     });
-  }
-
+  });
+}
   /* ---------- Resume sub-tabs ---------- */
   function initResumeTabs() {
     const tabs = $$(".resume-tab");
