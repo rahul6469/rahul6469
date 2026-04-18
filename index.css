@@ -478,3 +478,12 @@ ion-icon{ font-size:18px; }
 .project-card:hover * {
   text-decoration: none !important;
 }
+/* ===== FIX: Remove extra spacing between pic, name & title ===== */
+
+.sidebar-info h1.name{
+  margin: 0;
+}
+
+.sidebar-info .title{
+  margin: 2px 0 0; /* small controlled gap */
+}
