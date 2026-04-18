@@ -502,7 +502,3 @@ ion-icon{ font-size:18px; }
 .sidebar-info {
   gap: 6px !important;
 }
-/* ===== FIX: prevent page headings from hiding behind sticky navbar ===== */
-.page-stack {
-  padding-top: 90px;  /* matches navbar height + spacing */
-}
