@@ -241,41 +241,6 @@ body{
   .app{ flex-direction:column; }
   .sidebar{ width:auto; }
 }
-/* ================= Contact & Sidebar Cleanup ================= */
-
-.contacts-list{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.contact-item{
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-}
-
-.contact-item a{
-  color: var(--text);
-  text-decoration: none;
-}
-
-.contact-item a:hover{
-  text-decoration: underline;
-}
-
-.contact-title{
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 2px;
-}
-
-/* Remove default link blue */
-a[href^="mailto"],
-a[href^="tel"]{
-  color: var(--text);
-  text-decoration: none;
-}
 /* Contacts */
 .contacts-list{
   list-style:none;
