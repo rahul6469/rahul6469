@@ -154,7 +154,13 @@ document.body.classList.remove("no-js");
   }
 
   /* ---------- Reveal animation (What I’m Doing) ---------- */
-  function initReveal() {
+ function initReveal() {
+
+    // ✅ ADD THIS LINE HERE
+    document.querySelectorAll(".timeline").forEach(tl =>
+      tl.classList.add("reveal")
+    );
+
     const revealItems = $$(".reveal");
     if (!revealItems.length) return;
 
@@ -168,8 +174,7 @@ document.body.classList.remove("no-js");
     }, { threshold: 0.15 });
 
     revealItems.forEach(el => observer.observe(el));
-  }
-
+}
   /* ---------- Projects cards ---------- */
   function initProjects() {
   const grid = document.getElementById("projectsGrid");
