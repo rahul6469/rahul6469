@@ -674,3 +674,40 @@ ion-icon{ font-size:18px; }
   margin-bottom: 6px;
   color: var(--muted);
 }
+/* ================= Timeline Animations ================= */
+
+/* base timeline item reveal (reuses your existing observer adding .in-view) */
+.timeline-item.reveal{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .55s var(--ease), transform .55s var(--ease);
+  will-change: opacity, transform;
+}
+
+.timeline-item.reveal.in-view{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* dot pop */
+.timeline-item .timeline-dot{
+  transform: scale(0.6);
+  opacity: 0;
+  transition: transform .45s var(--ease), opacity .45s var(--ease);
+}
+
+.timeline-item.reveal.in-view .timeline-dot{
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* optional: line draw animation (fills downward smoothly) */
+.timeline::before{
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform .9s var(--ease);
+}
+
+.timeline.in-view::before{
+  transform: scaleY(1);
+}
