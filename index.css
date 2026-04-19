@@ -754,3 +754,16 @@ ion-icon{ font-size:18px; }
 .theme-toggle {
   font-size: 18px;
 }
+.theme-select{
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--panel2);
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+}
+.theme-select:focus{
+  border-color: rgba(56,189,248,.45);
+}
