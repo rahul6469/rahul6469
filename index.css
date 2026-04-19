@@ -915,3 +915,12 @@ ion-icon{ font-size:18px; }
 .theme-option:hover {
   background: rgba(56, 189, 248, 0.16);
 }
+/* ==== FIX: Ensure theme dropdown appears above everything ==== */
+.theme-menu {
+  position: relative;
+  z-index: 1000;
+}
+
+.theme-dropdown {
+  z-index: 1001;
+}
