@@ -106,27 +106,43 @@ document.body.classList.remove("no-js");
   }
 
   /* ---------- Theme toggle ---------- */
-  function initTheme() {
+function initTheme() {
   const root = document.documentElement;
-  const toggle = $("#themeToggle");
-  if (!toggle) return;
+  const select = $("#themeSelect");
+  if (!select) return;
 
-  const applyTheme = (t) => {
-    root.setAttribute("data-theme", t);
-    localStorage.setItem("theme", t);
-    toggle.textContent = (t === "dark") ? "🌙" : "☀️";
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+
+  const applyTheme = (mode) => {
+    // mode = "system" | "light" | "dark"
+    localStorage.setItem("themeMode", mode);
+
+    const effectiveTheme = (mode === "system")
+      ? (media.matches ? "dark" : "light")
+      : mode;
+
+    root.setAttribute("data-theme", effectiveTheme);
+    select.value = mode;
   };
 
-  applyTheme(localStorage.getItem("theme") || "dark");
+  // ✅ 1) Load saved mode, else default to system
+  const savedMode = localStorage.getItem("themeMode") || "system";
+  applyTheme(savedMode);
 
-  toggle.addEventListener("click", () => {
-    const next = (root.getAttribute("data-theme") === "dark") ? "light" : "dark";
-    applyTheme(next);
+  // ✅ 2) User changes mode manually
+  select.addEventListener("change", () => {
+    applyTheme(select.value);
 
     requestAnimationFrame(() => {
       syncPageStackHeight();
       moveIndicatorToActive();
     });
+  });
+
+  // ✅ 3) If in system mode, auto-update when OS theme changes
+  media.addEventListener("change", () => {
+    const mode = localStorage.getItem("themeMode") || "system";
+    if (mode === "system") applyTheme("system");
   });
 }
   /* ---------- Resume sub-tabs ---------- */
@@ -264,4 +280,4 @@ document.body.classList.remove("no-js");
     });
   });
 })();
-``
+
