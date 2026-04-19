@@ -998,3 +998,14 @@ ion-icon{ font-size:18px; }
 .contact-form button:hover {
   background: rgba(56,189,248,.25);
 }
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+  width: 100%;
+}
