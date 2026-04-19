@@ -298,35 +298,40 @@ onReady(() => {
   });
 
   /* ---------- Contact form (AJAX submit + success message) ---------- */
-  const form = document.getElementById("contactForm");
-  const successMsg = document.getElementById("formSuccess");
+/* ---------- Contact form (AJAX submit + success message) ---------- */
+const form = document.getElementById("contactForm");
+const successMsg = document.getElementById("formSuccess");
 
-  if (form && successMsg) {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault(); // ✅ stop Formspree redirect
+if (form && successMsg) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      const formData = new FormData(form);
+    // Honeypot check (see spam section below)
+    const gotcha = form.querySelector('input[name="_gotcha"]');
+    if (gotcha && gotcha.value.trim() !== "") {
+      // silently ignore bots
+      return;
+    }
 
-      try {
-        const response = await fetch(form.action, {
-          method: "POST",
-          body: formData,
-          headers: { Accept: "application/json" }
-        });
+    const formData = new FormData(form);
 
-        if (response.ok) {
-          form.reset();
-          successMsg.style.display = "block";
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" }
+      });
 
-          setTimeout(() => {
-            successMsg.style.display = "none";
-          }, 5000);
-        }
-      } catch (err) {
-        console.error("Form submission error", err);
+      if (response.ok) {
+        form.reset();
+        successMsg.style.display = "block";
+        setTimeout(() => (successMsg.style.display = "none"), 5000);
       }
-    });
-  }
+    } catch (err) {
+      console.error("Form submission error", err);
+    }
+  });
+}
 });
 })();
 
