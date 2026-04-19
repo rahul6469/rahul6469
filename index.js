@@ -141,10 +141,11 @@ function initThemeMenu() {
   applyMode(localStorage.getItem("themeMode") || "system");
 
   // Open/close dropdown
-  btn.addEventListener("click", () => {
-    const isOpen = dd.classList.toggle("open");
-    btn.setAttribute("aria-expanded", String(isOpen));
-  });
+btn.addEventListener("click", (e) => {
+  e.stopPropagation(); // ✅ IMPORTANT
+  const isOpen = dd.classList.toggle("open");
+  btn.setAttribute("aria-expanded", String(isOpen));
+});
 
   // Click options
   dd.querySelectorAll(".theme-option").forEach(opt => {
@@ -156,12 +157,13 @@ function initThemeMenu() {
   });
 
   // Close if clicked outside
-  document.addEventListener("click", (e) => {
-    if (!btn.contains(e.target) && !dd.contains(e.target)) {
-      dd.classList.remove("open");
-      btn.setAttribute("aria-expanded", "false");
-    }
-  });
+ document.addEventListener("click", (e) => {
+  // ✅ do NOTHING if click is inside theme menu
+  if (btn.contains(e.target) || dd.contains(e.target)) return;
+
+  dd.classList.remove("open");
+  btn.setAttribute("aria-expanded", "false");
+});
 
   // React to OS theme change ONLY in system mode
   media.addEventListener("change", () => {
