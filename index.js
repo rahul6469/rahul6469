@@ -110,68 +110,57 @@ function initThemeMenu() {
   const root = document.documentElement;
 
   const btn = document.getElementById("themeBtn");
-  const dd = document.getElementById("themeDropdown");
-  const btnIcon = document.getElementById("themeBtnIcon");
-  const btnLabel = document.getElementById("themeBtnLabel");
+  const dropdown = document.getElementById("themeDropdown");
+  const icon = document.getElementById("themeBtnIcon");
+  const label = document.getElementById("themeBtnLabel");
 
-  if (!btn || !dd || !btnIcon || !btnLabel) return;
+  if (!btn || !dropdown || !icon || !label) return;
 
   const media = window.matchMedia("(prefers-color-scheme: dark)");
 
-  const labelMap = {
-    system: { icon: "🖥️", text: "System" },
-    light:  { icon: "☀️", text: "Light" },
-    dark:   { icon: "🌙", text: "Dark" }
+  const modes = {
+    system: { icon: "🖥️", label: "System" },
+    light: { icon: "☀️", label: "Light" },
+    dark: { icon: "🌙", label: "Dark" }
   };
 
-  const applyMode = (mode) => {
+  function applyMode(mode) {
     localStorage.setItem("themeMode", mode);
 
-    const effective = (mode === "system")
-      ? (media.matches ? "dark" : "light")
-      : mode;
+    const effectiveTheme =
+      mode === "system"
+        ? (media.matches ? "dark" : "light")
+        : mode;
 
-    root.setAttribute("data-theme", effective);
+    root.setAttribute("data-theme", effectiveTheme);
+    icon.textContent = modes[mode].icon;
+    label.textContent = modes[mode].label;
+  }
 
-    btnIcon.textContent = labelMap[mode].icon;
-    btnLabel.textContent = labelMap[mode].text;
-  };
-
-  // Load saved mode, default system
   applyMode(localStorage.getItem("themeMode") || "system");
 
-  // Open/close dropdown
-btn.addEventListener("click", (e) => {
-  e.stopPropagation(); // ✅ IMPORTANT
-  const isOpen = dd.classList.toggle("open");
-  btn.setAttribute("aria-expanded", String(isOpen));
-});
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle("open");
+  });
 
-  // Click options
-  dd.querySelectorAll(".theme-option").forEach(opt => {
-    opt.addEventListener("click", () => {
-      applyMode(opt.dataset.themeMode);
-      dd.classList.remove("open");
-      btn.setAttribute("aria-expanded", "false");
+  dropdown.querySelectorAll(".theme-option").forEach(option => {
+    option.addEventListener("click", () => {
+      applyMode(option.dataset.themeMode);
+      dropdown.classList.remove("open");
     });
   });
 
-  // Close if clicked outside
- document.addEventListener("click", (e) => {
-  // ✅ do NOTHING if click is inside theme menu
-  if (btn.contains(e.target) || dd.contains(e.target)) return;
+  document.addEventListener("click", () => {
+    dropdown.classList.remove("open");
+  });
 
-  dd.classList.remove("open");
-  btn.setAttribute("aria-expanded", "false");
-});
-
-  // React to OS theme change ONLY in system mode
   media.addEventListener("change", () => {
-    const mode = localStorage.getItem("themeMode") || "system";
-    if (mode === "system") applyMode("system");
+    if ((localStorage.getItem("themeMode") || "system") === "system") {
+      applyMode("system");
+    }
   });
 }
-
   /* ---------- Reveal animation (What I’m Doing) ---------- */
  function initReveal() {
 
@@ -273,7 +262,6 @@ btn.addEventListener("click", (e) => {
   /* ---------- Init all ---------- */
   onReady(() => {
     initSidebar();
-    initTheme();
     initPages();
     initProjects();
     initResumeTabs();
