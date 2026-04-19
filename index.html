@@ -103,15 +103,13 @@
     <li class="nav-spacer"></li>
 
     <!-- ✅ THEME TOGGLE AT RIGHT -->
-    <li>
-      <button
-        id="themeToggle"
-        class="navbar-link theme-toggle"
-        aria-label="Toggle theme"
-        title="Toggle light / dark mode">
-        🌙
-      </button>
-    </li>
+<li>
+  <select id="themeSelect" class="navbar-link theme-select" aria-label="Theme">
+    <option value="system">System</option>
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+  </select>
+</li>
 
     <div class="nav-indicator"></div>
   </ul>
