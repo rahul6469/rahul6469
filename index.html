@@ -498,24 +498,11 @@
 </div>
 
 <!-- Contact Form -->
-<form 
-  class="contact-form"
-  action="https://formspree.io/f/mwvabjnq"
-  method="POST">
-
+https://formspree.io/f/mwvabjnq
   <h3>Contact Form</h3>
 
-  <input
-    type="text"
-    name="name"
-    placeholder="Full name"
-    required />
-
-  <input
-    type="email"
-    name="email"
-    placeholder="Email address"
-    required />
+  <input type="text" name="name" placeholder="Full name" required />
+  <input type="email" name="email" placeholder="Email address" required />
 
   <textarea
     name="message"
@@ -523,9 +510,12 @@
     placeholder="Your message"
     required></textarea>
 
-  <button type="submit">
-    ✈️ Send Message
-  </button>
+  <button type="submit">✈️ Send Message</button>
+
+  <!-- ✅ Success message (hidden initially) -->
+  <p id="formSuccess" style="display:none; color:#38bdf8; font-weight:700;">
+    ✅ Message sent successfully!
+  </p>
 </form>
 
 </article>
