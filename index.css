@@ -1020,3 +1020,59 @@ ion-icon{ font-size:18px; }
 .contact-form button {
   width: 100%;
 }
+/* ================= Contact Form Styling ================= */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  color: var(--text);
+  font-size: 14px;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--muted);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.contact-form button {
+  align-self: flex-start;
+  padding: 12px 20px;
+
+  border-radius: 14px;
+  border: 1px solid var(--border);
+
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--text);
+
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: rgba(56, 189, 248, 0.25);
+}
