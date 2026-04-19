@@ -284,19 +284,49 @@ document.body.classList.remove("no-js");
   }
 
   /* ---------- Init all ---------- */
-  onReady(() => {
-    initSidebar();
-    initPages();
-    initProjects();
-    initResumeTabs();
-    initReveal();
-    initThemeMenu();
+onReady(() => {
+  initSidebar();
+  initPages();
+  initProjects();
+  initResumeTabs();
+  initReveal();
+  initThemeMenu();
 
-    requestAnimationFrame(() => {
-      syncPageStackHeight();
-      moveIndicatorToActive();
-    });
+  requestAnimationFrame(() => {
+    syncPageStackHeight();
+    moveIndicatorToActive();
   });
 
+  /* ---------- Contact form (AJAX submit + success message) ---------- */
+  const form = document.getElementById("contactForm");
+  const successMsg = document.getElementById("formSuccess");
+
+  if (form && successMsg) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault(); // ✅ stop Formspree redirect
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: { Accept: "application/json" }
+        });
+
+        if (response.ok) {
+          form.reset();
+          successMsg.style.display = "block";
+
+          setTimeout(() => {
+            successMsg.style.display = "none";
+          }, 5000);
+        }
+      } catch (err) {
+        console.error("Form submission error", err);
+      }
+    });
+  }
+});
 })();
-``
+
