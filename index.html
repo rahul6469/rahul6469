@@ -103,12 +103,24 @@
     <li class="nav-spacer"></li>
 
     <!-- ✅ THEME TOGGLE AT RIGHT -->
-<li>
-  <select id="themeSelect" class="navbar-link theme-select" aria-label="Theme">
-    <option value="system">🖥️ System Default</option>
-    <option value="light">☀️ Light</option>
-    <option value="dark">🌙 Dark</option>
-  </select>
+<li class="theme-menu">
+  <button id="themeBtn" class="navbar-link theme-btn" type="button" aria-haspopup="true" aria-expanded="false">
+    <span id="themeBtnIcon">🖥️</span>
+    <span id="themeBtnLabel">System</span>
+    <span class="theme-caret">▾</span>
+  </button>
+
+  <div id="themeDropdown" class="theme-dropdown" role="menu" aria-label="Theme menu">
+    <button class="theme-option" type="button" data-theme-mode="system" role="menuitem">
+      🖥️ <span>System Default</span>
+    </button>
+    <button class="theme-option" type="button" data-theme-mode="light" role="menuitem">
+      ☀️ <span>Light</span>
+    </button>
+    <button class="theme-option" type="button" data-theme-mode="dark" role="menuitem">
+      🌙 <span>Dark</span>
+    </button>
+  </div>
 </li>
 
     <div class="nav-indicator"></div>
