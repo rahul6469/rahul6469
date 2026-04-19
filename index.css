@@ -918,7 +918,10 @@ ion-icon{ font-size:18px; }
 /* ==== FIX: Ensure theme dropdown appears above everything ==== */
 .theme-menu {
   position: relative;
-  z-index: 1000;
+}
+
+.theme-dropdown {
+  z-index: 1000;   /* ✅ only dropdown floats */
 }
 
 .theme-dropdown {
