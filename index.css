@@ -927,3 +927,12 @@ ion-icon{ font-size:18px; }
 .theme-dropdown {
   z-index: 1001;
 }
+/* ✅ TEMP FIX: Show reveal elements */
+.reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+/* ✅ TEMP FIX: Always show resume sections */
+.resume-section {
+  display: block !important;
+}
