@@ -1076,3 +1076,11 @@ ion-icon{ font-size:18px; }
 .contact-form button:hover {
   background: rgba(56, 189, 248, 0.25);
 }
+.timeline-icon.award {
+  background: rgba(246,196,83,.15);
+  color: #f6c453;
+}
+
+.award-dot {
+  background: #f6c453;
+}
